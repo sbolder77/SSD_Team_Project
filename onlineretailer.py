@@ -19,6 +19,9 @@ def edit_user():
 def authorise_user():
     return u.get_user
 
+def delete_user():
+    return u.get_user
+
 def place_order():
     return u.get_user
 
