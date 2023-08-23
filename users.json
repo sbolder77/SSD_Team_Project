@@ -1,0 +1,16 @@
+{
+	"Users": [
+		{
+			"ID": "XXX",
+			"Role": "X",
+			"Name": "XXX",
+			"Address": "X"
+		},
+		{
+			"ID": "YYY",
+			"Role": "Y",
+			"Name": "YYY",
+			"Address": "Y"
+		}
+	]
+}
