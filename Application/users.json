@@ -1,0 +1,43 @@
+{
+    "Users": [
+        {
+            "ID": "bolders",
+            "Role": "A",
+            "FirstName": "Simon",
+            "Surname": "Bolder",
+            "Password": "Password",
+            "EmailAddress": "simon@email.com",
+            "House": "6",
+            "Street": "street",
+            "Town": "town",
+            "County": "county",
+            "Postcode": "post 123"
+        },
+        {
+            "ID": "someone",
+            "Role": "U",
+            "FirstName": "some",
+            "Surname": "one",
+            "Password": "someone123",
+            "EmailAddress": "someone@email.com",
+            "House": "10",
+            "Street": "street",
+            "Town": "town",
+            "County": "county",
+            "Postcode": "post 456"
+        },
+        {
+            "ID": "BOL",
+            "Role": "U",
+            "FirstName": "SI",
+            "Surname": "BO",
+            "Password": "SI@EMAIL.COM",
+            "EmailAddress": "SI@EMAIL.COM",
+            "House": "50",
+            "Street": "ROAD",
+            "Town": "TOWN",
+            "County": "COUNTY",
+            "Postcode": "POST 003"
+        }
+    ]
+}
