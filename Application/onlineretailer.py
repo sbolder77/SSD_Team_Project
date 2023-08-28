@@ -20,7 +20,7 @@ user_data_file = 'users.json'
 #endregion
 
 def main():
-    login_option = str(input('Choose the following option - R = Register or L = Login: '))
+    login_option = str(input('Choose a following option - 'R' = Register or 'L' = Login: '))
     if login_option == 'L':
         user_name = str(input('Please enter your username: '))
         loginstatus = check_user(user_name)
