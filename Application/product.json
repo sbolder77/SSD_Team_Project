@@ -25,50 +25,5 @@
 			"Price": "10.00",
 			"Description": "A"
 		},
-		{
-			"ID": "Rose Seeds",
-			"Price": "10.00",
-			"Description": "A"
-		},
-		{
-			"ID": "Orchid Seeds",
-			"Price": "10.00",
-			"Description": "A"
-		},
-		{
-			"ID": "Daffodil Seeds",
-			"Price": "10.00",
-			"Description": "A"
-		},
-		{
-			"ID": "Hydrangea Seeds",
-			"Price": "10.00",
-			"Description": "A"
-		},
-		{
-			"ID": "Anemone Seeds",
-			"Price": "10.00",
-			"Description": "A"
-		},
-		{
-			"ID": "Marigold Seeds",
-			"Price": "10.00",
-			"Description": "A"
-		},
-		{
-			"ID": "Petunia Seeds",
-			"Price": "10.00",
-			"Description": "A"
-		},
-		{
-			"ID": "Buttercup Seeds",
-			"Price": "10.00",
-			"Description": "A"
-		},
-		{
-			"ID": "Dahlia Seeds",
-			"Price": "10.00",
-			"Description": "A"
-		},
 	]
 }
