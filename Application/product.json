@@ -1,16 +1,31 @@
 {
 	"Product": [
 		{
-			"ID": "SKU001",
+			"ID": "Hibiscus Seeds",
 			"Price": "10.00",
 			"Description": "A",
 			"Stock": "10"
 		},
 		{
-			"ID": "SKU002",
+			"ID": "Tulip Seeds",
 			"Price": "20.00",
 			"Description": "B",
 			"Stock": "20"
 		}
+		{
+			"ID": "Sunflower Seeds",
+			"Price": "10.00",
+			"Description": "A"
+		},
+		{
+			"ID": "Lily Seeds",
+			"Price": "10.00",
+			"Description": "A"
+		},
+		{
+			"ID": "Frangipani Seeds",
+			"Price": "10.00",
+			"Description": "A"
+		},
 	]
 }
