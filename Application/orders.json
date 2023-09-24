@@ -2,13 +2,39 @@
 	"Orders": [
 		{
 			"ID": "0001",
-			"User": "XXX",
-			"Product": "SKU001"
+			"User": "bolders",
+			"Product": {
+				"SKU": "SKU001",
+				"Qty": "3",
+				"Value": "30.00"
+			}
 		},
 		{
 			"ID": "0001",
-			"User": "XXX",
-			"Product": "SKU002"
+			"User": "bolders",
+			"Product": {
+				"SKU": "SKU002",
+				"Qty": "1",
+				"Value": "20.00"
+			}
+		},
+		{
+			"ID": "0002",
+			"User": "nugentf",
+			"Product": {
+				"SKU": "SKU002",
+				"Qty": "1",
+				"Value": "20.00"
+			}
+		},
+		{
+			"ID": "0003",
+			"User": "willsonl",
+			"Product": {
+				"SKU": "SKU001",
+				"Qty": "5",
+				"Value": "50.00"
+			}
 		}
 	]
 }

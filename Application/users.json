@@ -1,43 +1,67 @@
 {
-    "Users": [
-        {
-            "ID": "bolders",
-            "Role": "A",
-            "FirstName": "Simon",
-            "Surname": "Bolder",
-            "Password": "Password",
-            "EmailAddress": "simon@email.com",
-            "House": "6",
-            "Street": "street",
-            "Town": "town",
-            "County": "county",
-            "Postcode": "post 123"
-        },
-        {
-            "ID": "someone",
-            "Role": "U",
-            "FirstName": "some",
-            "Surname": "one",
-            "Password": "someone123",
-            "EmailAddress": "someone@email.com",
-            "House": "10",
-            "Street": "street",
-            "Town": "town",
-            "County": "county",
-            "Postcode": "post 456"
-        },
-        {
-            "ID": "BOL",
-            "Role": "U",
-            "FirstName": "SI",
-            "Surname": "BO",
-            "Password": "SI@EMAIL.COM",
-            "EmailAddress": "SI@EMAIL.COM",
-            "House": "50",
-            "Street": "ROAD",
-            "Town": "TOWN",
-            "County": "COUNTY",
-            "Postcode": "POST 003"
-        }
-    ]
+	"Users": [{
+			"ID": "bolders",
+			"Role": "U",
+			"FirstName": "Simon",
+			"Surname": "Bolder",
+			"Password": "password",
+			"EmailAddress": "simon@email.com",
+			"House": "6",
+			"Street": "street",
+			"Town": "town",
+			"County": "county",
+			"Postcode": "post 123",
+			"Banking": {
+				"Sortcode": "00-00-00",
+				"AccountNum": "12345678"
+			}
+		},
+		{
+			"ID": "boldersa",
+			"Role": "A",
+			"FirstName": "Simon",
+			"Surname": "Bolder",
+			"Password": "password",
+			"EmailAddress": "simonb@email.com",
+			"House": "10",
+			"Street": "street",
+			"Town": "town",
+			"County": "county",
+			"Postcode": "post 456"
+		},
+		{
+			"ID": "nugentf",
+			"Role": "U",
+			"FirstName": "Fergus",
+			"Surname": "Nugent",
+			"Password": "password",
+			"EmailAddress": "fergus@email.com",
+			"House": "50",
+			"Street": "ROAD",
+			"Town": "TOWN",
+			"County": "COUNTY",
+			"Postcode": "POST 003",
+			"Banking": {
+				"Sortcode": "00-00-00",
+				"AccountNum": "12345678"
+			}
+		},
+		{
+			"ID": "willsonl",
+			"Role": "U",
+			"FirstName": "Liam",
+			"Surname": "Wilson",
+			"Password": "password",
+			"EmailAddress": "liam@email.com",
+			"House": "100",
+			"Street": "Avenue",
+			"Town": "TOWN",
+			"County": "COUNTY",
+			"Postcode": "POST 005",
+			"Banking": {
+				"Sortcode": "00-00-00",
+				"AccountNum": "12345678"
+			}
+		}
+	]
 }
