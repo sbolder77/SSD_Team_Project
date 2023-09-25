@@ -15,6 +15,8 @@ l = logging.LoggingDetails()
 loginstatus = bool
 userlist = []
 user_data_file = 'users.json'
+product_data_file = 'product.json'
+order_data_file = 'orders.py'
 #key = Fernet.generate_key()
 #fernet = Fernet(key)
 #endregion
@@ -41,8 +43,17 @@ def main():
             
             createlogin = create_user(userlist)
 
+    
+
 def check_user(user_name):
     u.get_user(user_name)
+    if bool(u.get_user(user_name)) = True:
+        print('Welcome back. Logging you in...')
+    else:
+        print('Account not found. Please register an account to log in.')
+        
+        
+        
 
 def create_user(userlist):
     u.create_user(userlist)
