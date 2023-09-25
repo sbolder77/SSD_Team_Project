@@ -72,4 +72,8 @@ class UserDetails:
     
     def edit_user(self):
         return self.test
+
+    def delete_user(self):
+        with open (user_data_file, 'w') as json_file:
+            json.delete(data, json_file)
     
