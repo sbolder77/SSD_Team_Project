@@ -70,7 +70,7 @@ class UserDetails:
             #f.write(encrypted)
         #return 'User created'
     
-    def edit_user(self):
+    def edit_user(self, userlist):
         return u.get_user(user_name)
         if u.get_user(user_name) == True:
 
@@ -100,8 +100,7 @@ class UserDetails:
             with open (user_data_file, 'w') as users.json:
                 json.dump(data, json_file, indent=4, separators=(',',': '))
 
-
-    def check_user(user_name):
+    def check_user(self, user_name):
         if bool(u.get_user(user_name)) = True:
             print('Welcome back. Logging you in...')
         else:
@@ -111,6 +110,5 @@ class UserDetails:
         return self.test
 
     def delete_user(self):
-        with open (user_data_file, 'w') as json_file:
+        with open (user_data_file, 'w') as users.json:
             json.delete(data, json_file)
-    
