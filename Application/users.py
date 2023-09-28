@@ -1,114 +1,75 @@
 import json
 from cryptography.fernet import Fernet
 
-user_data_file = 'users.json'
-j = open(user_data_file)
+users_data_file = 'users.json'
+j = open(users_data_file)
 data = json.load(j)
 jsonData = data["Users"]
 
 class User:
-    def __init__(self):
-        self.test = "test"
-        
-    def get_user(self, user_name):
-        #fernet = Fernet(key)
-        #with open(user_data_file, 'rb') as f:
-            #data = f.read()
-        #decrypted = fernet.decrypt(data)
-        #with open(user_data_file, 'wb') as f:
-            #f.write(decrypted)
-        for v in jsonData:
-            values = list(v.values())[0]
-            print(values)
-            if values == user_name:
-                return True
+    def check_user():
+        pass
+
+    def create_user():
+        user_data = []
+        with open (jsonData, "r") as f:
+            temp = json.load(f)
+        user_data["password"] = input("Password: ")
+        user_data["username"] = input("Username: ")
+        user_data["user_id"] = input("User ID: ")
+        user_data["firstName"] = input("First Name: ")
+        user_data["surname"] = input("Surname: ")
+        user_data["email_address"] = input("Email Address: ")
+        user_data["house_number"] = input("House Number: ")    
+        user_data["street"] = input("Street: ")    
+        user_data["town"] = input("Town: ")
+        user_data["country"] = input("Country: ")
+        user_data["Postcode"] = input("Postcode: ")
+        temp.append(user_data)
+        with open (jsonData, "w") as f:
+            json.dump(temp, f, indent=4)
+
+    def view_user():
+        with open (jsonData, "r") as f:
+            temp = json.load(f)
+            for entry in temp:
+                password = entry["password"]
+                username = entry["username"]
+                user_id = entry["user_id"]
+                firstname = entry["firstname"]
+                surname = entry["surname"]
+                email_address = entry["email_address"]
+                house_number = entry["house_number"]
+                street = entry["street"]
+                town = entry["town"]
+                postcode = entry["postcode"]
+                print (f"Index Number {i}")
+                print(f"Password: {password}")
+                print(f"Username: {username}")
+                print(f"User ID: {user_id}")
+                print(f"First Name: {firstname}")
+                print(f"Surname: {surname}")
+                print(f"Email Address: {email_address}")
+                print(f"House Number: {house_number}")
+                print(f"Street: {street}")
+                print(f"Town: {town}")
+                print(f"Postcode: {postcode}")
+                print("\n\n")
+    
+    def edit_user():
+        pass
+
+    def delete_user():
+        User.view_user()
+        new_user = []
+        with open (jsonData, "r") as f:
+            temp = json.load(f)
+        delete_query = input("Do you wish to delete your user account (input 'Yes' or 'No'?")
+        for entry in temp:
+            if delete_query == No:
+                pass
             else:
-                return False
-        #with open(user_data_file, 'rb') as f:
-            #data = f.read()
-        #encrypted = fernet.encrypt(data)
-        #with open(user_data_file, 'wb') as f:
-            #f.write(encrypted)
-        #return 'User created'
-    
-    def create_user(self, userlist):
-        #fernet = Fernet(key)
-        #with open(user_data_file, 'rb') as f:
-            #data = f.read()
-        #decrypted = fernet.decrypt(data)
-        #with open(user_data_file, 'wb') as f:
-            #f.write(decrypted)
-        self.id = userlist[0]
-        self.firstName = userlist[1]
-        self.surname = userlist[2]
-        self.password = userlist[3]
-        self.emailaddress = userlist[4]
-        self.house = userlist[5]
-        self.street = userlist[6]
-        self.town = userlist[7]
-        self.county = userlist[8]
-        self.postcode = userlist[9]
-        jsonData.append({
-            "ID": self.id,
-            "Role": 'U',
-            "FirstName": self.firstName,
-            "Surname": self.surname,
-            "Password": self.password,
-            "EmailAddress": self.emailaddress,
-            "House": self.house,
-            "Street": self.street,
-            "Town": self.town,
-            "County": self.county,
-            "Postcode": self.postcode
-        })
-        with open (user_data_file, 'w') as users.json:
-            json.dump(data, json_file, indent=4, separators=(',',': '))
-        #with open(user_data_file, 'rb') as f:
-            #data = f.read()
-        #encrypted = fernet.encrypt(data)
-        #with open(user_data_file, 'wb') as f:
-            #f.write(encrypted)
-        #return 'User created'
-    
-    def edit_user(self, userlist):
-        return u.get_user(user_name)
-        if u.get_user(user_name) == True:
+                new_user.append(entry)
 
-            self.id = userlist[0]
-            self.firstName = userlist[1]
-            self.surname = userlist[2]
-            self.password = userlist[3]
-            self.emailaddress = userlist[4]
-            self.house = userlist[5]
-            self.street = userlist[6]
-            self.town = userlist[7]
-            self.county = userlist[8]
-            self.postcode = userlist[9]
-            jsonData.append({
-                "ID": self.id,
-                "Role": 'U',
-                "FirstName": self.firstName,
-                "Surname": self.surname,
-                "Password": self.password,
-                "EmailAddress": self.emailaddress,
-                "House": self.house,
-                "Street": self.street,
-                "Town": self.town,
-                "County": self.county,
-                "Postcode": self.postcode
-            })
-            with open (user_data_file, 'w') as users.json:
-                json.dump(data, json_file, indent=4, separators=(',',': '))
-
-    def check_user(self, user_name):
-        if bool(u.get_user(user_name)) = True:
-            print('Welcome back. Logging you in...')
-        else:
-            print('Account not found. Please register an account to log in.')
-
-    def authorise_user(user_name):
-        return self.test
-
-    def delete_user(self):
-        with open (user_data_file, 'w') as users.json:
-            json.delete(data, json_file)
+    def authorise_user():
+        pass
