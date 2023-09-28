@@ -43,85 +43,32 @@ def main():
             
             createlogin = create_user(userlist)
 
-    
+#Create User
+from users.py import create_user
 
-def check_user(user_name):
-    u.get_user(user_name)
-    if bool(u.get_user(user_name)) = True:
-        print('Welcome back. Logging you in...')
-    else:
-        print('Account not found. Please register an account to log in.')
-        
-        
-        
+#Edit User
+from users.py import edit_user
 
-def create_user(userlist):
-    u.create_user(userlist)
+#Delete User
+from users.py import delete_user
 
-def edit_user():
-    return u.get_user
-    if bool(u.get_user) == True:
-        edit_user_query = str(input('Do you wish to edit the details associated with your user account (Y or N)? ')
-        if order_edit_query = 'Y':
-            return u.get_order
+#Create Order
+from orders.py import create_order
 
-def authorise_user():
-    return u.get_user
+#Edit Order
+from orders.py import edit_order
 
-def delete_user():
-    return u.get_user
-    if bool(u.get_user) == True:
-        delete_user_query = str(input('Do you wish to delete your user account (Y or N)? ')
-        if order_edit_query = 'Y':
-            return u.get_order
-        
-def place_order():
-    return u.get_user
-    if bool(u.get_user) == True:
-        receiving_address = str(input('Choose a following option - 'C' = Deliver to my current (registered) user address or 'N' = Deliver to a new address'))
-        if receiving_address == 'C':
-            id = main().id
-            firstName = main().firstName
-            surname = main().surname
-            house = main().house
-            street = main().street
-            town = main().town
-            county = main().county
-            postcode = main().postcode
+#Delete Order
+from orders.py import delete_order
 
-            check_address = str(input('Please confirm the address for delivery is your registered used address (Y or N): ')):
-            if check_address == 'Y':
-                delivery_address = [id, firstName, surname, house, street, town, county, postcode]
+#Create Item
+from items.py import create_item
 
-        else:
-            id = main().id
-            firstName = str(input('Enter the first name for delivery: '))
-            surname = str(input('Enter the surname for delivery: '))
-            house = str(input('Enter the house number or name for delivery: '))
-            street = str(input('Enter the street for delivery: '))
-            town = str(input('Enter the town for delivery: '))
-            county = str(input('Enter the county for delivery: '))
-            postcode = str(input('Enter the postcode for delivery: '))
+#Edit Item
+from items.py import edit_item
 
-            check_address = str(input('Please confirm this the correct address for delivery (Y or N): ')):
-            if check_address == 'Y':
-                delivery_address = [id, firstName, surname, house, street, town, county, postcode]
-    
-def edit_order():
-    return u.get_user
-    if bool(u.get_user) == True:
-        order_edit_query = str(input('Do you wish to edit your current order (Y or N)? ')
-        if order_edit_query = 'Y':
-            return u.get_order
-
-def cancel_order():
-    return u.get_user
-    if bool(u.get_user) == True:
-        order_cancel_query = str(input('Do you wish to cancel your current order (Y or N)? ')
-        if order_cancel_query = 'Y':
-            return u.get_order
-                             
-        
+#Delete Item
+from items.py import delete_item
 
 if __name__ == '__main__':
     main()
