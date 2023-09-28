@@ -1,81 +1,60 @@
-class ProductDetails:
-  def __init__(self, product_id, product_name, product_description, unit_price, stock_quantity):
-    self.product_id = product_id
-    self.product_name = product_name
-    self.product_description = product_description
-    self.unit_price = unit_price
-    self.stock_quantity = stock_quantity
-    self.is_available = True
-      
-  def create_product(self, new_product_id):
-    # Create an ID for the product.
-    self.product = new_product_id
+import json
+from cryptography.fernet import Fernet
 
-  def delete_product(self, quantity):
-    # Remove stock from the product.
-    if self.stock_quantity >= quantity:
-      self.stock_quantity -= quantity
-    else:
-      print("Insufficient stock")
+items_data_file = 'items.json'
+j = open(items_data_file)
+data = json.load(j)
+jsonData = data["Items"]
 
-  def update_product_price(self, new_price):
-    # Update the price of the product units.
-    self.unit_price = new_price
+class Item:
+    def create_item():
+        item_data = []
+        with open (jsonData, "r") as f:
+            temp = json.load(f)
+        item_data["item_id"] = input("Item ID: ")
+        item_data["item_name"] = input("Item Name: ")
+        item_data["item_price"] = input("Item Price: ")
+        item_data["item_description"] = input("Item Description: ")
+        item_data["item_stock"] = input("Item Stock: ")
+        temp.append(item_data)
+        with open (jsonData, "w") as f:
+            json.dump(temp, f, indent=4)
 
-  def get_product(self, product_id):
-    # Retrieve the ID of the product.
-    self.product_id = product_id
+    def view_item():
+        with open (jsonData, "r") as f:
+            temp = json.load(f)
+            i = 0
+            for entry in temp:
+                item_id = entry["item_id"]
+                item_name = entry["item_name"]
+                item_price = entry["item_price"]
+                item_description = entry["item_description"]
+                item_stock = entry["item_stock"]
+                print (f"Index Number {i}")
+                print(f"Item ID: {item_id}")
+                print(f"Item Name: {item_name}")
+                print(f"Item Price: {item_price}")
+                print(f"Item Description: {item_description}")
+                print(f"Item Stock: {item_stock}")
+                print("\n\n")
+                i=i+1
+    
+    def edit_item():
+        pass
 
-  def add_product_stock(self, quantity):
-    # Update the stock of the product (addition).
-    self.stock_quantity += quantity
-
-  def delete_product_stock(self, quantity):
-    # Update the stock of the product (subtraction).
-    self.stock_quantity -= quantity
-
-  def update_product_status(self, status):
-    # Update the status of the product.
-    self.product_status = status
-
-  def update_product_description(self, new_description):
-    # Update the description of the product.
-    self.description = new_description
-
-  def mark_as_available(self):
-    # Mark the product as available for purchase.
-    self.is_available = True
-          
-  def mark_as_unavailable(self):
-    # Mark the product as unavailable for purchase.
-    self.is_available = False
-  
-  def get_product_info(self):
-    # Get information about the product.
-    product_info = f"Product ID: {self.product_id}\n"
-    product_info += f"Name: {self.product_name}\n"
-    product_info += f"Description: {self.product_description}\n"
-    product_info += f"Price: £{self.unit_price:.2f}\n"
-    product_info += f"Stock Quantity: {self.stock_quantity}\n"
-    product_info += f"Availability: {'Available' if self.is_available else 'Unavailable'}\n"
-    return product_info
-
-
-# Example usage:
-if __name__ == "__main__":
-    # Create a sample product
-    product1 = ProductDetails(product_id=1, product_name="Small plant pot", product_description="A small plant pot", unit_price=5, stock_quantity=100)
-
-    # Update product information
-    product1.update_product_price(5.50)
-    product1.update_product_description("A small brown plant pot")
-
-    # Add and remove stock
-    product1.update_product_stock(50)
-    product1.delete_product(25)
-
-    # Mark product as avaiable
-    product1.mark_as_available()
-
-    # Get product information
-    print(product1.get_product_info())
+    def delete_item():
+        Item.view_item()
+        new_item = []
+        with open (jsonData, "r") as f:
+            temp = json.load(f)
+            data_length = len(temp)-1
+        print("Which item do you want to delete (input it's index number)?")
+        delete_option = input(f"Select a number 0-{data_length}")
+        i=0
+        for entry in temp:
+            if i == int(delete_option):
+                pass
+                i=i+1
+            else:
+                new_item.append(entry)
+                i=i+1
