@@ -1,39 +1,60 @@
-class OrderDetails:
-    def __init__(self, user, order_id, order_items, delivery_type, order_status, basket):
-        self.user = user
-        self.order_id = order_id
-        self.order_items = []
-        self.delivery_type = delivery_type
-        self.order_status = order_status
-        self.basket = []
-      
-    def user(self, username):
-      self.user = username
+import json
+from cryptography.fernet import Fernet
+
+orders_data_file = 'orders.json'
+j = open(orders_data_file)
+data = json.load(j)
+jsonData = data["Orders"]
+
+class Order:
+    def create_order():
+        order_data = []
+        with open (jsonData, "r") as f:
+            temp = json.load(f)
+        order_data["user"] = input("Username: ")
+        order_data["order_id"] = input("Order ID: ")
+        order_data["order_item"] = input("Item: ")
+        order_data["order_itemQuantity"] = input("Item Quantity: ")
+        order_data["order_deliveryType"] = input("Delivery Type: ")
+        temp.append(order_data)
+        with open (jsonData, "w") as f:
+            json.dump(temp, f, indent=4)
+
+    def view_order():
+        with open (jsonData, "r") as f:
+            temp = json.load(f)
+            i = 0
+            for entry in temp:
+                user = entry["user"]
+                order_id = entry["order_id"]
+                order_item = entry["order_item"]
+                order_itemQuantity = entry["order_itemQuantity"]
+                order_deliveryType = entry["order_deliveryType"]
+                print (f"Index Number {i}")
+                print(f"Username: {user}")
+                print(f"Order ID: {order_id}")
+                print(f"Item: {order_item}")
+                print(f"Item Quantity: {order_itemQuantity}")
+                print(f"Delivery Type: {order_deliveryType}")
+                print("\n\n")
+                i=i+1
     
-    def create_order(user, order_id, order_items, delivery_type):
-        order = OrderDetails(user, order_id, delivery_type)
-        # Add order items to the order.
-        for product, quantity in order_items:
-            order.add_item(product, quantity)
-        return
+    def edit_order():
+        pass
 
-    def add_item(self, product, quantity):
-        self.order_items.append({"product": product, "quantity": quantity})
-
-
-
-# Example usage:
-if __name__ == "__main__":
-    OrderDetails.user = "Johnny Dee"
-    OrderDetails.order_id = "12345"
-    OrderDetails.order_items = "5"
-    OrderDetails.delivery_type = "Standard Shipping"
-    OrderDetails.order_status = "Item(s) sent for shipping"
-    
-
-    # Print order details:
-    print(f"Username: {OrderDetails.user}")
-    print(f"Order ID: {int(OrderDetails.order_id)}")
-    print(f"Number of items in order: {int(OrderDetails.order_items)}")
-    print(f"Delivery Type: {OrderDetails.delivery_type}")
-    print(f"Order Status: {OrderDetails.order_status}")
+    def delete_order():
+        Order.view_order()
+        new_order = []
+        with open (jsonData, "r") as f:
+            temp = json.load(f)
+            data_length = len(temp)-1
+        print("Which order do you want to delete (input it's index number)?")
+        delete_option = input(f"Select a number 0-{data_length}")
+        i=0
+        for entry in temp:
+            if i == int(delete_option):
+                pass
+                i=i+1
+            else:
+                new_order.append(entry)
+                i=i+1
