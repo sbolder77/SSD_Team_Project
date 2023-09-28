@@ -6,7 +6,7 @@ j = open(user_data_file)
 data = json.load(j)
 jsonData = data["Users"]
 
-class UserDetails:
+class User:
     def __init__(self):
         self.test = "test"
         
