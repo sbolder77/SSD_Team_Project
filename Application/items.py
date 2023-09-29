@@ -41,7 +41,7 @@ class Item:
     
     def edit_item():
         view_item()
-        with open (jsonData_items, "w") as f:
+        with open (jsonData_items, "r") as f:
             temp = json.load(f)
 
             while True:
