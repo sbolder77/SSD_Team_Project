@@ -30,7 +30,7 @@ class Item:
                 item_price = entry["item_price"]
                 item_description = entry["item_description"]
                 item_stock = entry["item_stock"]
-                print (f"Index Number {i}")
+                print(f"Index Number {i}")
                 print(f"Item ID: {item_id}")
                 print(f"Item Name: {item_name}")
                 print(f"Item Price: {item_price}")
@@ -40,7 +40,32 @@ class Item:
                 i=i+1
     
     def edit_item():
-        pass
+        view_item()
+        with open (jsonData_items, "w") as f:
+            temp = json.load(f)
+            choice_query = input("Input which item you wish to edit (if you wish to exit, input 'exit'): ")
+            if choice_query == str("Item ID"):
+                item_data["item_id"] = input("Item ID: ")
+                print("Item ID changed.")
+                continue
+                
+            elif choice_query == str("Item Name"):
+                item_data["item_name"] = input("Item Name: ")
+                print("Item Name changed.")
+                continue
+
+            elif choice_query == str("Item Description"):
+                item_data["item_description"] = input("Item Description: ")
+                print("Item Description changed.")
+                continue
+                
+            elif choice_query == str("Item Stock"):
+                user_data["item_stock"] = input("Item Stock: ")
+                print("Item Stock changed.")
+                continue
+                
+            else:
+                break
 
     def delete_item():
         Item.view_item()
