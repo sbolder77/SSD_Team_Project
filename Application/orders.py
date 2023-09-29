@@ -53,7 +53,7 @@ class Order:
                 pass
                 
         temp.append(order_data)
-        with open (jsonData_orders, "w") as f:
+        with open (jsonData_orders, "r") as f:
             json.dump(temp, f, indent=4)
 
     def view_order():
