@@ -3,13 +3,13 @@ from cryptography.fernet import Fernet
 
 items_data_file = 'items.json'
 j = open(items_data_file)
-data = json.load(j)
-jsonData = data["Items"]
+data_items = json.load(j)
+jsonData_items = data["Items"]
 
 class Item:
     def create_item():
         item_data = []
-        with open (jsonData, "r") as f:
+        with open (jsonData_items, "r") as f:
             temp = json.load(f)
         item_data["item_id"] = input("Item ID: ")
         item_data["item_name"] = input("Item Name: ")
@@ -17,11 +17,11 @@ class Item:
         item_data["item_description"] = input("Item Description: ")
         item_data["item_stock"] = input("Item Stock: ")
         temp.append(item_data)
-        with open (jsonData, "w") as f:
+        with open (jsonData_items, "w") as f:
             json.dump(temp, f, indent=4)
 
     def view_item():
-        with open (jsonData, "r") as f:
+        with open (jsonData_items, "r") as f:
             temp = json.load(f)
             i = 0
             for entry in temp:
@@ -45,7 +45,7 @@ class Item:
     def delete_item():
         Item.view_item()
         new_item = []
-        with open (jsonData, "r") as f:
+        with open (jsonData_items, "r") as f:
             temp = json.load(f)
             data_length = len(temp)-1
         print("Which item do you want to delete (input it's index number)?")
