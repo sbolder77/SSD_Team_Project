@@ -95,27 +95,27 @@ class User:
                 print("Surname changed.")
                 continue
 
-           elif choice_query == str("Email Address"):
+            elif choice_query == str("Email Address"):
                 user_data["email_address"] = input("Email Address: ")
                 print("Email Address changed.")
                 continue
 
-           elif choice_query == str("House Number"]
+            elif choice_query == str("House Number"]
                 user_data["house_number"] = input("House Number")
                 print("House Number changed.")
                 continue
 
-           elif choice_query == str("Street"]
+            elif choice_query == str("Street"]
                 user_data["street"] = input("Street")
                 print("Street changed.")
                 continue
 
-           elif choice_query == str("Town"]
+            elif choice_query == str("Town"]
                 user_data["town"] = input("Town")
                 print("Town changed.")
                 continue
 
-           elif choice_query == str("Postcode"]
+            elif choice_query == str("Postcode"]
                 user_data["psotcode"] = input("Postcode")
                 print("Postcode changed.")
                 continue
