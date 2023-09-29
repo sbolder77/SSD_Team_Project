@@ -7,9 +7,6 @@ data_users = json.load(j)
 jsonData_users = data["Users"]
 
 class User:
-    def check_user():
-        pass
-
     def create_user():
         user_data = []
         with open (jsonData_users, "w") as f:
@@ -135,5 +132,18 @@ class User:
             else:
                 new_user.append(entry)
 
+    def check_user():
+        with open (jsonData_users, "w") as f:
+            temp = json.load(f)
+        if user_data["user_id"] in jsonData_users:
+            check_user == True
+        else:
+            check_user == False
+            
     def authorise_user():
-        pass
+        check_user()
+        if check_user == True:
+            break
+        else:
+            print("Your User ID does not exist.")
+            exit()
