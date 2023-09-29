@@ -38,8 +38,14 @@ from users import edit_user
 #Delete User
 from users import delete_user
 
+#authorise user
+from user import authorise_user
+
 #Create Order
 from orders import create_order
+
+#View Order
+from orders import view_order
 
 #Edit Order
 from orders import edit_order
@@ -49,6 +55,9 @@ from orders import delete_order
 
 #Create Item
 from items import create_item
+
+#View Item
+from items import view_item
 
 #Edit Item
 from items import edit_item
