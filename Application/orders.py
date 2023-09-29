@@ -78,24 +78,50 @@ class Order:
             temp = json.load(f)
             choice_query = input("Input which of your order details you wish to edit (if you wish to exit, input 'exit'): ")
             if choice_query == str("Order ID"):
-                order_data["order_id"] = input("Order ID: ")
-                print("Order ID changed.")
+                print("Order ID is unchangeable.")
                 continue
                 
             elif choice_query == str("Order Item"):
                 order_data["order_item"] = input("Order Item: ")
-                print("Order Item changed.")
-                continue
+                while True:
+                    if order_item not in jsonData_items:
+                        print("It doesn't appear that this item exists in our inventory.")
+                        choice_query = input("Enter 1 to try again or 2 to exit: ")
+                        if choice_query == 1:
+                            continue
+                        else:
+                            break    
+                    else:
+                        print("Order Item changed.")
+                        continue
 
             elif choice_query == str("Item Quantity"):
                 order_data["order_itemQuantity"] = input("Item Quantity: ")
-                print("Item Quantity changed.")
-                continue
+                while True:
+                    if order_itemQuantity > item_stock in jsonData_items:
+                        print("The quantity you have specified is not available.")
+                        choice_query = input("Enter 1 to try again or 2 to exit: ")
+                        if choice_query == 1:
+                            continue
+                        else:
+                            break    
+                    else:
+                        print("Item Quantity changed.")
+                        continue
                 
             elif choice_query == str("Delivery Type"):
                 order_data["order_deliveryType"] = input("Delivery Type: ")
-                print("Delivery Type changed.")
-                continue
+                while True:
+                    if order_deliveryType != 'Mail' or 'Pickup':
+                        print("The delivry method you have specified is not available or is invalid.")
+                        choice_query = input("Enter 1 to try again or 2 to exit: ")
+                        if choice_query == 1:
+                            continue
+                        else:
+                            break    
+                    else:
+                        print("Delivery Type changed.")
+                        continue
                 
             else:
                 break
