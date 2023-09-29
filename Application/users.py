@@ -71,7 +71,7 @@ class User:
         with open (jsonData_users, "w") as f:
             temp = json.load(f)
             choice_query = input("Input which of your user details you wish to edit (if you wish to exit, input 'exit'): ")
-            if choice_query == str("Password")
+            if choice_query == str("Password"):
                 user_data["password"] = input("Password: ")
                 print("Password changed.")
                 continue
@@ -81,7 +81,7 @@ class User:
                 print("Username changed.")
                 continue
 
-            elif choice_query == str("User ID"]
+            elif choice_query == str("User ID"):
                 print("User ID is unchangeable.")
                 continue
                 
@@ -100,22 +100,22 @@ class User:
                 print("Email Address changed.")
                 continue
 
-            elif choice_query == str("House Number"]
+            elif choice_query == str("House Number"):
                 user_data["house_number"] = input("House Number")
                 print("House Number changed.")
                 continue
 
-            elif choice_query == str("Street"]
+            elif choice_query == str("Street"):
                 user_data["street"] = input("Street")
                 print("Street changed.")
                 continue
 
-            elif choice_query == str("Town"]
+            elif choice_query == str("Town"):
                 user_data["town"] = input("Town")
                 print("Town changed.")
                 continue
 
-            elif choice_query == str("Postcode"]
+            elif choice_query == str("Postcode"):
                 user_data["psotcode"] = input("Postcode")
                 print("Postcode changed.")
                 continue
