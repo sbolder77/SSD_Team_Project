@@ -1,7 +1,7 @@
 import json
 from cryptography.fernet import Fernet
 
-import items.py
+import items
 
 orders_data_file = 'orders.json'
 j = open(orders_data_file)
@@ -16,18 +16,39 @@ class Order:
         order_data["user"] = input("Username: ")
         order_data["order_id"] = input("Order ID: ")
         order_data["order_item"] = input("Item: ")
-        if item_name not in jsonData_items:
-            print("It doesn't appear that this item exists in our inventory.")
-            choice_query = input("Enter 1 to try again or 2 to exit: ")
-            if choice_query == 1:
-                return
-            order_data["order_item"] = input("Item: ")
-        else:
-            pass
-    
-        
+        while True:
+            if order_item not in jsonData_items:
+                print("It doesn't appear that this item exists in our inventory.")
+                choice_query = input("Enter 1 to try again or 2 to exit: ")
+                if choice_query == 1:
+                    continue
+                else:
+                    break    
+            else:
+                pass
         order_data["order_itemQuantity"] = input("Item Quantity: ")
-        order_data["order_deliveryType"] = input("Delivery Type: ")
+        while True:
+            if order_itemQuantity > item_stock in jsonData_items:
+                print("The quantity you have specified is not available.")
+                choice_query = input("Enter 1 to try again or 2 to exit: ")
+                if choice_query == 1:
+                    continue
+                else:
+                    break    
+            else:
+                pass
+        order_data["order_deliveryType"] = input("Delivery Type (input 'Mail' or 'Pickup'): ")
+        while True:
+            if order_deliveryType != 'Mail' or 'Pickup':
+                print("The delivry method you have specified is not available or is invalid.")
+                choice_query = input("Enter 1 to try again or 2 to exit: ")
+                if choice_query == 1:
+                    continue
+                else:
+                    break    
+            else:
+                pass
+                
         temp.append(order_data)
         with open (jsonData_orders, "w") as f:
             json.dump(temp, f, indent=4)
