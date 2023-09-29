@@ -1,14 +1,29 @@
 import json
 from cryptography.fernet import Fernet
 
-user_data_file = 'users.json'
-j = open(user_data_file)
-data = json.load(j)
-jsonData = data["Users"]
+# create json readable object
+filename = 'system.json'
+f = open(filename)
+data = json.load(f)
 
-class UserDetails:
+class settings:
     def __init__(self):
-        self.test = "test"
+        for x in data:
+            self.log = x['log']
+            self.ssl = x['ssl']
+            self.datetimeformat = x['datetimeformat']
+
+    def encryptfile(filename):
+
+    def decryptfile(filename):
+
+    def regexuser():
+
+    def regexorder():
+
+    def regexproduct():
+
+
 
     def get_user(self, user_name):
         #fernet = Fernet(key)
