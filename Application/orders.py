@@ -1,27 +1,39 @@
 import json
 from cryptography.fernet import Fernet
 
+import items.py
+
 orders_data_file = 'orders.json'
 j = open(orders_data_file)
-data = json.load(j)
-jsonData = data["Orders"]
+data_orders = json.load(j)
+jsonData_orders = data["Orders"]
 
 class Order:
     def create_order():
         order_data = []
-        with open (jsonData, "r") as f:
+        with open (jsonData_orders, "r") as f:
             temp = json.load(f)
         order_data["user"] = input("Username: ")
         order_data["order_id"] = input("Order ID: ")
         order_data["order_item"] = input("Item: ")
+        if item_name not in jsonData_items:
+            print("It doesn't appear that this item exists in our inventory.")
+            choice_query = input("Enter 1 to try again or 2 to exit: ")
+            if choice_query == 1:
+                return
+            order_data["order_item"] = input("Item: ")
+        else:
+            pass
+    
+        
         order_data["order_itemQuantity"] = input("Item Quantity: ")
         order_data["order_deliveryType"] = input("Delivery Type: ")
         temp.append(order_data)
-        with open (jsonData, "w") as f:
+        with open (jsonData_orders, "w") as f:
             json.dump(temp, f, indent=4)
 
     def view_order():
-        with open (jsonData, "r") as f:
+        with open (jsonData_orders, "r") as f:
             temp = json.load(f)
             i = 0
             for entry in temp:
@@ -45,7 +57,7 @@ class Order:
     def delete_order():
         Order.view_order()
         new_order = []
-        with open (jsonData, "r") as f:
+        with open (jsonData_orders, "r") as f:
             temp = json.load(f)
             data_length = len(temp)-1
         print("Which order do you want to delete (input it's index number)?")
