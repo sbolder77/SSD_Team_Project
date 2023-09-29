@@ -44,31 +44,31 @@ def main():
             createlogin = create_user(userlist)
 
 #Create User
-from users.py import create_user
+from users import create_user
 
 #Edit User
-from users.py import edit_user
+from users import edit_user
 
 #Delete User
-from users.py import delete_user
+from users import delete_user
 
 #Create Order
-from orders.py import create_order
+from orders import create_order
 
 #Edit Order
-from orders.py import edit_order
+from orders import edit_order
 
 #Delete Order
-from orders.py import delete_order
+from orders import delete_order
 
 #Create Item
-from items.py import create_item
+from items import create_item
 
 #Edit Item
-from items.py import edit_item
+from items import edit_item
 
 #Delete Item
-from items.py import delete_item
+from items import delete_item
 
 if __name__ == '__main__':
     main()
