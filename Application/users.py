@@ -3,8 +3,8 @@ from cryptography.fernet import Fernet
 
 users_data_file = 'users.json'
 j = open(users_data_file)
-data = json.load(j)
-jsonData = data["Users"]
+data_users = json.load(j)
+jsonData_users = data["Users"]
 
 class User:
     def check_user():
@@ -12,7 +12,7 @@ class User:
 
     def create_user():
         user_data = []
-        with open (jsonData, "r") as f:
+        with open (jsonData_users, "r") as f:
             temp = json.load(f)
         user_data["password"] = input("Password: ")
         user_data["username"] = input("Username: ")
@@ -26,11 +26,11 @@ class User:
         user_data["country"] = input("Country: ")
         user_data["Postcode"] = input("Postcode: ")
         temp.append(user_data)
-        with open (jsonData, "w") as f:
+        with open (jsonData_users, "w") as f:
             json.dump(temp, f, indent=4)
 
     def view_user():
-        with open (jsonData, "r") as f:
+        with open (jsonData_users, "r") as f:
             temp = json.load(f)
             for entry in temp:
                 password = entry["password"]
@@ -62,7 +62,7 @@ class User:
     def delete_user():
         User.view_user()
         new_user = []
-        with open (jsonData, "r") as f:
+        with open (jsonData_users, "r") as f:
             temp = json.load(f)
         delete_query = input("Do you wish to delete your user account (input 'Yes' or 'No'?")
         for entry in temp:
