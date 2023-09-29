@@ -63,7 +63,7 @@ class Order:
                 order_item = entry["order_item"]
                 order_itemQuantity = entry["order_itemQuantity"]
                 order_deliveryType = entry["order_deliveryType"]
-                print (f"Index Number {i}")
+                print(f"Index Number {i}")
                 print(f"Username: {user}")
                 print(f"Order ID: {order_id}")
                 print(f"Item: {order_item}")
@@ -73,7 +73,32 @@ class Order:
                 i=i+1
     
     def edit_order():
-        pass
+        view_order()
+        with open (jsonData_orders, "w") as f:
+            temp = json.load(f)
+            choice_query = input("Input which of your order details you wish to edit (if you wish to exit, input 'exit'): ")
+            if choice_query == str("Order ID"):
+                order_data["order_id"] = input("Order ID: ")
+                print("Order ID changed.")
+                continue
+                
+            elif choice_query == str("Order Item"):
+                order_data["order_item"] = input("Order Item: ")
+                print("Order Item changed.")
+                continue
+
+            elif choice_query == str("Item Quantity"):
+                order_data["order_itemQuantity"] = input("Item Quantity: ")
+                print("Item Quantity changed.")
+                continue
+                
+            elif choice_query == str("Delivery Type"):
+                order_data["order_deliveryType"] = input("Delivery Type: ")
+                print("Delivery Type changed.")
+                continue
+                
+            else:
+                break
 
     def delete_order():
         Order.view_order()
