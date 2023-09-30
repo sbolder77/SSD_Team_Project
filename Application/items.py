@@ -1,15 +1,17 @@
 import json
-from cryptography.fernet import Fernet
 
-items_data_file = 'items.json'
-j = open(items_data_file)
-data = json.load(j)
-jsonData = data["Items"]
+#from cryptography.fernet import Fernet
+#key - Fernet.generate_key()
 
-class Item:
-    def create_item():
+file = "./items.json"
+
+class Item():
+    def __init__(self, item_data):
+        self.item_data = item_data[item_data]
+
+    def create_item(self):
         item_data = []
-        with open (jsonData, "r") as f:
+        with open (file, "r") as f:
             temp = json.load(f)
         item_data["item_id"] = input("Item ID: ")
         item_data["item_name"] = input("Item Name: ")
@@ -17,11 +19,11 @@ class Item:
         item_data["item_description"] = input("Item Description: ")
         item_data["item_stock"] = input("Item Stock: ")
         temp.append(item_data)
-        with open (jsonData, "w") as f:
+        with open (file, "w") as f:
             json.dump(temp, f, indent=4)
 
-    def view_item():
-        with open (jsonData, "r") as f:
+    def view_item(self):
+        with open (file, "r") as f:
             temp = json.load(f)
             i = 0
             for entry in temp:
@@ -30,7 +32,7 @@ class Item:
                 item_price = entry["item_price"]
                 item_description = entry["item_description"]
                 item_stock = entry["item_stock"]
-                print (f"Index Number {i}")
+                print(f"Index Number {i}")
                 print(f"Item ID: {item_id}")
                 print(f"Item Name: {item_name}")
                 print(f"Item Price: {item_price}")
@@ -39,13 +41,40 @@ class Item:
                 print("\n\n")
                 i=i+1
     
-    def edit_item():
-        pass
+    def edit_item(self):
+        Item.view_item(self)
+        with open (file, "r") as f:
+            temp = json.load(f)
 
-    def delete_item():
-        Item.view_item()
+            while True:
+                choice_query = input("Input which item you wish to edit (if you wish to exit, input 'exit'): ")
+                if choice_query == str("Item ID"):
+                    item_data["item_id"] = input("Item ID: ")
+                    print("Item ID changed.")
+                    continue
+                
+                elif choice_query == str("Item Name"):
+                    item_data["item_name"] = input("Item Name: ")
+                    print("Item Name changed.")
+                    continue
+
+                elif choice_query == str("Item Description"):
+                    item_data["item_description"] = input("Item Description: ")
+                    print("Item Description changed.")
+                    continue
+                
+                elif choice_query == str("Item Stock"):
+                    user_data["item_stock"] = input("Item Stock: ")
+                    print("Item Stock changed.")
+                    continue
+                
+                else:
+                    break
+
+    def delete_item(self):
+        Item.view_item(self)
         new_item = []
-        with open (jsonData, "r") as f:
+        with open (file, "r") as f:
             temp = json.load(f)
             data_length = len(temp)-1
         print("Which item do you want to delete (input it's index number)?")

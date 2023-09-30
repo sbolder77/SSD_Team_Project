@@ -1,27 +1,63 @@
 import json
 from cryptography.fernet import Fernet
 
+import items
+
 orders_data_file = 'orders.json'
 j = open(orders_data_file)
-data = json.load(j)
-jsonData = data["Orders"]
+data_orders = json.load(j)
+jsonData_orders = data["Orders"]
 
 class Order:
     def create_order():
         order_data = []
-        with open (jsonData, "r") as f:
+        with open (jsonData_orders, "r") as f:
             temp = json.load(f)
+
         order_data["user"] = input("Username: ")
         order_data["order_id"] = input("Order ID: ")
         order_data["order_item"] = input("Item: ")
+        while True:
+            if order_item not in jsonData_items:
+                print("It doesn't appear that this item exists in our inventory.")
+                choice_query = input("Enter 1 to try again or 2 to exit: ")
+                if choice_query == 1:
+                    continue
+                else:
+                    break    
+            else:
+                pass
+                
         order_data["order_itemQuantity"] = input("Item Quantity: ")
-        order_data["order_deliveryType"] = input("Delivery Type: ")
+        while True:
+            if order_itemQuantity > item_stock in jsonData_items:
+                print("The quantity you have specified is not available.")
+                choice_query = input("Enter 1 to try again or 2 to exit: ")
+                if choice_query == 1:
+                    continue
+                else:
+                    break    
+            else:
+                pass
+                
+        order_data["order_deliveryType"] = input("Delivery Type (input 'Mail' or 'Pickup'): ")
+        while True:
+            if order_deliveryType != 'Mail' or 'Pickup':
+                print("The delivry method you have specified is not available or is invalid.")
+                choice_query = input("Enter 1 to try again or 2 to exit: ")
+                if choice_query == 1:
+                    continue
+                else:
+                    break    
+            else:
+                pass
+                
         temp.append(order_data)
-        with open (jsonData, "w") as f:
+        with open (jsonData_orders, "r") as f:
             json.dump(temp, f, indent=4)
 
     def view_order():
-        with open (jsonData, "r") as f:
+        with open (jsonData_orders, "r") as f:
             temp = json.load(f)
             i = 0
             for entry in temp:
@@ -30,7 +66,7 @@ class Order:
                 order_item = entry["order_item"]
                 order_itemQuantity = entry["order_itemQuantity"]
                 order_deliveryType = entry["order_deliveryType"]
-                print (f"Index Number {i}")
+                print(f"Index Number {i}")
                 print(f"Username: {user}")
                 print(f"Order ID: {order_id}")
                 print(f"Item: {order_item}")
@@ -40,15 +76,68 @@ class Order:
                 i=i+1
     
     def edit_order():
-        pass
+        view_order()
+        with open (jsonData_orders, "w") as f:
+            temp = json.load(f)
+
+            while True:
+                choice_query = input("Input which of your order details you wish to edit (if you wish to exit, input 'exit'): ")
+                if choice_query == str("Order ID"):
+                    print("Order ID is unchangeable.")
+                    continue
+                
+                elif choice_query == str("Order Item"):
+                    order_data["order_item"] = input("Order Item: ")
+                    while True:
+                        if order_item not in jsonData_items:
+                            print("It doesn't appear that this item exists in our inventory.")
+                            choice_query = input("Enter 1 to try again or 2 to exit: ")
+                            if choice_query == 1:
+                                continue
+                            else:
+                                break    
+                        else:
+                            print("Order Item changed.")
+                            continue
+
+                elif choice_query == str("Item Quantity"):
+                    order_data["order_itemQuantity"] = input("Item Quantity: ")
+                    while True:
+                        if order_itemQuantity > item_stock in jsonData_items:
+                            print("The quantity you have specified is not available.")
+                            choice_query = input("Enter 1 to try again or 2 to exit: ")
+                            if choice_query == 1:
+                                continue
+                            else:
+                                break    
+                        else:
+                            print("Item Quantity changed.")
+                            continue
+                
+                elif choice_query == str("Delivery Type"):
+                    order_data["order_deliveryType"] = input("Delivery Type: ")
+                    while True:
+                        if order_deliveryType != 'Mail' or 'Pickup':
+                            print("The delivry method you have specified is not available or is invalid.")
+                            choice_query = input("Enter 1 to try again or 2 to exit: ")
+                            if choice_query == 1:
+                                continue
+                            else:
+                                break    
+                        else:
+                            print("Delivery Type changed.")
+                            continue
+                            
+                else:
+                    break
 
     def delete_order():
         Order.view_order()
         new_order = []
-        with open (jsonData, "r") as f:
+        with open (jsonData_orders, "r") as f:
             temp = json.load(f)
             data_length = len(temp)-1
-        print("Which order do you want to delete (input it's index number)?")
+        print("Which order do you want to delete (input it's index number)? ")
         delete_option = input(f"Select a number 0-{data_length}")
         i=0
         for entry in temp:
