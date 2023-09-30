@@ -3,27 +3,49 @@ import json
 #from cryptography.fernet import Fernet
 #key - Fernet.generate_key()
 
-file = "./items.json"
+#file = "./items.json"
+
+# create json readable object
+filename = 'ast.json'
+f = open(filename)
+data = json.load(f)
 
 class Item():
-    def __init__(self, item_data):
-        self.item_data = item_data[item_data]
+    #def __init__(self, item_data):
+    #    self.item_data = item_data[item_data]
 
-    def create_item(self):
-        item_data = []
-        with open (file, "r") as f:
-            temp = json.load(f)
-        item_data["item_id"] = input("Item ID: ")
-        item_data["item_name"] = input("Item Name: ")
-        item_data["item_price"] = input("Item Price: ")
-        item_data["item_description"] = input("Item Description: ")
-        item_data["item_stock"] = input("Item Stock: ")
-        temp.append(item_data)
-        with open (file, "w") as f:
-            json.dump(temp, f, indent=4)
+    #def create_item(self):
+    #    item_data = []
+    #    with open (file, "r") as f:
+    #        temp = json.load(f)
+    #    item_data["item_id"] = input("Item ID: ")
+    #    item_data["item_name"] = input("Item Name: ")
+    #    item_data["item_price"] = input("Item Price: ")
+    #    item_data["item_description"] = input("Item Description: ")
+    #    item_data["item_stock"] = input("Item Stock: ")
+    #    temp.append(item_data)
+    #    with open (file, "w") as f:
+    #        json.dump(temp, f, indent=4)
+
+    def __init__(self, item_data):
+        pass
+
+    def create_item(self, item_data):
+        '''item_data is the object passed from onlineretailer.py. It is an array or collection of data. 
+        You will parse items at a certsin index into a joson object. Code below is appending a new node to the json where you define the
+        node key and then the value from item_data.'''
+        data.append({
+                "Item ID": str(item_data[0]),
+                "Item Name": str(item_data[1]),
+                "Item Price": str(item_data[2]),
+                "Item Description": str(item_data[3]),
+                "Item Stock": str(item_data[4])
+                })
+        with open (filename, 'w') as json_file:
+            json.dump(data, json_file, indent=4, separators=(',',': '))
 
     def view_item(self):
-        with open (file, "r") as f:
+        with open (filename, "r") as f:
             temp = json.load(f)
             i = 0
             for entry in temp:

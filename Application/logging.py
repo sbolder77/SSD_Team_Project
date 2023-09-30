@@ -27,8 +27,8 @@ class LoggingDetails:
                 file_object = open('orderlog.csv', 'a')
                 file_object.write(level + ',' + dt_string + ',' + message + '\n')
                 file_object.close()
-            elif logtype == "PRODUCT":
-                file_object = open('productlog.csv', 'a')
+            elif logtype == "ITEM":
+                file_object = open('itemlog.csv', 'a')
                 file_object.write(level + ',' + dt_string + ',' + message + '\n')
                 file_object.close()
 

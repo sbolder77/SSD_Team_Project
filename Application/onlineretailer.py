@@ -16,5 +16,10 @@ def main():
         authorise_user()
         load_user()
 
+    '''example for how you would build your arrays from inputs to pass to a function in a class'''
+    #item_data = ['test', 'test1', 'test2', 'test3', 'test4']
+    #i = items.Item
+    #i.create_item(item_data)
+
 if __name__ == '__main__':
     main()
