@@ -7,8 +7,14 @@ data = json.load(j)
 jsonData = data["Users"]
 
 class User:
-    def check_user():
-        pass
+    def check_user(user):
+        with open (jsonData, "r") as f:
+            temp = json.load(f)
+            for x in temp:
+                if user == x['ID']:
+                    return True
+                else:
+                    return "user does not exist"
 
     def create_user():
         user_data = []

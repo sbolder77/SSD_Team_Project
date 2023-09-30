@@ -1,8 +1,23 @@
 #source of code: Codeburst
-
-
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
+import logging
+import system
+import csv
+import users
+
+#region objects
+l = logging.LoggingDetails()
+s = system.settings()
+u = users()
+#endregion
+
+#region variables
+user_data_file = 'users.json'
+#syslog = ""
+#key = Fernet.generate_key()
+#fernet = Fernet(key)
+#endregion
  
 app = Flask(__name__)
 api = Api(app)
@@ -24,6 +39,22 @@ users = [
         "occupation": "Web Developer"
     }
 ]
+
+class log(Resource):
+    def get(self, user, log):
+        role = 'A'
+        if u.check_users(user) == role:
+            if log == 'SYSTEM':
+                testlog = l.download_log()
+                open(testlog, "r")
+                return "opened file: " + testlog, 200
+            else:
+                return "not authorised to open file: " + testlog, 404
+
+
+class Item(Resource):
+    def get(self, item):
+        print('test')
  
 class User(Resource):
     def get(self, name):
@@ -76,5 +107,7 @@ class User(Resource):
         return "{} is deleted.".format(name), 200
       
 api.add_resource(User, "/user/<string:name>")
+api.add_resource(Item, "/item/<string:name>")
+api.add_resource(log, "/log/<string:user><string:log>")
  
 app.run(debug=True)

@@ -13,17 +13,18 @@ class settings:
             self.ssl = x['ssl']
             self.datetimeformat = x['datetimeformat']
 
-    def encryptfile(filename):
+    #def encryptfile(filename):
 
-    def decryptfile(filename):
+    #def decryptfile(filename):
 
-    def regexuser():
+    #def regexuser():
 
-    def regexorder():
+    #def regexorder():
 
-    def regexproduct():
+    #def regexproduct():
 
+    def logging(self):
+        return self.log
 
-
-    def authorise_user(user_name):
-        return self.test
+    #def authorise_user(user_name):
+        #return self.test

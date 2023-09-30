@@ -2,7 +2,11 @@
 	"System": [{
 			"log": "TRUE",
 			"ssl": "TRUE",
-			"datetimeformat": "%d/%m/%Y %H:%M:%S"
+			"datetimeformat": "%d/%m/%Y %H:%M:%S",
+			"encrypt": "TRUE",
+			"userregex": "",
+			"itemregex": "",
+			"productregex": ""
 		}
 	]
 }
