@@ -13,7 +13,7 @@ class Order:
         order_data = []
         with open (jsonData_orders, "r") as f:
             temp = json.load(f)
-            
+
         order_data["user"] = input("Username: ")
         order_data["order_id"] = input("Order ID: ")
         order_data["order_item"] = input("Item: ")
@@ -127,7 +127,7 @@ class Order:
                         else:
                             print("Delivery Type changed.")
                             continue
-    
+                            
                 else:
                     break
 
@@ -137,7 +137,7 @@ class Order:
         with open (jsonData_orders, "r") as f:
             temp = json.load(f)
             data_length = len(temp)-1
-        print("Which order do you want to delete (input it's index number)?")
+        print("Which order do you want to delete (input it's index number)? ")
         delete_option = input(f"Select a number 0-{data_length}")
         i=0
         for entry in temp:
