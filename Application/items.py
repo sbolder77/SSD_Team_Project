@@ -6,11 +6,11 @@ import json
 #file = "./items.json"
 
 # create json readable object
-filename = 'ast.json'
+users_data_file = 'users.json'
 f = open(filename)
-data = json.load(f)
+users_data = json.load(f)
 
-class Item():
+class Item:
     #def __init__(self, item_data):
     #    self.item_data = item_data[item_data]
 
@@ -41,9 +41,26 @@ class Item():
                 "Item Description": str(item_data[3]),
                 "Item Stock": str(item_data[4])
                 })
-        with open (filename, 'w') as json_file:
-            json.dump(data, json_file, indent=4, separators=(',',': '))
+        with open (users_data_file, 'w') as json_file:
+            json.dump(users_data, json_file, indent=4, separators=(',',': '))
 
+    def item_view(self, item_data):
+        with open (users_data_file, 'r') as json_file:
+            
+
+
+    def loadData():
+    treeReleased.delete(*treeReleased.get_children())
+    count = 0
+    for x in data:
+        if x['status'] != 'D':
+            treeReleased.insert('', 'end', text="", values=(x['ID'], x['summary'], x['product'], x['status'], x['issueType'], x['astLastUpdated'], x['file']))
+            count = count + 1
+    logger("SUCCESS,LOAD", str(count) + " Records displayed in listview")
+
+
+    
+    
     def view_item(self):
         with open (filename, "r") as f:
             temp = json.load(f)
