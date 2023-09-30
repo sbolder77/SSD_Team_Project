@@ -1,8 +1,6 @@
 import json
 from cryptography.fernet import Fernet
 
-import onlineretailer
-
 users_data_file = 'users.json'
 j = open(users_data_file)
 data_users = json.load(j)
