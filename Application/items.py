@@ -1,15 +1,17 @@
 import json
-from cryptography.fernet import Fernet
 
-items_data_file = 'items.json'
-j = open(items_data_file)
-data_items = json.load(j)
-jsonData_items = data["Items"]
+#from cryptography.fernet import Fernet
+#key - Fernet.generate_key()
 
-class Item:
-    def create_item():
+file = "./items.json"
+
+class Item():
+    def __init__(self, item_data):
+        self.item_data = item_data[item_data]
+
+    def create_item(self):
         item_data = []
-        with open (jsonData_items, "r") as f:
+        with open (file, "r") as f:
             temp = json.load(f)
         item_data["item_id"] = input("Item ID: ")
         item_data["item_name"] = input("Item Name: ")
@@ -17,11 +19,11 @@ class Item:
         item_data["item_description"] = input("Item Description: ")
         item_data["item_stock"] = input("Item Stock: ")
         temp.append(item_data)
-        with open (jsonData_items, "w") as f:
+        with open (file, "w") as f:
             json.dump(temp, f, indent=4)
 
-    def view_item():
-        with open (jsonData_items, "r") as f:
+    def view_item(self):
+        with open (file, "r") as f:
             temp = json.load(f)
             i = 0
             for entry in temp:
@@ -39,9 +41,9 @@ class Item:
                 print("\n\n")
                 i=i+1
     
-    def edit_item():
-        view_item()
-        with open (jsonData_items, "r") as f:
+    def edit_item(self):
+        Item.view_item(self)
+        with open (file, "r") as f:
             temp = json.load(f)
 
             while True:
@@ -69,10 +71,10 @@ class Item:
                 else:
                     break
 
-    def delete_item():
-        Item.view_item()
+    def delete_item(self):
+        Item.view_item(self)
         new_item = []
-        with open (jsonData_items, "r") as f:
+        with open (file, "r") as f:
             temp = json.load(f)
             data_length = len(temp)-1
         print("Which item do you want to delete (input it's index number)?")
