@@ -1,6 +1,8 @@
 import json
 from cryptography.fernet import Fernet
 
+import onlineretailer
+
 users_data_file = 'users.json'
 j = open(users_data_file)
 data_users = json.load(j)
@@ -14,15 +16,16 @@ class User:
         user_data["password"] = input("Password: ")
         
         while True:
-        user_data["username"] = input("Username: ")
-        if username not in jsonData_users:
-            pass
-        else:
-            print("This username is not available.")
-            choice_query = input("Please input another username.")
-            continue
+            user_data["username"] = input("Username: ")
+            if username not in jsonData_users:
+                pass
+            else:
+                print("This username is not available.")
+                choice_query = input("Please input another username.")
+                continue
             
         user_data["user_id"] = input("User ID: ")
+        user_data["user_type"] = "User"
         user_data["firstName"] = input("First Name: ")
         user_data["surname"] = input("Surname: ")
         user_data["email_address"] = input("Email Address: ")
@@ -86,7 +89,13 @@ class User:
                     continue
 
                 elif choice_query == str("User ID"):
-                    print("User ID is unchangeable.")
+                    print("User ID is unchangeable. Administrator access required.")
+                    continue
+
+                elif choice_query == str("User Type"):
+                    if user_type in jsonData_users == str("User"):
+                        
+                    print("User Type is unchangeable. Administrator access required.")
                     continue
                 
                 elif choice_query == str("First Name"):
@@ -132,7 +141,7 @@ class User:
         new_user = []
         with open (jsonData_users, "w") as f:
             temp = json.load(f)
-        delete_query = input("Do you wish to delete your user account (input 'Yes' or 'No'?")
+        delete_query = input("Do you wish to delete your user account (input 'Yes' or 'No'? ")
         for entry in temp:
             if delete_query == No:
                 pass
@@ -140,13 +149,13 @@ class User:
                 new_user.append(entry)
 
     def check_user():
-        with open (jsonData_users, "w") as f:
+        with open (jsonData_users, "r") as f:
             temp = json.load(f)
         if user_data["user_id"] in jsonData_users:
             check_user == True
         else:
             check_user == False
-            
+
     def authorise_user():
         check_user()
         if check_user == True:
@@ -154,3 +163,17 @@ class User:
         else:
             print("Your User ID does not exist.")
             exit()
+
+    def load_user():
+        with open (jsonData_users, "r") as f:
+            temp = json.load(f)
+        if user_data["user_type"] == str("User") in jsonData_users:
+            user_menu()
+        else:
+            administrator_menu()
+
+    def user_menu():
+        pass
+
+    def administrator_menu():
+        pass
