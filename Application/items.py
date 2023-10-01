@@ -3,8 +3,6 @@ import json
 #from cryptography.fernet import Fernet
 #key - Fernet.generate_key()
 
-#file = "./items.json"
-
 # create json readable object
 users_data_file = 'users.json'
 f = open(filename)
@@ -34,7 +32,7 @@ class Item:
         '''item_data is the object passed from onlineretailer.py. It is an array or collection of data. 
         You will parse items at a certsin index into a joson object. Code below is appending a new node to the json where you define the
         node key and then the value from item_data.'''
-        data.append({
+        users_data.append({
                 "Item ID": str(item_data[0]),
                 "Item Name": str(item_data[1]),
                 "Item Price": str(item_data[2]),
@@ -45,7 +43,13 @@ class Item:
             json.dump(users_data, json_file, indent=4, separators=(',',': '))
 
     def item_view(self, item_data):
-        with open (users_data_file, 'r') as json_file:
+        print(f"Item ID: {item_data[0]}")
+        print(f"Item Name: {item_data[1]}")
+        print(f"Item Price: {item_data[2]}")
+        print(f"Item Description: {item_data[3]}")
+        print(f"Item Stock: {item_data[4]}")
+            
+
             
 
 
