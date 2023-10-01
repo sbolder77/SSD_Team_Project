@@ -1,5 +1,4 @@
-{
-	"Items": [
+[
 		{
 			"Item ID": "Hibiscus Seeds",
 			"Item Name": "10.00",
@@ -8,4 +7,3 @@
 			"Item Stock": "10"
 		}
 	]
-}
