@@ -1,149 +1,81 @@
 import json
-from cryptography.fernet import Fernet
 
-import items
+#orderID_query = int(input(""))
+#orderUser_query = input("")
+#orderItem_query = input("")
+#orderQuantity_query = int(input(""))
+#orderDeliveryType_query = input("")
+
+#new_orderID = int(input(""))
+#new_orderUser = input("")
+#new_orderItem = input("")
+#new_orderQuantity = int(input(""))
+#new_orderDeliveryType = input("")
 
 orders_data_file = 'orders.json'
-j = open(orders_data_file)
-data_orders = json.load(j)
-jsonData_orders = data["Orders"]
+f = open(orders_data_file)
+order_data = json.load(f)
 
-class Order:
-    def create_order():
-        order_data = []
-        with open (jsonData_orders, "r") as f:
-            temp = json.load(f)
+class Order():
+    def __init__(self):
+        pass
 
-        order_data["user"] = input("Username: ")
-        order_data["order_id"] = input("Order ID: ")
-        order_data["order_item"] = input("Item: ")
-        while True:
-            if order_item not in jsonData_items:
-                print("It doesn't appear that this item exists in our inventory.")
-                choice_query = input("Enter 1 to try again or 2 to exit: ")
-                if choice_query == 1:
-                    continue
-                else:
-                    break    
+    def create_order(self):
+        order = {
+            "orderID": orderID_query,
+            "orderUser": orderUser_query,
+            "orderItem": orderItem_query,
+            "orderQuantity": orderQuantity_query,
+            "orderDeliveryType": orderDeliveryType_query
+        }
+        order_data['orders'].append(order)
+        with open('orders.json', 'w') as f:
+            json.dump(order_data, f, indent=4, separators=(',', ': '))
+            print("Order created.")
+
+    def view_order(self):
+        for i in order_data['orders']:
+            print(f"ID:{i['orderID']} | User:{i['orderUser']} | Item:{i['orderItem']} | Quantity:{i['orderQuantity']} | Delivery Type:{i['orderDeliveryType']}")
+
+    def search_orderID(self):
+        _ID = orderID_query
+        finder = False
+        for i in order_data['orders']:
+            if i['orderID'] == _ID:
+                print(f"ID:{i['orderID']} | User:{i['orderUser']} | Item:{i['orderItem']} | Quantity:{i['orderQuantity']} | Delivery Type:{i['orderDeliveryType']}")
+                finder = True
+                break
+        if finder == False:
+            print(f"{_ID} cannot be found.")
+
+    def edit_order(self):
+        for i in order_data['orders']:
+            if i['orderID'] == orderID_query:
+                i['orderID'] == new_orderID
+            elif i['orderUser'] == orderUser_query:
+                print("User allocated to order cannot be changed.")
+            elif i['orderItem'] == orderItem_query:
+                print("Delete order to change the item ordered.")
+            elif i['orderQuantity'] == orderQuantity_query:
+                i['orderQuantity'] == new_orderQuantity
+            elif i['orderDeliveryType'] == orderDeliveryType_query:
+                i['orderDeliveryType'] == new_orderDeliveryType
             else:
-                pass
-                
-        order_data["order_itemQuantity"] = input("Item Quantity: ")
-        while True:
-            if order_itemQuantity > item_stock in jsonData_items:
-                print("The quantity you have specified is not available.")
-                choice_query = input("Enter 1 to try again or 2 to exit: ")
-                if choice_query == 1:
-                    continue
-                else:
-                    break    
-            else:
-                pass
-                
-        order_data["order_deliveryType"] = input("Delivery Type (input 'Mail' or 'Pickup'): ")
-        while True:
-            if order_deliveryType != 'Mail' or 'Pickup':
-                print("The delivry method you have specified is not available or is invalid.")
-                choice_query = input("Enter 1 to try again or 2 to exit: ")
-                if choice_query == 1:
-                    continue
-                else:
-                    break    
-            else:
-                pass
-                
-        temp.append(order_data)
-        with open (jsonData_orders, "r") as f:
-            json.dump(temp, f, indent=4)
+                print("Cannot be found.")
+        with open('orders.json', 'w') as f:
+            json.dump(order_data, f, indent=4, separators=(',', ': '))
+            print(f"Update made.")
 
-    def view_order():
-        with open (jsonData_orders, "r") as f:
-            temp = json.load(f)
-            i = 0
-            for entry in temp:
-                user = entry["user"]
-                order_id = entry["order_id"]
-                order_item = entry["order_item"]
-                order_itemQuantity = entry["order_itemQuantity"]
-                order_deliveryType = entry["order_deliveryType"]
-                print(f"Index Number {i}")
-                print(f"Username: {user}")
-                print(f"Order ID: {order_id}")
-                print(f"Item: {order_item}")
-                print(f"Item Quantity: {order_itemQuantity}")
-                print(f"Delivery Type: {order_deliveryType}")
-                print("\n\n")
-                i=i+1
-    
-    def edit_order():
-        view_order()
-        with open (jsonData_orders, "w") as f:
-            temp = json.load(f)
-
-            while True:
-                choice_query = input("Input which of your order details you wish to edit (if you wish to exit, input 'exit'): ")
-                if choice_query == str("Order ID"):
-                    print("Order ID is unchangeable.")
-                    continue
-                
-                elif choice_query == str("Order Item"):
-                    order_data["order_item"] = input("Order Item: ")
-                    while True:
-                        if order_item not in jsonData_items:
-                            print("It doesn't appear that this item exists in our inventory.")
-                            choice_query = input("Enter 1 to try again or 2 to exit: ")
-                            if choice_query == 1:
-                                continue
-                            else:
-                                break    
-                        else:
-                            print("Order Item changed.")
-                            continue
-
-                elif choice_query == str("Item Quantity"):
-                    order_data["order_itemQuantity"] = input("Item Quantity: ")
-                    while True:
-                        if order_itemQuantity > item_stock in jsonData_items:
-                            print("The quantity you have specified is not available.")
-                            choice_query = input("Enter 1 to try again or 2 to exit: ")
-                            if choice_query == 1:
-                                continue
-                            else:
-                                break    
-                        else:
-                            print("Item Quantity changed.")
-                            continue
-                
-                elif choice_query == str("Delivery Type"):
-                    order_data["order_deliveryType"] = input("Delivery Type: ")
-                    while True:
-                        if order_deliveryType != 'Mail' or 'Pickup':
-                            print("The delivry method you have specified is not available or is invalid.")
-                            choice_query = input("Enter 1 to try again or 2 to exit: ")
-                            if choice_query == 1:
-                                continue
-                            else:
-                                break    
-                        else:
-                            print("Delivery Type changed.")
-                            continue
-                            
-                else:
-                    break
-
-    def delete_order():
-        Order.view_order()
-        new_order = []
-        with open (jsonData_orders, "r") as f:
-            temp = json.load(f)
-            data_length = len(temp)-1
-        print("Which order do you want to delete (input it's index number)? ")
-        delete_option = input(f"Select a number 0-{data_length}")
-        i=0
-        for entry in temp:
-            if i == int(delete_option):
-                pass
-                i=i+1
-            else:
-                new_order.append(entry)
-                i=i+1
+    def delete_item(self):
+        _ID = orderID_query
+        finder = False
+        for i in order_data['orders']:
+            if i['orderID'] == _ID:
+                order_data['orders'].pop(order_data['orders'].index(i))
+                finder = True
+                print(f"{_ID} deleted.")
+                break
+        with open('orders.json', 'w') as f:
+            json.dump(order_data, f, indent=4, separators=(',', ': '))
+        if finder == False:
+            print(f"{_ID} could not be found.")
