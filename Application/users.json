@@ -18,7 +18,7 @@
         "userBankAccountNumber": 10296784,
         "userCardName": "Liam Willson",
         "userCardNumber": 4563786546536987,
-        "userCardExpiry": 0325,
+        "userCardExpiry": 325,
         "userCardCVC": 899
       },
       {
@@ -39,7 +39,7 @@
         "userBankAccountNumber": 10296784,
         "userCardName": "Liam Willson",
         "userCardNumber": 4563786546536987,
-        "userCardExpiry": 0325,
+        "userCardExpiry": 325,
         "userCardCVC": 899
       },
       {
@@ -60,7 +60,7 @@
         "userBankAccountNumber": 10296784,
         "userCardName": "Liam Willson",
         "userCardNumber": 4563786546536987,
-        "userCardExpiry": 0325,
+        "userCardExpiry": 325,
         "userCardCVC": 899
       },
       {
@@ -81,7 +81,7 @@
         "userBankAccountNumber": 10296784,
         "userCardName": "Liam Willson",
         "userCardNumber": 4563786546536987,
-        "userCardExpiry": 0325,
+        "userCardExpiry": 325,
         "userCardCVC": 899
       },
       {
@@ -102,7 +102,7 @@
         "userBankAccountNumber": 10296784,
         "userCardName": "Liam Willson",
         "userCardNumber": 4563786546536987,
-        "userCardExpiry": 0325,
+        "userCardExpiry": 325,
         "userCardCVC": 899
       }
     ]
