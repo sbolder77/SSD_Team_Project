@@ -158,3 +158,22 @@ class Users():
             json.dump(user_data, f, indent=4, separators=(',', ': '))
         if finder == False:
             print(f"{_ID} could not be found.")
+
+    def authorise_user(self):
+        _Password = userPassword_query
+        authorise = False
+        valid_user = False
+        finder = False
+        for i in user_data['users']:
+            if i['userPassword'] == _Password:
+                authorise = True
+                if authorise == True:
+                    valid_user = True
+                else:
+                    pass
+            else:
+                authorise = False
+                if authorise = False:
+                    valid_user = False
+                else:
+                    pass
