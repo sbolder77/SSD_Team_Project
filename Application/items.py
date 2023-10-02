@@ -20,7 +20,7 @@ class Item():
     def __init__(self):
         pass
 
-    def create_item(self):
+    def create_item(self, itemID_query, itemName_query, itemPrice_query, itemDescription_query, itemStock_query):
         item = {
             "itemID": itemID_query,
             "itemName": itemName_query,
