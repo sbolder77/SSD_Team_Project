@@ -20,7 +20,7 @@ ITEM_ALPHA = re.compile('[^A-Z0-9]+')
 ORDER_ALPHA = re.compile('[^A-Z0-9]+')
 #endregion
 
-class settings():
+class Settings():
     def __init__(self):
         for x in data:
             self.log = x['log']
