@@ -3,7 +3,7 @@
 
 import json
 from cryptography.fernet import Fernet
-#import filelogging
+import filelogging
 from datetime import datetime
 import re
 
@@ -14,7 +14,6 @@ data = json.load(f)
 
 #region variables
 fernet = Fernet('d35AFvCPEXATL7kNnjz6CD6r20KR9qh5q1L9nZ6bk5k=')
-#l = filelogging.LoggingDetails()
 USER_NON_ALPHA = re.compile('[A-Z]+_[A-Z]')
 ITEM_ALPHA = re.compile('[^A-Z0-9]+')
 ORDER_ALPHA = re.compile('[^A-Z0-9]+')
@@ -30,24 +29,28 @@ class Settings():
             self.useregex = x['useregex']
 
     def encryptfile(self, filename, user):
+        l = filelogging.LoggingDetails()
         if self.encrypt == 'TRUE':
             with open(filename, 'rb') as file:
                 original = file.read()
             encrypted = fernet.encrypt(original)
             with open(filename, 'wb') as encrypted_file:
                 encrypted_file.write(encrypted)
+            l.write_system_log("SYSTEM", "INFO", filename + " has been encrypted", user)
             return filename + " has been encrypted"
-        #l.write_system_log("SYSTEM", "INFO", filename + " has been encrypted", user)
+
 
     def decryptfile(self, filename, user):
+        l = filelogging.LoggingDetails()
         if self.encrypt == 'TRUE':
             with open(filename, 'rb') as enc_file:
                 encrypted = enc_file.read()
             decrypted = fernet.encrypt(encrypted)
             with open(filename, 'wb') as decrypted_file:
                 decrypted_file.write(decrypted)
+            l.write_system_log("SYSTEM", "INFO", filename + " has been decrypted", user)
             return filename + " has been decrypted"
-        #l.write_system_log("SYSTEM", "INFO", filename + " has been decrypted", user)
+        
 
     def regex_user(self, user):
         if self.useregex == 'TRUE':
@@ -73,5 +76,10 @@ class Settings():
             else:
                 return "Invalid Order"
                 
+<<<<<<< Updated upstream
     def logging(self):
         return self.log
+=======
+    #def logging(self):
+        #return self.log
+>>>>>>> Stashed changes
