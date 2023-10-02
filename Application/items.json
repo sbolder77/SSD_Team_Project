@@ -1,9 +1,39 @@
-[
-		{
-			"Item ID": "Hibiscus Seeds",
-			"Item Name": "10.00",
-			"Item Price": "A",
-			"Item Description": "A cool item.",
-			"Item Stock": "10"
-		}
-	]
+{
+    "items": [
+      {
+        "itemID": 1,
+        "itemName": "Samsung NOT5",
+        "itemPrice": 500,
+        "itemDescription": 3,
+        "itemStock": 5
+      },
+      {
+        "itemID": 1,
+        "itemName": "Samsung NOT5",
+        "itemPrice": 500,
+        "itemDescription": 3,
+        "itemStock": 5
+      },
+      {
+        "itemID": 1,
+        "itemName": "Samsung NOT5",
+        "itemPrice": 500,
+        "itemDescription": 3,
+        "itemStock": 5
+      },
+      {
+        "itemID": 1,
+        "itemName": "Samsung NOT5",
+        "itemPrice": 500,
+        "itemDescription": 3,
+        "itemStock": 5
+      },
+      {
+        "itemID": 1,
+        "itemName": "Samsung NOT5",
+        "itemPrice": 500,
+        "itemDescription": 3,
+        "itemStock": 5
+      }
+    ]
+  }
