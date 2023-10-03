@@ -66,7 +66,7 @@ class Item():
                 print(
                     f"ID:{i['itemID']} | Name:{i['itemName']} | Price:{i['itemPrice']} | Description:{i['itemDescription']} | Stock:{i['itemStock']}")
 
-    def edit_item(self):
+    def edit_item(self, itemID_query, itemName_query, itemPrice_query, itemDescription_query, itemStock_query, new_itemID, new_itemName, new_itemPrice, new_itemDescription, new_itemStock):
         for i in item_data['items']:
             if i['itemID'] == itemID_query:
                 i['itemID'] == new_itemID
