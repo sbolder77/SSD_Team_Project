@@ -70,19 +70,22 @@ def user_menu():
     elif user_choice == int(8):
         print('''Order edit options...
         1. Edit order name
-        2. Edit 
-        2. Edit order item & quantity
-        3. Edit order delivery type
+        2. Edit order ID
+        3. Edit order item & quantity
+        4. Edit order delivery type
     
-        4. Return to menu''')
+        5. Return to menu''')
         edit_order_choice = str(input('Input the corresponding number to the option you wish to choose: '))
         if edit_order_choice = 1:
             orderName_query = str(input('Input the name of the order you wish to edit: '))
             new_orderName = str(input('Input the new name you wish to input: '))
             Orders.edit_order()
         elif edit_order_choice = 2:
-            order
+            Orders.edit_order()
         elif edit_order_choice = 3:
+            orderItem_query = str(input('Input the item in the order you wish to edit: '))
+            new_orderItem = str(input('Input the new item you wish to input: '))
+            
         
 
         else:
