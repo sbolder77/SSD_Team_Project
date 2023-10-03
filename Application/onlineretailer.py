@@ -38,7 +38,7 @@ def main():
 
 def user_menu():
     user_choices = print('''Welcome to the shop. Please explore the following options.
-    1. View item catalogue
+    1. View entire item catalogue
     2. Search catalogue by item ID
     3. Search cataogue by item name
     4. Search catalogue by item price
@@ -50,65 +50,65 @@ def user_menu():
     9. Delete an order of yours
     
     10. Edit your user details
-    11. Delete your user account''')
-
+    11. Delete your user account
+    
+    12. Return to menu
+    ''')
     choice = str(input('Input the corresponding number to the option you wish to choose: '))
     if user_choice = int(1):
         Items.view_item()
     elif user_choice == int(2):
+        itemID_query = str(input('Input the item ID you want to search for: '))
         Items.search_itemID()
     elif user_choice == int(3):
+        itemName_query = str(input('Input the item name you want to search for: '))
         Items.search_itemName()
     elif user_choice == int(4):
+        itemPrice = str(input('Input the item price you want to search for: '))
         Items.search_itemPrice()
     elif user_choice == int(5):
+        orderID_query = string.hexdigits
+        orderUser_query = Users.userUsername
+        orderItem_query = str(input('Input the item you want to order: '))
+        orderQuantity_query = str(input('Input the number of the item you want to order: '))
+        orderDeliveryType_query = str(input('Input P for pickup OR M for mail delivery: '))
         Orders.create_order()
     elif user_choice == int(6):
         Orders.view_order()
     elif user_choice == int(7):
+        orderID_query = str(input('Input the order ID you want to search for: '))
         Orders.search_orderID()
     elif user_choice == int(8):
-        print('''Order edit options...
-        1. Edit order name
-        2. Edit order ID
-        3. Edit order item & quantity
-        4. Edit order delivery type
-    
-        5. Return to menu''')
-        edit_order_choice = str(input('Input the corresponding number to the option you wish to choose: '))
-        if edit_order_choice = 1:
-            orderName_query = str(input('Input the name of the order you wish to edit: '))
-            new_orderName = str(input('Input the new name you wish to input: '))
-            Orders.edit_order()
-        elif edit_order_choice = 2:
-            Orders.edit_order()
-        elif edit_order_choice = 3:
-            orderItem_query = str(input('Input the item in the order you wish to edit: '))
-            new_orderItem = str(input('Input the new item you wish to input: '))
-            
-        
+        orderID_query = str(input('Input the order ID of the order you wish to edit: '))
+        i['orderId'] = orderID_query
+        for i in order_data['orders']:
+            if i['orderID'] == orderID_query:
+                orderedit_choice = print('''Input the corresponding number to the option you wish to choose:
+                1. Edit order name
+                2. Edit order item & quantity
+                3. Edit delivery type
 
-        else:
-            user_menu()
-                
-            
-
-
-
-
-
-    
-
-        
-        orderID_query = str(input('Input the ID of the order you wish to delete: '))
-        Orders.edit_order()
+                4. Return to menu
+                ''')
+                if orderEdit_choice == 1:
+                    orderEdit_choice == 1
+                    Orders.edit_order()
+                elif orderEdit_choice == 2:
+                    orderEdit_choice = 2
+                    Orders.edit_order()
+                elif orderEdit_choice == 3:
+                    orderEdit_choice = 3
+                    Orders.edit_order()
+                else:
+                    user_menu()
     elif user_choice == int(9):
-        orderID_query = str(input('Input the ID of the order you wish to delete: '))
         Orders.delete_order()
-    elif users_choice == int(10):
+    elif user_choice == int(10):
         Users.edit_user()
-    else:
+    elif user_choice == int(11):
         Users.delete_user()
+    else:
+        user_menu()
         
     '''example for how you would build your arrays from inputs to pass to a function in a class'''
     #item_data = ['test', 'test1', 'test2', 'test3', 'test4']
