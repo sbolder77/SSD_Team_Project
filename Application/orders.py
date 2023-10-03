@@ -1,4 +1,4 @@
-import json
+    QW3E45import json
 
 #orderID_query = int(input(""))
 #orderUser_query = input("")
@@ -48,20 +48,24 @@ class Order():
         if finder == False:
             print(f"{_ID} cannot be found.")
 
-    def edit_order(self, orderID_query, orderUser_query, orderItem_query, orderQuantity_query, orderDeliveryType_query, new_orderID, new_orderUser, new_orderItem, new_orderQuantity, new_orderDeliveryType):
+    def edit_order(self, orderID_query, new_orderUser, new_orderItem, new_orderQuantity, new_orderDeliveryType):
         for i in order_data['orders']:
             if i['orderID'] == orderID_query:
-                i['orderID'] == new_orderID
-            elif i['orderUser'] == orderUser_query:
-                print("User allocated to order cannot be changed.")
-            elif i['orderItem'] == orderItem_query:
-                print("Delete order to change the item ordered.")
-            elif i['orderQuantity'] == orderQuantity_query:
-                i['orderQuantity'] == new_orderQuantity
-            elif i['orderDeliveryType'] == orderDeliveryType_query:
-                i['orderDeliveryType'] == new_orderDeliveryType
+                if orderEdit_choice == 1:
+                    i['orderUser'] == new_orderUser
+                elif orderEdit_choice == 2:
+                    i['orderItem'] = new_orderItem
+                    for i in item_data['items']:
+                        if i['itemStock'] >= new_orderQuantity:
+                            for i in order_data['orders']:
+                                i['orderQuantity'] = new_orderQuantity
+                        else:
+                            print('Quantity inputted is larger than available item stock. Enter a smaller quantity.')
+                            edit_order()
+                else:
+                    i['orderDeliveryType'] == new_orderDeliveryType
             else:
-                print("Cannot be found.")
+                print('Order ID not found.')
         with open('orders.json', 'w') as f:
             json.dump(order_data, f, indent=4, separators=(',', ': '))
             print(f"Update made.")
