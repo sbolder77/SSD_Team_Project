@@ -66,7 +66,7 @@ class Order():
             json.dump(order_data, f, indent=4, separators=(',', ': '))
             print(f"Update made.")
 
-    def delete_item(self):
+    def delete_order(self):
         _ID = orderID_query
         finder = False
         for i in order_data['orders']:
