@@ -159,13 +159,14 @@ class Users():
         if finder == False:
             print(f"{_ID} could not be found.")
 
-    def authorise_user(self, userPassword_query):
+    def authorise_user(self, userPassword_query, userUsername_query):
         _Password = userPassword_query
+        _Username = userUsername_query
         authorise = False
         valid_user = False
         finder = False
         for i in user_data['users']:
-            if i['userPassword'] == _Password:
+            if i['userPassword'] == _Password and i['userUsername'] == _Username:
                 authorise = True
                 if authorise == True:
                     valid_user = True
