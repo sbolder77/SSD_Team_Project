@@ -48,7 +48,7 @@ class Users():
     def __init__(self):
         pass
 
-    def create_user(self):
+    def create_user(self, userPassword_query, userUsername_query, userID_query, userFirstName_query, userLastName_query, userEmailAddress_query, userHouseNumber_query, userStreet_query, userTown_query, userCountry_query, userPostcode_query, userBankName_query, userBankAccountName_query, userBankAccountBSB_query, userBankAccountNumber_query, userCardName_query, userCardNumber_query, userCardExpiry_query, userCardCVC_query):
         user = {
             "userPassword": userPassword_query,
             "userUsername": userUsername_query,
@@ -101,7 +101,7 @@ class Users():
         if finder == False:
             print(f"{_ID} cannot be found.")
 
-    def edit_user(self):
+    def edit_user(self, userPassword_query, userUsername_query, userID_query, userFirstName_query, userLastName_query, userEmailAddress_query, userHouseNumber_query, userStreet_query, userTown_query, userCountry_query, userPostcode_query, userBankName_query, userBankAccountName_query, userBankAccountBSB_query, userBankAccountNumber_query, userCardName_query, userCardNumber_query, userCardExpiry_query, userCardCVC_query):
         for i in user_data['users']:
             if i['userPassword'] == userPassword_query:
                 i['userPassword'] == new_userPassword
@@ -159,7 +159,7 @@ class Users():
         if finder == False:
             print(f"{_ID} could not be found.")
 
-    def authorise_user(self):
+    def authorise_user(self, userPassword_query):
         _Password = userPassword_query
         authorise = False
         valid_user = False
