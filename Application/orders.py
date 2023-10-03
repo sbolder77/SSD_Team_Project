@@ -20,7 +20,7 @@ class Order():
     def __init__(self):
         pass
 
-    def create_order(self):
+    def create_order(self, orderID_query, orderUser_query, orderItem_query, orderQuantity_query, orderDeliveryType_query):
         order = {
             "orderID": orderID_query,
             "orderUser": orderUser_query,
@@ -48,7 +48,7 @@ class Order():
         if finder == False:
             print(f"{_ID} cannot be found.")
 
-    def edit_order(self):
+    def edit_order(self, orderID_query, orderUser_query, orderItem_query, orderQuantity_query, orderDeliveryType_query, new_orderID, new_orderUser, new_orderItem, new_orderQuantity, new_orderDeliveryType):
         for i in order_data['orders']:
             if i['orderID'] == orderID_query:
                 i['orderID'] == new_orderID
