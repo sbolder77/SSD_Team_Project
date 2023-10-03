@@ -1,4 +1,5 @@
 import json
+import onlineretailer
 
 #userPassword_query = input("")
 #userUsername_query = int(input(""))
@@ -170,6 +171,7 @@ class Users():
                 authorise = True
                 if authorise == True:
                     valid_user = True
+                    user_menu()
                 else:
                     pass
             else:
