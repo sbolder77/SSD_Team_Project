@@ -104,7 +104,10 @@ def user_menu():
     elif user_choice == int(9):
         Orders.delete_order()
     elif user_choice == int(10):
-        Users.edit_user()
+        userUsername_query = i['userUsername'] in user_data['users']
+        for i in users_data['users']:
+            user
+       
     elif user_choice == int(11):
         Users.delete_user()
     else:
