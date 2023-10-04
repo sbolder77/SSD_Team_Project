@@ -104,45 +104,38 @@ class Users():
 
     def edit_user(self, userPassword_query, userUsername_query, userID_query, userFirstName_query, userLastName_query, userEmailAddress_query, userHouseNumber_query, userStreet_query, userTown_query, userCountry_query, userPostcode_query, userBankName_query, userBankAccountName_query, userBankAccountBSB_query, userBankAccountNumber_query, userCardName_query, userCardNumber_query, userCardExpiry_query, userCardCVC_query):
         for i in user_data['users']:
-            if i['userPassword'] == userPassword_query:
-                i['userPassword'] == new_userPassword
-            elif i['userUsername'] == userUsername_query:
-                i['userUsername'] == new_userUsername
-            elif i['userID'] == userID_query:
-                i['userID'] == new_userID
-            elif i['userFirstName'] == userFirstname_query:
-                i['userFirstName'] == new_userFirstname
-            elif i['userLastName'] == userLastname_query:
-                i['userLastName'] == new_userLastname
-            elif i['userHouseNumber'] == userHouseNumber_query:
-                i['userHouseNumber'] == new_userHouseNumber
-            elif i['userStreet'] == userStreet_query:
-                i['userStreet'] == new_userStreet
-            elif i['userTown'] == userTown_query:
-                i['userTown'] == new_userTown
-            elif i['userCountry'] == userCountry_query:
-                i['userCountry'] == new_userCountry
-            elif i['userPostcode'] == userPostcode_query:
-                i['userPostcode'] == new_userPostcode
-            elif i['userBankName'] == userBankName_query:
-                i['userBankName'] == new_userBankName
-            elif i['userBankAccountName'] == userBankAccountName_query:
-                i['userBankAccountName'] == new_userBankAccountName
-            elif i['userBankAccountBSB'] == userBankAccountBSB_query:
-                i['userBankAccountBSB'] == new_userBankAccountBSB
-            elif i['userBankAccountNumber'] == userBankAccountNumber_query:
-                i['userBankAccountNumber'] == new_userBankAccountNumber
-            elif i['userCardName'] == userCardName_query:
-                i['userCardName'] == new_userCardName
-            elif i['userCardNumber'] == userCardNumber_query:
-                i['userCardNumber'] == new_userCardNumber
-            elif i['userCardExpiry'] == userCardExpiry_query:
-                i['userCardExpiry'] == new_userCardExpiry
-            elif i['userCardCVC'] == userCardCVC_query:
-                i['userCardCVC'] == new_userCardCVC
+            if i['userID'] == userID_query:
+                if userEdit_choice == 1:
+                    i['userPassword'] == new_userPassword
+                elif userEdit_choice == 2:
+                    i['userUsername'] == new_userUsername
+                elif userEdit_choice == 3:
+                    i['userFirstName'] == new_userFirstName
+                    i['userLastName'] == new_userLastName
+                elif userEdit_choice == 4:
+                    i['userEmailAddress'] == new_userEmailAddress
+                elif userEdit_choice == 5:
+                    i['userHouseNumber'] == new_userHouseNumber
+                    i['userStreet'] == new_userStreet
+                    i['userTown'] == new_userTown
+                    i['userCountry'] == new_userCountry
+                    i['userPostcode'] == new_userPostcode
+                    i['userHouseNumber'] == new_userHouseNumber
+                elif userEdit_choice == 6:
+                    i['userBankName'] = new_userBankName
+                    i['userBankAccountName'] = new_userBankAccountName
+                    i['userBankAccountBSB'] = new_userBankAccountBSB
+                    i['userBankAccountNumber'] = new_userBankAccountNumber
+                elif userEdit_choice == 7:
+                    i['userCardName'] = new_userCardName
+                    i['userCardNumber'] = new_userCardNumber
+                    i['userCardExpiry'] = new_userCardExpiry
+                    i['userCardCVC'] = new_userCardCVC
+                else:
+                    pass
             else:
-                print("Cannot be found.")
-        with open('items.json', 'w') as f:
+                pass
+        with open('users.json', 'w') as f:
             json.dump(user_data, f, indent=4, separators=(',', ': '))
             print(f"Update made.")
 
