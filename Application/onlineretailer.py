@@ -92,12 +92,15 @@ def user_menu():
                 ''')
                 if orderEdit_choice == 1:
                     orderEdit_choice == 1
+                    new_orderName = str(input('Input the new order name: '))
                     Orders.edit_order()
                 elif orderEdit_choice == 2:
                     orderEdit_choice = 2
+                    new_orderItem = str(input('Input the new last name: '))
                     Orders.edit_order()
                 elif orderEdit_choice == 3:
                     orderEdit_choice = 3
+                    new_orderDeliveryType = str(input('Input the new delivery type (P for pickup OR M for mail): '))
                     Orders.edit_order()
                 else:
                     user_menu()
