@@ -104,10 +104,43 @@ def user_menu():
     elif user_choice == int(9):
         Orders.delete_order()
     elif user_choice == int(10):
-        userUsername_query = i['userUsername'] in user_data['users']
+        userID_query = i['userID'] in user_data['users']
         for i in users_data['users']:
-            user
-       
+            userEdit_choice = print('''Input the corresponding number to the option you want to choose:
+                1. Edit password
+                2. Edit username
+                3. Edit name
+                4. Edit email address
+                5. Edit address
+                
+                6. Edit bank details
+                7. Edit card details
+
+                7. Return to menu
+                ''')
+                if userEdit_choice == 1:
+                    userEdit_choice == 1
+                    Users.edit_user()
+                elif userEdit_choice == 2:
+                    userEdit_choice = 2
+                    Users.edit_user()
+                elif userEdit_choice == 3:
+                    userEdit_choice = 3
+                    Users.edit_user()
+                elif userEdit_choice == 4:
+                    userEdit_choice = 4
+                    Users.edit_user()
+                elif userEdit_choice == 5:
+                    userEdit_choice = 5
+                    Users.edit_user()
+                elif userEdit_choice == 6:
+                    userEdit_choice == 6
+                    Users.edit_user()
+                elif userEdit_choice == 7:
+                    userEdit_choice == 7
+                    Users.edit_user()
+                else:
+                    user_menu()
     elif user_choice == int(11):
         Users.delete_user()
     else:
