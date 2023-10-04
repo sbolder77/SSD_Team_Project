@@ -55,7 +55,7 @@ def user_menu():
     12. Return to menu
     ''')
     choice = str(input('Input the corresponding number to the option you wish to choose: '))
-    if user_choice = int(1):
+    if user_choice == int(1):
         Items.view_item()
     elif user_choice == int(2):
         itemID_query = str(input('Input the item ID you want to search for: '))
@@ -121,47 +121,47 @@ def user_menu():
 
                 7. Return to menu
                 ''')
-                if userEdit_choice == 1:
-                    userEdit_choice == 1
-                    new_userPassword = str(input('Input the new password: '))
-                    Users.edit_user()
-                elif userEdit_choice == 2:
-                    userEdit_choice = 2
-                    new_userUsername = str(input('Input the new username: '))
-                    Users.edit_user()
-                elif userEdit_choice == 3:
-                    userEdit_choice = 3
-                    new_userFirstName = str(input('Input the new first name: '))
-                    new_userLastName = str(input('Input the new last name: '))
-                    Users.edit_user()
-                elif userEdit_choice == 4:
-                    userEdit_choice = 4
-                    new_userEmailAddress = str(input('Input the new email address: '))
-                    Users.edit_user()
-                elif userEdit_choice == 5:
-                    userEdit_choice = 5
-                    new_userHouseNumber = str(input('Input the new house number: '))
-                    new_userStreet = str(input('Input the new street: '))
-                    new_userTown = str(input('Input the new town: '))
-                    new_userCountry = str(input('Input the new country: '))
-                    new_userPostcode = str(input('Input the new postcode: '))
-                    Users.edit_user()
-                elif userEdit_choice == 6:
-                    userEdit_choice == 6
-                    new_userBankName = str(input('Input the new bank name: '))
-                    new_userBankAccountName = str(input('Input the new bank account name: '))
-                    new_userBankAccountBSB = str(input('Input the new bank account BSB: '))
-                    new_userBankAccountNumber = str(input('Input the new bank account number: '))
-                    Users.edit_user()
-                elif userEdit_choice == 7:
-                    userEdit_choice == 7
-                    new_userCardName = str(input('Input the new card name: '))
-                    new_userCardNumber = str(input('Input the new card number: '))
-                    new_userCardExpiry = str(input('Input the new card expiry: '))
-                    new_userCardCVC = str(input('Input the new card CVC: '))
-                    Users.edit_user()
-                else:
-                    user_menu()
+            if userEdit_choice == 1:
+                userEdit_choice == 1
+                new_userPassword = str(input('Input the new password: '))
+                Users.edit_user()
+            elif userEdit_choice == 2:
+                userEdit_choice = 2
+                new_userUsername = str(input('Input the new username: '))
+                Users.edit_user()
+            elif userEdit_choice == 3:
+                userEdit_choice = 3
+                new_userFirstName = str(input('Input the new first name: '))
+                new_userLastName = str(input('Input the new last name: '))
+                Users.edit_user()
+            elif userEdit_choice == 4:
+                userEdit_choice = 4
+                new_userEmailAddress = str(input('Input the new email address: '))
+                Users.edit_user()
+            elif userEdit_choice == 5:
+                userEdit_choice = 5
+                new_userHouseNumber = str(input('Input the new house number: '))
+                new_userStreet = str(input('Input the new street: '))
+                new_userTown = str(input('Input the new town: '))
+                new_userCountry = str(input('Input the new country: '))
+                new_userPostcode = str(input('Input the new postcode: '))
+                Users.edit_user()
+            elif userEdit_choice == 6:
+                userEdit_choice == 6
+                new_userBankName = str(input('Input the new bank name: '))
+                new_userBankAccountName = str(input('Input the new bank account name: '))
+                new_userBankAccountBSB = str(input('Input the new bank account BSB: '))
+                new_userBankAccountNumber = str(input('Input the new bank account number: '))
+                Users.edit_user()
+            elif userEdit_choice == 7:
+                userEdit_choice == 7
+                new_userCardName = str(input('Input the new card name: '))
+                new_userCardNumber = str(input('Input the new card number: '))
+                new_userCardExpiry = str(input('Input the new card expiry: '))
+                new_userCardCVC = str(input('Input the new card CVC: '))
+                Users.edit_user()
+            else:
+                user_menu()
     elif user_choice == int(11):
         Users.delete_user()
     else:
