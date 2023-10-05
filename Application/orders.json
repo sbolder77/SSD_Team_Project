@@ -1,34 +1,12 @@
 {
     "orders": [
-      {
-        "orderID": 1,
-        "orderItem": "Samsung NOT5",
-        "orderQuantity": 500,
-        "orderDeliveryType": ""
-      },
-      {
-        "orderID": 1,
-        "orderItem": "Samsung NOT5",
-        "orderQuantity": 500,
-        "orderDeliveryType": ""
-      },
-      {
-        "orderID": 1,
-        "orderItem": "Samsung NOT5",
-        "orderQuantity": 500,
-        "orderDeliveryType": ""
-      },
-      {
-        "orderID": 1,
-        "orderItem": "Samsung NOT5",
-        "orderQuantity": 500,
-        "orderDeliveryType": ""
-      },
-      {
-        "orderID": 1,
-        "orderItem": "Samsung NOT5",
-        "orderQuantity": 500,
-        "orderDeliveryType": ""
-      }
+        {
+            "orderID": "0123456789abcdefABCDEF",
+            "orderUsername": "LiamWillson",
+            "orderName": "Alan",
+            "orderItem": "Nokia",
+            "orderQuantity": "7",
+            "orderDeliveryType": "M"
+        }
     ]
-  }
+}
