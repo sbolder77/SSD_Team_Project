@@ -1,24 +1,31 @@
-import users
-import items
-import orders
-import system
-import filelogging
+from users import User
+from items import Item
+from orders import Order
+#import system
+#import filelogging
 import string
 
-def main():
+def main(self):
     login = str(input('Welcome. Input a following option - R (Register an account) or L (Login to an account): '))
+    print('')
     if login == str('L'):
-        userUsername_query = str(input('Please input your username: '))
-        userPassword_query = str(input('Please input your password: '))
-        Users.authorise_user()
-        user_menu()
+        userUsername_query = str(input('Input your username: '))
+        userPassword_query = str(input('Input your password: '))
+        user_menu(self)
+        #authorise = False
+        #User.authorise_user(self, authorise=authorise, userUsername_query=userUsername_query, userPassword_query=userPassword_query)
+        #if authorise == True:
+            #user_menu(self)
+        #else:
+            #print('Account not found. Register an account.')
+            #main(main)
     else:
-        print('Great. Welcome. Please input the following information to create an account...')
+        print('Great. Welcome. Input the following information to create an account...')
+        print('')
         userPassword_query = input('Input a password: ')
-        userUsername_query = int(input('Input a username: '))
+        userUsername_query = input('Input a username: ')
         userID_query = string.hexdigits
-        userFirstname_query = input('Input your first name: ')
-        userLastname_query = input('Input your last name: ')
+        userName_query = input('Input your name (first and surname): ')
         userEmailAddress_query = input('Input your email address: ')
         userHouseNumber_query = int(input('Input your house number: '))
         userStreet_query = input('Input your street: ')
@@ -33,11 +40,14 @@ def main():
         userCardNumber_query = int(input('Input your card number: '))
         userCardExpiry_query = int(input('Input your card expiry: '))
         userCardCVC_query = int(input('Input your card cvc: '))
-        Users.create_user
-        user_menu()
+        User.create_user(self, userPassword_query=userPassword_query, userUsername_query=userUsername_query, userID_query=userID_query, userName_query=userName_query, userEmailAddress_query=userEmailAddress_query, userHouseNumber_query=userHouseNumber_query, userStreet_query=userStreet_query, userTown_query=userTown_query, userCountry_query=userCountry_query, userPostcode_query=userPostcode_query, userBankName_query=userBankName_query, userBankAccountName_query=userBankAccountName_query, userBankAccountBSB_query=userBankAccountBSB_query, userBankAccountNumber_query=userBankAccountNumber_query, userCardName_query=userCardName_query, userCardNumber_query=userCardNumber_query, userCardExpiry_query=userCardExpiry_query, userCardCVC_query=userCardCVC_query)
+        user_menu(self)
 
-def user_menu():
-    user_choices = print('''Welcome to the shop. Please explore the following options.
+def user_menu(self):
+    print('''
+----------------------------------------------------------
+Welcome to the shop. Please explore the following options.
+          
     1. View entire item catalogue
     2. Search catalogue by item ID
     3. Search cataogue by item name
@@ -51,64 +61,87 @@ def user_menu():
     
     10. Edit your user details
     11. Delete your user account
-    
-    12. Return to menu
     ''')
-    choice = str(input('Input the corresponding number to the option you wish to choose: '))
-    if user_choice == int(1):
-        Items.view_item()
-    elif user_choice == int(2):
+    user_choice = str(input('Input the corresponding number to the option you wish to choose: '))
+    if user_choice == str(1):
+        Item.view_item(self)
+        user_menu(self)
+    elif user_choice == str(2):
+        print('')
         itemID_query = str(input('Input the item ID you want to search for: '))
-        Items.search_itemID()
-    elif user_choice == int(3):
+        Item.search_itemID(self, itemID_query=itemID_query)
+        user_menu(self)
+    elif user_choice == str(3):
+        print('')
         itemName_query = str(input('Input the item name you want to search for: '))
-        Items.search_itemName()
-    elif user_choice == int(4):
-        itemPrice = str(input('Input the item price you want to search for: '))
-        Items.search_itemPrice()
-    elif user_choice == int(5):
+        Item.search_itemName(self, itemName_query=itemName_query)
+        user_menu(self)
+    elif user_choice == str(4):
+        print('')
+        itemPrice_query = int(input('Input the item price you want to search for: '))
+        Item.search_itemPrice(self, itemPrice_query=itemPrice_query)
+        user_menu(self)
+    elif user_choice == str(5):
+        print('')
         orderID_query = string.hexdigits
-        orderUser_query = Users.userUsername
+        orderUsername_query = str(input('Input your username: '))
+        orderName_query = str(input('Input the name for the order: '))
         orderItem_query = str(input('Input the item you want to order: '))
         orderQuantity_query = str(input('Input the number of the item you want to order: '))
         orderDeliveryType_query = str(input('Input P for pickup OR M for mail delivery: '))
-        Orders.create_order()
-    elif user_choice == int(6):
-        Orders.view_order()
-    elif user_choice == int(7):
+        Order.create_order(self, orderID_query=orderID_query, orderUsername_query=orderUsername_query, orderName_query=orderName_query, orderItem_query=orderItem_query, orderQuantity_query=orderQuantity_query, orderDeliveryType_query=orderDeliveryType_query)
+        user_menu(self)
+    elif user_choice == str(6):
+        print('')
+        print('Your orders:')
+        Order.view_order(self)
+        user_menu(self)
+    elif user_choice == str(7):
+        print('')
         orderID_query = str(input('Input the order ID you want to search for: '))
-        Orders.search_orderID()
-    elif user_choice == int(8):
+        Order.search_orderID(self, orderID_query=orderID_query)
+        user_menu(self)
+    elif user_choice == str(8):
+        print('')
         orderID_query = str(input('Input the order ID of the order you wish to edit: '))
-        i['orderId'] = orderID_query
-        for i in order_data['orders']:
+        for i in Order.order_data['orders']:
             if i['orderID'] == orderID_query:
-                orderedit_choice = print('''Input the corresponding number to the option you wish to choose:
+                print('''
+            Order edit options:
+                      
                 1. Edit order name
                 2. Edit order item & quantity
                 3. Edit delivery type
 
                 4. Return to menu
                 ''')
-                if orderEdit_choice == 1:
-                    orderEdit_choice == 1
+                orderEdit_choice = input('Input the corresponding number to the option you wish to choose: ')
+                if orderEdit_choice == str(1):
+                    print('')
                     new_orderName = str(input('Input the new order name: '))
-                    Orders.edit_order()
-                elif orderEdit_choice == 2:
-                    orderEdit_choice = 2
-                    new_orderItem = str(input('Input the new last name: '))
-                    Orders.edit_order()
-                elif orderEdit_choice == 3:
-                    orderEdit_choice = 3
+                    Order.edit_order(self, orderID_query=orderID_query, orderEdit_choice=orderEdit_choice, new_orderName=new_orderName, new_orderItem="", new_orderQuantity="", new_orderDeliveryType="")
+                    user_menu(self)
+                elif orderEdit_choice == str(2):
+                    print('')
+                    new_orderItem = str(input('Input the new item: '))
+                    Order.edit_order(self, orderID_query=orderID_query, orderEdit_choice=orderEdit_choice, new_orderName=new_orderName, new_orderItem=new_orderItem, new_orderQuantity="", new_orderDeliveryType="")
+                    user_menu(self)
+                elif orderEdit_choice == str(3):
+                    print('')
                     new_orderDeliveryType = str(input('Input the new delivery type (P for pickup OR M for mail): '))
-                    Orders.edit_order()
+                    Order.edit_order(self, orderID_query=orderID_query, orderEdit_choice=orderEdit_choice, new_orderName=new_orderName, new_orderItem=new_orderItem, new_orderQuantity="", new_orderDeliveryType=new_orderDeliveryType)
+                    user_menu(self)
                 else:
-                    user_menu()
-    elif user_choice == int(9):
-        Orders.delete_order()
-    elif user_choice == int(10):
-        userID_query = i['userID'] in user_data['users']
-        for i in users_data['users']:
+                    user_menu(self)
+    elif user_choice == str(9):
+        print('')
+        orderID_query = str(input('Input the order ID of the order you wish to delete: '))
+        Order.delete_order(self, orderID_query=orderID_query)
+        user_menu(self)
+    elif user_choice == str(10):
+        print('')
+        for i in User.user_data['users']:
+            userID_query = i['userID'] in User.user_data['users']
             userEdit_choice = print('''Input the corresponding number to the option you want to choose:
                 1. Edit password
                 2. Edit username
@@ -122,55 +155,41 @@ def user_menu():
                 7. Return to menu
                 ''')
             if userEdit_choice == 1:
-                userEdit_choice == 1
                 new_userPassword = str(input('Input the new password: '))
-                Users.edit_user()
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
             elif userEdit_choice == 2:
-                userEdit_choice = 2
                 new_userUsername = str(input('Input the new username: '))
-                Users.edit_user()
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
             elif userEdit_choice == 3:
-                userEdit_choice = 3
-                new_userFirstName = str(input('Input the new first name: '))
-                new_userLastName = str(input('Input the new last name: '))
-                Users.edit_user()
+                new_userName = str(input('Input the new name (first and surname): '))
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName=new_userName, new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
             elif userEdit_choice == 4:
-                userEdit_choice = 4
                 new_userEmailAddress = str(input('Input the new email address: '))
-                Users.edit_user()
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName=new_userName, new_userEmailAddress=new_userEmailAddress, new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
             elif userEdit_choice == 5:
-                userEdit_choice = 5
                 new_userHouseNumber = str(input('Input the new house number: '))
                 new_userStreet = str(input('Input the new street: '))
                 new_userTown = str(input('Input the new town: '))
                 new_userCountry = str(input('Input the new country: '))
                 new_userPostcode = str(input('Input the new postcode: '))
-                Users.edit_user()
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName=new_userName, new_userEmailAddress=new_userEmailAddress, new_userHouseNumber=new_userHouseNumber, new_userStreet=new_userStreet, new_userTown=new_userTown, new_userCountry=new_userCountry, new_userPostcode=new_userPostcode, new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
             elif userEdit_choice == 6:
-                userEdit_choice == 6
                 new_userBankName = str(input('Input the new bank name: '))
                 new_userBankAccountName = str(input('Input the new bank account name: '))
                 new_userBankAccountBSB = str(input('Input the new bank account BSB: '))
                 new_userBankAccountNumber = str(input('Input the new bank account number: '))
-                Users.edit_user()
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName=new_userName, new_userEmailAddress=new_userEmailAddress, new_userHouseNumber=new_userHouseNumber, new_userStreet=new_userStreet, new_userTown=new_userTown, new_userCountry=new_userCountry, new_userPostcode=new_userPostcode, new_userBankName=new_userBankName, new_userBankAccountName=new_userBankAccountName, new_userBankAccountBSB=new_userBankAccountBSB, new_userBankAccountNumber=new_userBankAccountNumber, new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
             elif userEdit_choice == 7:
-                userEdit_choice == 7
                 new_userCardName = str(input('Input the new card name: '))
                 new_userCardNumber = str(input('Input the new card number: '))
                 new_userCardExpiry = str(input('Input the new card expiry: '))
                 new_userCardCVC = str(input('Input the new card CVC: '))
-                Users.edit_user()
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName=new_userName, new_userEmailAddress=new_userEmailAddress, new_userHouseNumber=new_userHouseNumber, new_userStreet=new_userStreet, new_userTown=new_userTown, new_userCountry=new_userCountry, new_userPostcode=new_userPostcode, new_userBankName=new_userBankName, new_userBankAccountName=new_userBankAccountName, new_userBankAccountBSB=new_userBankAccountBSB, new_userBankAccountNumber=new_userBankAccountNumber, new_userCardName=new_userCardName, new_userCardNumber=new_userCardNumber, new_userCardExpiry=new_userCardExpiry, new_userCardCVC=new_userCardCVC)
             else:
-                user_menu()
-    elif user_choice == int(11):
-        Users.delete_user()
+                user_menu(self)
     else:
-        user_menu()
-        
-    '''example for how you would build your arrays from inputs to pass to a function in a class'''
-    #item_data = ['test', 'test1', 'test2', 'test3', 'test4']
-    #i = items.Item
-    #i.create_item(item_data)
+        User.delete_user(self, userID_query=userID_query)
+        user_menu(self)
 
 if __name__ == '__main__':
-    main()
+    main(main)
