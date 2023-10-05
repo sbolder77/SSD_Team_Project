@@ -1,85 +1,77 @@
-    QW3E45import json
-
-#orderID_query = int(input(""))
-#orderUser_query = input("")
-#orderItem_query = input("")
-#orderQuantity_query = int(input(""))
-#orderDeliveryType_query = input("")
-
-#new_orderID = int(input(""))
-#new_orderUser = input("")
-#new_orderItem = input("")
-#new_orderQuantity = int(input(""))
-#new_orderDeliveryType = input("")
-
-orders_data_file = 'orders.json'
-f = open(orders_data_file)
-order_data = json.load(f)
+import json
 
 class Order():
+    with open('orders.json') as f:    
+        order_data = json.load(f)
+    
     def __init__(self):
         pass
 
-    def create_order(self, orderID_query, orderUser_query, orderItem_query, orderQuantity_query, orderDeliveryType_query):
+    def create_order(self, orderID_query, orderUsername_query, orderName_query, orderItem_query, orderQuantity_query, orderDeliveryType_query):
         order = {
             "orderID": orderID_query,
-            "orderUser": orderUser_query,
+            "orderUsername": orderUsername_query,
+            "orderName": orderName_query,
             "orderItem": orderItem_query,
             "orderQuantity": orderQuantity_query,
             "orderDeliveryType": orderDeliveryType_query
         }
-        order_data['orders'].append(order)
+        Order.order_data['orders'].append(order)
         with open('orders.json', 'w') as f:
-            json.dump(order_data, f, indent=4, separators=(',', ': '))
+            json.dump(Order.order_data, f, indent=4, separators=(',', ': '))
+            print ('')
             print("Order created.")
 
     def view_order(self):
-        for i in order_data['orders']:
-            print(f"ID:{i['orderID']} | User:{i['orderUser']} | Item:{i['orderItem']} | Quantity:{i['orderQuantity']} | Delivery Type:{i['orderDeliveryType']}")
+        for i in Order.order_data['orders']:
+            print(f"\nID:{i['orderID']} \nUsername:{i['orderUsername']} \nName:{i['orderName']} \nItem:{i['orderItem']} \nQuantity:{i['orderQuantity']} \nDelivery Type:{i['orderDeliveryType']}")
 
-    def search_orderID(self):
+    def search_orderID(self, orderID_query):
         _ID = orderID_query
         finder = False
-        for i in order_data['orders']:
+        for i in Order.order_data['orders']:
             if i['orderID'] == _ID:
-                print(f"ID:{i['orderID']} | User:{i['orderUser']} | Item:{i['orderItem']} | Quantity:{i['orderQuantity']} | Delivery Type:{i['orderDeliveryType']}")
+                print('')
+                print('The order you searched for:')
+                print(f"\nID:{i['orderID']} \nUsername:{i['orderUsername']} \nItem:{i['orderItem']} \nQuantity:{i['orderQuantity']} \nDelivery Type:{i['orderDeliveryType']}")
                 finder = True
                 break
         if finder == False:
-            print(f"{_ID} cannot be found.")
+            print(f"{_ID} order cannot be found.")
 
-    def edit_order(self, orderID_query, new_orderUser, new_orderItem, new_orderQuantity, new_orderDeliveryType):
-        for i in order_data['orders']:
+    def edit_order(self, orderID_query, orderEdit_choice, new_orderName, new_orderItem, new_orderQuantity, new_orderDeliveryType):
+        for i in Order.order_data['orders']:
             if i['orderID'] == orderID_query:
-                if orderEdit_choice == 1:
-                    i['orderUser'] == new_orderUser
-                elif orderEdit_choice == 2:
-                    i['orderItem'] = new_orderItem
-                    for i in item_data['items']:
-                        if i['itemStock'] >= new_orderQuantity:
-                            for i in order_data['orders']:
-                                i['orderQuantity'] = new_orderQuantity
-                        else:
-                            print('Quantity inputted is larger than available item stock. Enter a smaller quantity.')
-                            edit_order()
+                i['orderName'] == new_orderName
+            elif orderEdit_choice == 2:
+                i['orderItem'] = new_orderItem
+                for i in Order.order_data['items']:
+                    if i['itemStock'] >= new_orderQuantity:
+                        for i in Order.order_data['orders']:
+                            i['orderQuantity'] = new_orderQuantity
+                    else:
+                        print('Quantity inputted is larger than available item stock. Enter a smaller quantity.')
                 else:
                     i['orderDeliveryType'] == new_orderDeliveryType
             else:
                 print('Order ID not found.')
         with open('orders.json', 'w') as f:
-            json.dump(order_data, f, indent=4, separators=(',', ': '))
-            print(f"Update made.")
+            json.dump(Order.order_data, f, indent=4, separators=(',', ': '))
+            print('')
+            print('Update made.')
 
-    def delete_order(self):
+    def delete_order(self, orderID_query):
         _ID = orderID_query
         finder = False
-        for i in order_data['orders']:
+        for i in Order.order_data['orders']:
             if i['orderID'] == _ID:
-                order_data['orders'].pop(order_data['orders'].index(i))
+                Order.order_data['orders'].pop(Order.order_data['orders'].index(i))
                 finder = True
+                print('')
                 print(f"{_ID} deleted.")
                 break
         with open('orders.json', 'w') as f:
-            json.dump(order_data, f, indent=4, separators=(',', ': '))
+            json.dump(Order.order_data, f, indent=4, separators=(',', ': '))
         if finder == False:
-            print(f"{_ID} could not be found.")
+            print('')
+            print(f"{_ID} order could not be found.")
