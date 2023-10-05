@@ -41,37 +41,33 @@ class Order():
 
     def edit_order(self, orderID_query, orderEdit_choice, new_orderName, new_orderItem, new_orderQuantity, new_orderDeliveryType):
         for i in Order.order_data['orders']:
-            if i['orderID'] == orderID_query:
-                i['orderName'] == new_orderName
-            elif orderEdit_choice == 2:
-                i['orderItem'] = new_orderItem
-                for i in Order.order_data['items']:
-                    if i['itemStock'] >= new_orderQuantity:
-                        for i in Order.order_data['orders']:
-                            i['orderQuantity'] = new_orderQuantity
-                    else:
-                        print('Quantity inputted is larger than available item stock. Enter a smaller quantity.')
-                else:
-                    i['orderDeliveryType'] == new_orderDeliveryType
+            if orderEdit_choice == str(1):
+                if i['orderID'] == orderID_query:
+                    i['orderName'] = new_orderName
+            elif orderEdit_choice == str(2):
+                if i['orderID'] == orderID_query:
+                    i['orderItem'] = new_orderItem
+                    i['orderQuantity'] = new_orderQuantity
             else:
-                print('Order ID not found.')
+                if i['orderID'] == orderID_query:
+                    i['orderDeliveryType'] = new_orderDeliveryType
         with open('orders.json', 'w') as f:
             json.dump(Order.order_data, f, indent=4, separators=(',', ': '))
             print('')
             print('Update made.')
 
     def delete_order(self, orderID_query):
-        _ID = orderID_query
+        _orderID = orderID_query
         finder = False
         for i in Order.order_data['orders']:
-            if i['orderID'] == _ID:
+            if i['orderID'] == _orderID:
                 Order.order_data['orders'].pop(Order.order_data['orders'].index(i))
                 finder = True
                 print('')
-                print(f"{_ID} deleted.")
+                print(f"Order with ID '{_orderID}' was deleted.")
                 break
         with open('orders.json', 'w') as f:
             json.dump(Order.order_data, f, indent=4, separators=(',', ': '))
         if finder == False:
             print('')
-            print(f"{_ID} order could not be found.")
+            print(f"Order with ID '{_orderID}' could not be found.")
