@@ -35,7 +35,7 @@ class User():
 
     def view_user(self):
         for i in User.user_data['users']:
-            print(f"Password:{i['userPassword']} | Username:{i['userUsername']} | ID:{i['userID']} | Name:{i['userName']} | Email Address:{i['userEmailAddress']} | House Number:{i['userHouseNumber']} | Street:{i['userstreet']} | Town:{i['userTown']} | Country:{i['userCountry']} | Postcode:{i['userPostcode']} | Bank Name:{i['userBankName']} | Bank Account Name:{i['userBankAccountName']} | Bank Account BSB:{i['userBankAccountBSB']} | Bank Account Number:{i['userBankAccountNumber']} | Card Name:{i['userCardName']} | Card Number:{i['userCardNumber']} | Card Expiry{i['userCardExpiry']} | Card CVC:{i['userCardCVC']}")
+            print(f"Password:{i['userPassword']} \nUsername:{i['userUsername']} \nID:{i['userID']} \nName:{i['userName']} \nEmail Address:{i['userEmailAddress']} \nHouse Number:{i['userHouseNumber']} \nStreet:{i['userStreet']} \nTown:{i['userTown']} \nCountry:{i['userCountry']} \nPostcode:{i['userPostcode']} \nBank Name:{i['userBankName']} \nBank Account Name:{i['userBankAccountName']} \nBank Account BSB:{i['userBankAccountBSB']} \nBank Account Number:{i['userBankAccountNumber']} \nCard Name:{i['userCardName']} \nCard Number:{i['userCardNumber']} \nCard Expiry{i['userCardExpiry']} \nCard CVC:{i['userCardCVC']}")
 
     def search_userUsername(self, userUsername_query):
         _username = userUsername_query
@@ -61,53 +61,58 @@ class User():
 
     def edit_user(self, userID_query, userEdit_choice, new_userPassword, new_userUsername, new_userName, new_userEmailAddress, new_userHouseNumber, new_userStreet, new_userTown, new_userCountry, new_userPostcode, new_userBankName, new_userBankAccountName, new_userBankAccountBSB, new_userBankAccountNumber, new_userCardName, new_userCardNumber, new_userCardExpiry, new_userCardCVC):
         for i in User.user_data['users']:
-            if i['userID'] == userID_query:
-                if userEdit_choice == 1:
-                    i['userPassword'] == new_userPassword
-                elif userEdit_choice == 2:
-                    i['userUsername'] == new_userUsername
-                elif userEdit_choice == 3:
-                    i['userName'] == new_userName
-                elif userEdit_choice == 4:
-                    i['userEmailAddress'] == new_userEmailAddress
-                elif userEdit_choice == 5:
-                    i['userHouseNumber'] == new_userHouseNumber
-                    i['userStreet'] == new_userStreet
-                    i['userTown'] == new_userTown
-                    i['userCountry'] == new_userCountry
-                    i['userPostcode'] == new_userPostcode
-                    i['userHouseNumber'] == new_userHouseNumber
-                elif userEdit_choice == 6:
+            if userEdit_choice == str(1):
+                if i['userID'] == userID_query:
+                    i['userPassword'] = new_userPassword
+            elif userEdit_choice == str(2):
+                if i['userID'] == userID_query:
+                    i['userUsername'] = new_userUsername
+            elif userEdit_choice == str(3):
+                if i['userID'] == userID_query:
+                    i['userName'] = new_userName
+            elif userEdit_choice == str(4):
+                if i['userID'] == userID_query:
+                    i['userEmailAddress'] = new_userEmailAddress
+            elif userEdit_choice == str(5):
+                if i['userID'] == userID_query:
+                    i['userHouseNumber'] = new_userHouseNumber
+                    i['userStreet'] = new_userStreet
+                    i['userTown'] = new_userTown
+                    i['userCountry'] = new_userCountry
+                    i['userPostcode'] = new_userPostcode
+                    i['userHouseNumber'] = new_userHouseNumber
+            elif userEdit_choice == str(6):
+                if i['userID'] == userID_query:
                     i['userBankName'] = new_userBankName
                     i['userBankAccountName'] = new_userBankAccountName
                     i['userBankAccountBSB'] = new_userBankAccountBSB
                     i['userBankAccountNumber'] = new_userBankAccountNumber
-                elif userEdit_choice == 7:
+            else:
+                if i['userID'] == userID_query:
                     i['userCardName'] = new_userCardName
                     i['userCardNumber'] = new_userCardNumber
                     i['userCardExpiry'] = new_userCardExpiry
                     i['userCardCVC'] = new_userCardCVC
-                else:
-                    pass
-            else:
-                pass
         with open('users.json', 'w') as f:
             json.dump(User.user_data, f, indent=4, separators=(',', ': '))
-            print(f"Update made.")
+            print('')
+            print('Update made.')
 
     def delete_user(self, userID_query):
-        _ID = userID_query
+        _userID = userID_query
         finder = False
         for i in User.user_data['users']:
-            if i['userID'] == _ID:
+            if i['userID'] == _userID:
                 User.user_data['users'].pop(User.user_data['users'].index(i))
                 finder = True
-                print(f"{_ID} deleted.")
+                print('')
+                print(f"Your account with ID '{_userID}' was deleted.")
                 break
         with open('users.json', 'w') as f:
             json.dump(User.user_data, f, indent=4, separators=(',', ': '))
         if finder == False:
-            print(f"{_ID} could not be found.")
+            print('')
+            print(f"User with ID '{_userID}' could not be found.")
 
     def authorise_user(self, authorise, userPassword_query, userUsername_query):
         authorise = authorise
