@@ -1,39 +1,11 @@
 {
     "items": [
       {
-        "itemID": 1,
+        "itemID": "1",
         "itemName": "Samsung NOT5",
         "itemPrice": 500,
-        "itemDescription": 3,
-        "itemStock": 5
-      },
-      {
-        "itemID": 1,
-        "itemName": "Samsung NOT5",
-        "itemPrice": 500,
-        "itemDescription": 3,
-        "itemStock": 5
-      },
-      {
-        "itemID": 1,
-        "itemName": "Samsung NOT5",
-        "itemPrice": 500,
-        "itemDescription": 3,
-        "itemStock": 5
-      },
-      {
-        "itemID": 1,
-        "itemName": "Samsung NOT5",
-        "itemPrice": 500,
-        "itemDescription": 3,
-        "itemStock": 5
-      },
-      {
-        "itemID": 1,
-        "itemName": "Samsung NOT5",
-        "itemPrice": 500,
-        "itemDescription": 3,
-        "itemStock": 5
+        "itemDescription": "3",
+        "itemStock": "5"
       }
     ]
   }
