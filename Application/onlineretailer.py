@@ -59,8 +59,9 @@ Welcome to the shop. Please explore the following options.
     8. Edit an order of yours
     9. Delete an order of yours
     
-    10. Edit your user details
-    11. Delete your user account
+    10. View your user details
+    11. Edit your user details
+    12. Delete your user account
     ''')
     user_choice = str(input('Input the corresponding number to the option you wish to choose: '))
     if user_choice == str(1):
@@ -106,8 +107,7 @@ Welcome to the shop. Please explore the following options.
         orderID_query = str(input('Input the order ID of the order you wish to edit: '))
         for i in Order.order_data['orders']:
             if i['orderID'] == orderID_query:
-                print('''
-            Order edit options:
+                print('''Order edit options:
                       
                 1. Edit order name
                 2. Edit order item & quantity
@@ -124,15 +124,19 @@ Welcome to the shop. Please explore the following options.
                 elif orderEdit_choice == str(2):
                     print('')
                     new_orderItem = str(input('Input the new item: '))
-                    Order.edit_order(self, orderID_query=orderID_query, orderEdit_choice=orderEdit_choice, new_orderName=new_orderName, new_orderItem=new_orderItem, new_orderQuantity="", new_orderDeliveryType="")
+                    new_orderQuantity = str(input('Input the new quantity: '))
+                    Order.edit_order(self, orderID_query=orderID_query, orderEdit_choice=orderEdit_choice, new_orderName="", new_orderItem=new_orderItem, new_orderQuantity=new_orderQuantity, new_orderDeliveryType="")
                     user_menu(self)
                 elif orderEdit_choice == str(3):
                     print('')
                     new_orderDeliveryType = str(input('Input the new delivery type (P for pickup OR M for mail): '))
-                    Order.edit_order(self, orderID_query=orderID_query, orderEdit_choice=orderEdit_choice, new_orderName=new_orderName, new_orderItem=new_orderItem, new_orderQuantity="", new_orderDeliveryType=new_orderDeliveryType)
+                    Order.edit_order(self, orderID_query=orderID_query, orderEdit_choice=orderEdit_choice, new_orderName="", new_orderItem="", new_orderQuantity="", new_orderDeliveryType=new_orderDeliveryType)
                     user_menu(self)
                 else:
                     user_menu(self)
+            else:
+                print('Order ID inputted doesnt exist')
+                user_menu(self)
     elif user_choice == str(9):
         print('')
         orderID_query = str(input('Input the order ID of the order you wish to delete: '))
@@ -140,9 +144,16 @@ Welcome to the shop. Please explore the following options.
         user_menu(self)
     elif user_choice == str(10):
         print('')
+        print('Your user data:')
+        print('')
+        User.view_user(self)
+        user_menu(self)
+    elif user_choice == str(11):
+        print('')
         for i in User.user_data['users']:
             userID_query = i['userID'] in User.user_data['users']
-            userEdit_choice = print('''Input the corresponding number to the option you want to choose:
+            userEdit_choice = print('''Account edit options:
+                                    
                 1. Edit password
                 2. Edit username
                 3. Edit name
@@ -154,40 +165,57 @@ Welcome to the shop. Please explore the following options.
 
                 7. Return to menu
                 ''')
-            if userEdit_choice == 1:
+            userEdit_choice = str(input('Input the corresponding number to the option you wish to choose: '))
+            if userEdit_choice == str(1):
+                print('')
                 new_userPassword = str(input('Input the new password: '))
                 User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-            elif userEdit_choice == 2:
+                user_menu(self)
+            elif userEdit_choice == str(2):
+                print('')
                 new_userUsername = str(input('Input the new username: '))
-                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-            elif userEdit_choice == 3:
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername=new_userUsername, new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
+                user_menu(self)
+            elif userEdit_choice == str(3):
+                print('')
                 new_userName = str(input('Input the new name (first and surname): '))
-                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName=new_userName, new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-            elif userEdit_choice == 4:
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName=new_userName, new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
+                user_menu(self)
+            elif userEdit_choice == str(4):
+                print('')
                 new_userEmailAddress = str(input('Input the new email address: '))
-                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName=new_userName, new_userEmailAddress=new_userEmailAddress, new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-            elif userEdit_choice == 5:
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress=new_userEmailAddress, new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
+                user_menu(self)
+            elif userEdit_choice == str(5):
+                print('')
                 new_userHouseNumber = str(input('Input the new house number: '))
                 new_userStreet = str(input('Input the new street: '))
                 new_userTown = str(input('Input the new town: '))
                 new_userCountry = str(input('Input the new country: '))
                 new_userPostcode = str(input('Input the new postcode: '))
-                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName=new_userName, new_userEmailAddress=new_userEmailAddress, new_userHouseNumber=new_userHouseNumber, new_userStreet=new_userStreet, new_userTown=new_userTown, new_userCountry=new_userCountry, new_userPostcode=new_userPostcode, new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-            elif userEdit_choice == 6:
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber=new_userHouseNumber, new_userStreet=new_userStreet, new_userTown=new_userTown, new_userCountry=new_userCountry, new_userPostcode=new_userPostcode, new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
+                user_menu(self)
+            elif userEdit_choice == str(6):
+                print('')
                 new_userBankName = str(input('Input the new bank name: '))
                 new_userBankAccountName = str(input('Input the new bank account name: '))
                 new_userBankAccountBSB = str(input('Input the new bank account BSB: '))
                 new_userBankAccountNumber = str(input('Input the new bank account number: '))
-                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName=new_userName, new_userEmailAddress=new_userEmailAddress, new_userHouseNumber=new_userHouseNumber, new_userStreet=new_userStreet, new_userTown=new_userTown, new_userCountry=new_userCountry, new_userPostcode=new_userPostcode, new_userBankName=new_userBankName, new_userBankAccountName=new_userBankAccountName, new_userBankAccountBSB=new_userBankAccountBSB, new_userBankAccountNumber=new_userBankAccountNumber, new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-            elif userEdit_choice == 7:
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName=new_userBankName, new_userBankAccountName=new_userBankAccountName, new_userBankAccountBSB=new_userBankAccountBSB, new_userBankAccountNumber=new_userBankAccountNumber, new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
+                user_menu(self)
+            elif userEdit_choice == str(7):
+                print('')
                 new_userCardName = str(input('Input the new card name: '))
                 new_userCardNumber = str(input('Input the new card number: '))
                 new_userCardExpiry = str(input('Input the new card expiry: '))
                 new_userCardCVC = str(input('Input the new card CVC: '))
-                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername=new_userUsername, new_userName=new_userName, new_userEmailAddress=new_userEmailAddress, new_userHouseNumber=new_userHouseNumber, new_userStreet=new_userStreet, new_userTown=new_userTown, new_userCountry=new_userCountry, new_userPostcode=new_userPostcode, new_userBankName=new_userBankName, new_userBankAccountName=new_userBankAccountName, new_userBankAccountBSB=new_userBankAccountBSB, new_userBankAccountNumber=new_userBankAccountNumber, new_userCardName=new_userCardName, new_userCardNumber=new_userCardNumber, new_userCardExpiry=new_userCardExpiry, new_userCardCVC=new_userCardCVC)
+                User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName=new_userCardName, new_userCardNumber=new_userCardNumber, new_userCardExpiry=new_userCardExpiry, new_userCardCVC=new_userCardCVC)
+                user_menu(self)
             else:
                 user_menu(self)
     else:
+        print('')
+        userID_query = str(input("Input your user ID to delete account: "))
         User.delete_user(self, userID_query=userID_query)
         user_menu(self)
 
