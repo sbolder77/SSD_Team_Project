@@ -123,11 +123,11 @@ async def get_current_active_user(
                             detail="Inactive user")
     return current_user
 
-async def get_date():
-    '''get data'''
-    date_now = datetime.now()
-    date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
-    return date_str
+#async def get_date():
+    #'''get data'''
+    #date_now = datetime.now()
+    #date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
+    #return date_str
 #endregion
 
 #region apiendpoints
@@ -135,21 +135,23 @@ async def get_date():
 @app.post("/token")
 async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
     '''login'''
-    date_time = get_date()
+    date_now = datetime.now()
+    date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
+    #date_time = get_date()
     user_dict = API_USERS_DB.get(form_data.username)
     if not user_dict:
-        write_api_log('LOGIN', 'WARNING', date_time,
+        write_api_log('LOGIN', 'WARNING', date_str,
                       'Incorrect username or password in db - getting token', '400')
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Incorrect username or password")
     user = UserInDB(**user_dict)
     hashed_password = fake_hash_password(form_data.password)
     if not hashed_password == user.hashed_password:
-        write_api_log('LOGIN', 'WARNING', date_time,
+        write_api_log('LOGIN', 'WARNING', date_str,
                       'Incorrect hashed password - getting token', '400')
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Incorrect username or password")
-    write_api_log('LOGIN', 'INFO', date_time,
+    write_api_log('LOGIN', 'INFO', date_str,
                   'Authentication susccessful - access_token: '
                   + user.username + ' & token_type: bearer', '200')
     return {"access_token": user.username, "token_type": "bearer"}
@@ -157,22 +159,24 @@ async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
 @app.get("/get-system-log")
 def get_system_log(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
     '''get system log'''
-    date_time = get_date()
+    #date_time = get_date()
+    date_now = datetime.now()
+    date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
     user_dict = API_USERS_DB.get(username)
     user = UserInDB(**user_dict)
     if user.disabled is False:
         if user.role == 'A':
-            write_api_log('GETSYSTEMLOG', 'INFO', date_time,
+            write_api_log('GETSYSTEMLOG', 'INFO', date_str,
                           'Retrieved system log - ' + user.username  , '200')
             file_path = os.getcwd() + "/" + SYS_LOG
             return FileResponse(file_path)
         else:
-            write_api_log('GETSYSTEMLOG', 'ERROR', date_time,
+            write_api_log('GETSYSTEMLOG', 'ERROR', date_str,
                           'Not authorised to access system log - ' + user.username  , '400')
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                                 detail="Not authorised to access system log")
     if user.disabled is True:
-        write_api_log('GETSYSTEMLOG', 'ERROR', date_time,
+        write_api_log('GETSYSTEMLOG', 'ERROR', date_str,
                       'Account is disabled - ' + user.username  , '400')
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled")
@@ -180,22 +184,24 @@ def get_system_log(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str)
 @app.get("/get-api-log")
 def get_api_log(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
     '''get api log'''
-    date_time = get_date()
+    #date_time = get_date()
+    date_now = datetime.now()
+    date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
     user_dict = API_USERS_DB.get(username)
     user = UserInDB(**user_dict)
     if user.disabled is False:
         if user.role == 'A':
-            write_api_log('GETAPILOG', 'INFO', date_time,
+            write_api_log('GETAPILOG', 'INFO', date_str,
                           'Retrieved API log - ' + user.username  , '200')
             filepath = os.getcwd() + "/" + API_LOG
             return FileResponse(filepath)
         else:
-            write_api_log('GETAPILOG', 'ERROR', date_time,
+            write_api_log('GETAPILOG', 'ERROR', date_str,
                           'Not authorised to access API log - ' + user.username  , '400')
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                                 detail="Not authorised to access API log")
     if user.disabled is True:
-        write_api_log('GETAPILOG', 'ERROR', date_time,
+        write_api_log('GETAPILOG', 'ERROR', date_str,
                       'Account is disabled - ' + user.username  , '400')
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled")
@@ -203,23 +209,25 @@ def get_api_log(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
 @app.get("/get-items")
 def get_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
     '''get items'''
-    date_time = get_date()
+    #date_time = get_date()
+    date_now = datetime.now()
+    date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
     user_dict = API_USERS_DB.get(username)
     user = UserInDB(**user_dict)
     if user.disabled is False:
         if user.role in ('A', 'S'):
-            write_api_log('GETITEMS', 'INFO', date_time, 'Retrieved items - '
+            write_api_log('GETITEMS', 'INFO', date_str, 'Retrieved items - '
                           + user.username , '200')
             filepath = os.getcwd() + "/" + I_FILE_NAME
             return FileResponse(filepath)
         else:
-            write_api_log('GETITEMS', 'ERROR', date_time,
+            write_api_log('GETITEMS', 'ERROR', date_str,
                           'Customers not authorised to access items - '
                           + user.username  , '400')
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                                 detail="Customers not authorised to access items")
     if user.disabled is True:
-        write_api_log('GETITEMS', 'ERROR', date_time, 'Account is disabled - '
+        write_api_log('GETITEMS', 'ERROR', date_str, 'Account is disabled - '
                       + user.username  , '400')
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled")

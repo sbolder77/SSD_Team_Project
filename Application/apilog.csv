@@ -67,3 +67,5 @@ GETSYSTEMLOG,INFO,06/10/2023 16:08:53,Retrieved system log - bolders,200
 GETITEMS,INFO,06/10/2023 16:09:26,Retrieved items - bolders,200
 GETITEMS,ERROR,06/10/2023 16:09:35,Customers not authorised to access items - customer1,400
 GETITEMS,ERROR,06/10/2023 16:18:43,Customers not authorised to access items - customer1,400
+LOGIN,INFO,07/10/2023 17:16:24,Authentication susccessful - access_token: bolders & token_type: bearer,200
+GETITEMS,INFO,07/10/2023 17:16:35,Retrieved items - bolders,200
