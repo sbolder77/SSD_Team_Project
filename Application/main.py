@@ -50,7 +50,7 @@ U_FILE_NAME = 'users.json'
 U_FILE = open(U_FILE_NAME)
 U_DATA = json.load(U_FILE)
 
-I_FILE_NAME = 'users.json'
+I_FILE_NAME = 'items.json'
 I_FILE = open(I_FILE_NAME)
 I_DATA = json.load(I_FILE)
 

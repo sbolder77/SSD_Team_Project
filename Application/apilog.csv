@@ -69,3 +69,11 @@ GETITEMS,ERROR,06/10/2023 16:09:35,Customers not authorised to access items - cu
 GETITEMS,ERROR,06/10/2023 16:18:43,Customers not authorised to access items - customer1,400
 LOGIN,INFO,07/10/2023 17:16:24,Authentication susccessful - access_token: bolders & token_type: bearer,200
 GETITEMS,INFO,07/10/2023 17:16:35,Retrieved items - bolders,200
+LOGIN,INFO,07/10/2023 17:30:15,Authentication susccessful - access_token: nugentf & token_type: bearer,200
+GETSYSTEMLOG,INFO,07/10/2023 17:31:17,Retrieved system log - nugentf,200
+GETSYSTEMLOG,ERROR,07/10/2023 17:32:27,Account is disabled - willsonl,400
+GETSYSTEMLOG,ERROR,07/10/2023 17:33:00,Not authorised to access system log - customer1,400
+GETITEMS,INFO,07/10/2023 17:34:04,Retrieved items - nugentf,200
+GETITEMS,INFO,07/10/2023 17:34:32,Retrieved items - supplier1,200
+LOGIN,INFO,07/10/2023 17:37:03,Authentication susccessful - access_token: bolders & token_type: bearer,200
+GETAPILOG,INFO,07/10/2023 17:37:34,Retrieved API log - bolders,200
