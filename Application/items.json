@@ -1,11 +1,3 @@
 {
-    "items": [
-      {
-        "itemID": "1",
-        "itemName": "Samsung NOT5",
-        "itemPrice": 500,
-        "itemDescription": "3",
-        "itemStock": "5"
-      }
-    ]
-  }
+    "items": []
+}
