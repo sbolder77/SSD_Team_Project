@@ -1,12 +1,3 @@
 {
-    "orders": [
-        {
-            "orderID": "0123456789abcdefABCDEF",
-            "orderUsername": "LiamWillson",
-            "orderName": "Alan",
-            "orderItem": "Nokia",
-            "orderQuantity": "7",
-            "orderDeliveryType": "M"
-        }
-    ]
+    "orders": []
 }
