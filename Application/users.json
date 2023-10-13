@@ -1,24 +1,3 @@
 {
-    "users": [
-        {
-            "userPassword": "test",
-            "userUsername": "hobbit",
-            "userID": 0,
-            "userName": "test",
-            "userEmailAddress": "test",
-            "userHouseNumber": 0,
-            "userStreet": "test",
-            "userTown": "test",
-            "userCountry": "test",
-            "userPostcode": 0,
-            "userBankName": "test",
-            "userBankAccountName": "test",
-            "userBankAccountBSB": 0,
-            "userBankAccountNumber": 0,
-            "userCardName": "test",
-            "userCardNumber": 0,
-            "userCardExpiry": 0,
-            "userCardCVC": 0
-        }
-    ]
+    "users": []
 }
