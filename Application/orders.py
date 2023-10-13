@@ -1,7 +1,7 @@
 import json
 
 class Order():
-    with open('orders.json') as f:    
+    with open('orders.json', encoding='utf-8') as f:    
         order_data = json.load(f)
     
     def __init__(self):
@@ -17,7 +17,7 @@ class Order():
             "orderDeliveryType": orderDeliveryType_query
         }
         Order.order_data['orders'].append(order)
-        with open('orders.json', 'w') as f:
+        with open('orders.json', 'w', encoding='utf-8') as f:
             json.dump(Order.order_data, f, indent=4, separators=(',', ': '))
             print ('')
             print("Order created.")
@@ -51,7 +51,7 @@ class Order():
             else:
                 if i['orderID'] == orderID_query:
                     i['orderDeliveryType'] = new_orderDeliveryType
-        with open('orders.json', 'w') as f:
+        with open('orders.json', 'w', encoding='utf-8') as f:
             json.dump(Order.order_data, f, indent=4, separators=(',', ': '))
             print('')
             print('Update made.')
@@ -66,7 +66,7 @@ class Order():
                 print('')
                 print(f"Order with ID '{_orderID}' was deleted.")
                 break
-        with open('orders.json', 'w') as f:
+        with open('orders.json', 'w', encoding='utf-8') as f:
             json.dump(Order.order_data, f, indent=4, separators=(',', ': '))
         if finder == False:
             print('')
