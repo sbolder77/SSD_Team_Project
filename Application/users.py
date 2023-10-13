@@ -1,15 +1,16 @@
+from cryptography.fernet import Fernet
+import sys
 import json
 
 class User():
-    with open('users.json') as f:    
+    with open('users.json', encoding='utf-8') as f:    
         user_data = json.load(f)
-    
+
     def __init__(self):
         pass
 
-    def create_user(self, userPassword_query, userUsername_query, userID_query, userName_query, userEmailAddress_query, userHouseNumber_query, userStreet_query, userTown_query, userCountry_query, userPostcode_query, userBankName_query, userBankAccountName_query, userBankAccountBSB_query, userBankAccountNumber_query, userCardName_query, userCardNumber_query, userCardExpiry_query, userCardCVC_query):
+    def create_user(self, userUsername_query, userID_query, userName_query, userEmailAddress_query, userHouseNumber_query, userStreet_query, userTown_query, userCountry_query, userPostcode_query, userBankName_query, userBankAccountName_query, userBankAccountBSB_query, userBankAccountNumber_query, userCardName_query, userCardNumber_query, userCardExpiry_query, userCardCVC_query):
         user = {
-            "userPassword": userPassword_query,
             "userUsername": userUsername_query,
             "userID": userID_query,
             "userName": userName_query,
@@ -29,20 +30,22 @@ class User():
             "userCardCVC": userCardCVC_query
         }
         User.user_data['users'].append(user)
-        with open('users.json', 'w') as f:
+        with open('users.json', 'w', encoding='utf-8') as f:
             json.dump(User.user_data, f, indent=4, separators=(',', ': '))
-            print("User created.")
+            print('')
+            print('User created.')
+            print('----------------------------------------------------------')
 
     def view_user(self):
         for i in User.user_data['users']:
-            print(f"Password:{i['userPassword']} \nUsername:{i['userUsername']} \nID:{i['userID']} \nName:{i['userName']} \nEmail Address:{i['userEmailAddress']} \nHouse Number:{i['userHouseNumber']} \nStreet:{i['userStreet']} \nTown:{i['userTown']} \nCountry:{i['userCountry']} \nPostcode:{i['userPostcode']} \nBank Name:{i['userBankName']} \nBank Account Name:{i['userBankAccountName']} \nBank Account BSB:{i['userBankAccountBSB']} \nBank Account Number:{i['userBankAccountNumber']} \nCard Name:{i['userCardName']} \nCard Number:{i['userCardNumber']} \nCard Expiry{i['userCardExpiry']} \nCard CVC:{i['userCardCVC']}")
+            print(f"Username:{i['userUsername']} \nID:{i['userID']} \nName:{i['userName']} \nEmail Address:{i['userEmailAddress']} \nHouse Number:{i['userHouseNumber']} \nStreet:{i['userStreet']} \nTown:{i['userTown']} \nCountry:{i['userCountry']} \nPostcode:{i['userPostcode']} \nBank Name:{i['userBankName']} \nBank Account Name:{i['userBankAccountName']} \nBank Account BSB:{i['userBankAccountBSB']} \nBank Account Number:{i['userBankAccountNumber']} \nCard Name:{i['userCardName']} \nCard Number:{i['userCardNumber']} \nCard Expiry{i['userCardExpiry']} \nCard CVC:{i['userCardCVC']}")
 
     def search_userUsername(self, userUsername_query):
         _username = userUsername_query
         finder = False
         for i in User.user_data['users']:
             if i['userUsername'] == _username:
-                print(f"Password:{i['userPassword']} | Username:{i['userUsername']} | ID:{i['userID']} | Name:{i['userName']} | Email Address:{i['userEmailAddress']} | House Number:{i['userHouseNumber']} | Street:{i['userstreet']} | Town:{i['userTown']} | Country:{i['userCountry']} | Postcode:{i['userPostcode']} | Bank Name:{i['userBankName']} | Bank Account Name:{i['userBankAccountName']} | Bank Account BSB:{i['userBankAccountBSB']} | Bank Account Number:{i['userBankAccountNumber']} | Card Name:{i['userCardName']} | Card Number:{i['userCardNumber']} | Card Expiry{i['userCardExpiry']} | Card CVC:{i['userCardCVC']}")
+                print(f"Username:{i['userUsername']} | ID:{i['userID']} | Name:{i['userName']} | Email Address:{i['userEmailAddress']} | House Number:{i['userHouseNumber']} | Street:{i['userstreet']} | Town:{i['userTown']} | Country:{i['userCountry']} | Postcode:{i['userPostcode']} | Bank Name:{i['userBankName']} | Bank Account Name:{i['userBankAccountName']} | Bank Account BSB:{i['userBankAccountBSB']} | Bank Account Number:{i['userBankAccountNumber']} | Card Name:{i['userCardName']} | Card Number:{i['userCardNumber']} | Card Expiry{i['userCardExpiry']} | Card CVC:{i['userCardCVC']}")
                 finder = True
                 break
         if finder == False:
@@ -53,18 +56,20 @@ class User():
         finder = False
         for i in User.user_data['users']:
             if i['userID'] == _ID:
-                print(f"Password:{i['userPassword']} | Username:{i['userUsername']} | ID:{i['userID']} | Name:{i['userName']} | Email Address:{i['userEmailAddress']} | House Number:{i['userHouseNumber']} | Street:{i['userstreet']} | Town:{i['userTown']} | Country:{i['userCountry']} | Postcode:{i['userPostcode']} | Bank Name:{i['userBankName']} | Bank Account Name:{i['userBankAccountName']} | Bank Account BSB:{i['userBankAccountBSB']} | Bank Account Number:{i['userBankAccountNumber']} | Card Name:{i['userCardName']} | Card Number:{i['userCardNumber']} | Card Expiry{i['userCardExpiry']} | Card CVC:{i['userCardCVC']}")
+                print(f"Username:{i['userUsername']} | ID:{i['userID']} | Name:{i['userName']} | Email Address:{i['userEmailAddress']} | House Number:{i['userHouseNumber']} | Street:{i['userstreet']} | Town:{i['userTown']} | Country:{i['userCountry']} | Postcode:{i['userPostcode']} | Bank Name:{i['userBankName']} | Bank Account Name:{i['userBankAccountName']} | Bank Account BSB:{i['userBankAccountBSB']} | Bank Account Number:{i['userBankAccountNumber']} | Card Name:{i['userCardName']} | Card Number:{i['userCardNumber']} | Card Expiry{i['userCardExpiry']} | Card CVC:{i['userCardCVC']}")
                 finder = True
                 break
         if finder == False:
-            print(f"{_ID} cannot be found.")
+            print(f'{_ID} cannot be found.')
 
     def edit_user(self, userID_query, userEdit_choice, new_userPassword, new_userUsername, new_userName, new_userEmailAddress, new_userHouseNumber, new_userStreet, new_userTown, new_userCountry, new_userPostcode, new_userBankName, new_userBankAccountName, new_userBankAccountBSB, new_userBankAccountNumber, new_userCardName, new_userCardNumber, new_userCardExpiry, new_userCardCVC):
+        if userEdit_choice == str(1):
+            User.write_passwordDeposit(self, new_userPassword)
+            User.write_userKey(self)
+            key = User.load_userKey(self)
+            User.encrypt(self, 'encryptedPassword.csv', key)
         for i in User.user_data['users']:
-            if userEdit_choice == str(1):
-                if i['userID'] == userID_query:
-                    i['userPassword'] = new_userPassword
-            elif userEdit_choice == str(2):
+            if userEdit_choice == str(2):
                 if i['userID'] == userID_query:
                     i['userUsername'] = new_userUsername
             elif userEdit_choice == str(3):
@@ -93,33 +98,50 @@ class User():
                     i['userCardNumber'] = new_userCardNumber
                     i['userCardExpiry'] = new_userCardExpiry
                     i['userCardCVC'] = new_userCardCVC
-        with open('users.json', 'w') as f:
+        with open('users.json', 'w', encoding='utf-8') as f:
             json.dump(User.user_data, f, indent=4, separators=(',', ': '))
             print('')
             print('Update made.')
 
     def delete_user(self, userID_query):
         _userID = userID_query
-        finder = False
         for i in User.user_data['users']:
             if i['userID'] == _userID:
                 User.user_data['users'].pop(User.user_data['users'].index(i))
-                finder = True
                 print('')
                 print(f"Your account with ID '{_userID}' was deleted.")
-                break
-        with open('users.json', 'w') as f:
-            json.dump(User.user_data, f, indent=4, separators=(',', ': '))
-        if finder == False:
-            print('')
-            print(f"User with ID '{_userID}' could not be found.")
-
-    def authorise_user(self, authorise, userPassword_query, userUsername_query):
-        authorise = authorise
-        _Password = userPassword_query
-        _Username = userUsername_query
-        for i in User.user_data['users']:
-            if i['userPassword'] == _Password and i['userUsername'] == _Username:
-                authorise = True
+                with open('users.json', 'w', encoding='utf-8') as f:
+                    json.dump(User.user_data, f, indent=4, separators=(',', ': '))
+                print('')
+                print('You exited.')
+                sys.exit()
             else:
-                authorise = False
+                pass
+
+    def write_passwordDeposit(self, userPassword_query):
+        with open("encryptedPassword.csv", "w", encoding='utf-8') as file:
+            file.write(userPassword_query)
+
+    def write_userKey(self):
+        key = Fernet.generate_key()
+        with open ("key.userKey", "wb") as key_file:
+            key_file.write(key)
+
+    def load_userKey(self):
+        return open("key.userKey", "rb").read()
+
+    def encrypt(self, filename, key):
+        f = Fernet(key)
+        with open(filename, "rb") as file:
+            file_data = file.read()
+        encrypted_password = f.encrypt(file_data)
+        with open(filename, "wb") as file:
+            file.write(encrypted_password)
+        return encrypted_password
+
+    def decrypt(self, filename, key):
+        f = Fernet(key)
+        with open(filename, "rb") as file:
+            encrypted_password = file.read()
+        decrypted_password = f.decrypt(encrypted_password).decode()
+        return decrypted_password
