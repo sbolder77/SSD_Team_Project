@@ -27,7 +27,7 @@ Fig1. SSL Server.py
 ### Executing the CLI application
 To add
 
-### Executong the API
+### Executing the API
 1. Set SSL to false in server.py. This will run the server with HTTP. SSL set to tru will use HTTPS but only with the self signed .pem certificates in the solution.
 2. Run 'python server.py' in the terminal
 3. Click the link in the terminal window for the URL to the Uvicorn BASE url.
@@ -45,7 +45,7 @@ To add
     | cathrynpeoples    | 30{Ey2@m`S    |
     | customer1         | 99KVC.9Nom    |
     | supplier1         | £mq6|Xd08v    |
-    
+
 2. Once authenticated you can use any of the following endpoints:
 
 ![Resources/files](Images/API_home.jpg)
