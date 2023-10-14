@@ -1,3 +1,4 @@
+#Importing necessary modules
 import sys
 import os
 from users import User
@@ -7,6 +8,7 @@ from orders import Order
 import random
 import string
 
+#Defining main program
 def main(self):
     if User.user_data['users'] == []:
         print('')
