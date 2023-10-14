@@ -36,12 +36,16 @@ To add
 ### Using the API through the FAST API Swagger UI
 1. First step is to authorise yourself. Click the Authorise button and enter credentials out of the API_USERS_DB in main.py
     For simplicity use the following credentials:
-    simonbolder - aJ708/F0M*
-    liamwillson - hd2_rR3~7g
-    fergusnugent - {L9C4\Pz8u
-    cathrynpeoples - 30{Ey2@m`S
-    customer1 - 99KVC.9Nom
-    supplier1 - £mq6|Xd08v
+
+    | Username          | Password      |
+    | -------------     | ------------- |
+    | simonbolder       | aJ708/F0M*    |
+    | liamwillson       | hd2_rR3~7g    |
+    | fergusnugent      | {L9C4\Pz8u    |
+    | cathrynpeoples    | 30{Ey2@m`S    |
+    | customer1         | 99KVC.9Nom    |
+    | supplier1         | £mq6|Xd08v    |
+    
 2. Once authenticated you can use any of the following endpoints:
 
 ![Resources/files](Images/API_home.jpg)
