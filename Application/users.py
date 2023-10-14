@@ -1,11 +1,16 @@
 from cryptography.fernet import Fernet
 import sys
 import json
+import filelogging
+
+#region objects
+#l = filelogging.LoggingDetails()
+#endregion
 
 class User():
     with open('users.json', encoding='utf-8') as f:    
         user_data = json.load(f)
-
+    
     def __init__(self):
         pass
 
@@ -35,6 +40,7 @@ class User():
             print('')
             print('User created.')
             print('----------------------------------------------------------')
+        #l.write_system_log('USER', 'INFO', userID_query + ' - created', userName_query)
 
     def view_user(self):
         for i in User.user_data['users']:

@@ -1,10 +1,12 @@
 ''''''
 import uvicorn
 
-ssl = 'TRUE'
+#region variables
+SSL = 'FALSE'
+#endregion
 
 if __name__ == '__main__': 
-    if ssl == 'TRUE':
+    if SSL == 'TRUE':
         uvicorn.run("main:app",
                     host="localhost", port=8432, reload=True,
                     ssl_keyfile="localhost+2-key.pem",
