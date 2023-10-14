@@ -44,7 +44,7 @@ To add
     supplier1 - £mq6|Xd08v
 2. Once authenticated you can use any of the following endpoints:
 
-![Resources/files](Images/API home.jpg)
+![Resources/files](Images/API_home.jpg)
 
 Fig1. API home
 
