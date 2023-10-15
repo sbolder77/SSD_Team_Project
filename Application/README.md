@@ -61,17 +61,20 @@ To add detail
 ### Get API Log
 To add detail
 
-### Get Items
-To add detail
+### Set An Administrator Key (Password)
+1. Run the adminCreator.py script
+2. When prompted enter an administrator key to set the administrator key (password)
 
-### Add Item
-To add detail
+![Resources/files](Images/setAdmin.jpg)
 
-### Update Order Quantity
-To add detail
 
-### Delete Order
-To add detail
+### Finally, Run The Online Shop Application (onlineretailer.py) Program
+1. Run the onlineretailer.py script
+2. Follow the prompts given to access either the user or administrator menu
+
+   Upon login and following the prompts you will reach -->
+
+![Resources/files](Images/onlineretailer.jpg)
 
 
 References:
