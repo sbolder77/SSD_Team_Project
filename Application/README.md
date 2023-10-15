@@ -62,19 +62,25 @@ To add detail
 To add detail
 
 ### Set An Administrator Key (Password)
-1. Run the adminCreator.py script
+1. Run the adminCreator.py script 'python3 adminCreator.py'
 2. When prompted enter an administrator key to set the administrator key (password)
 
 ![Resources/files](Images/setAdmin.jpg)
 
 
 ### Finally, Run The Online Shop Application (onlineretailer.py) Program
-1. Run the onlineretailer.py script
+1. Run the onlineretailer.py script or in terminal, 'python3 onlineretailer.py'
 2. Follow the prompts given to access either the user or administrator menu
+3. Run the onlineretailer.py script or
 
    Upon login and following the prompts you will reach -->
 
 ![Resources/files](Images/onlineretailer.jpg)
+
+
+----------------------------------------------------------------------------------------
+### Explore the online shop and it's functionality by following the prompts given... ###
+----------------------------------------------------------------------------------------
 
 
 References:
