@@ -1,22 +1,21 @@
 #https://www.freecodecamp.org/news/python-copy-file-copying-files-to-another-directory/
 
+#Importing necessary modules
 from datetime import datetime
 import system
 import shutil
 
-#region objects
+#Region objects
 s = system.Settings()
-#endregion
-
-#region variables
 DT_NOW = datetime.now()
 DT_STR = DT_NOW.strftime("%d/%m/%Y %H:%M:%S")
-#endregion
 
+#Defining LoggingDetails() class and downstream functions
 class LoggingDetails:
     def __init__(self):
         pass
-        
+
+#Defining writing system log function
     def write_system_log(self, logtype, level, message, user):
         if ((s.log == 'TRUE') and (logtype == "SYSTEM")):
             file_object = open('systemlog.csv', 'a')
@@ -24,6 +23,7 @@ class LoggingDetails:
             file_object.close()
             return "log file updated"
 
+#Defining download log function
     def download_log(self, user, dt, logtype):
         DT_STR = DT_NOW.strftime("%d/%m/%Y %H:%M:%S")
         if user == 'A':
