@@ -362,12 +362,14 @@ Welcome to the shop. Please explore the following options.
                 print('')
                 print(f'User with ID: {userID_query} could not be found. Returning to menu...')
                 user_menu(self)
+#Defining an exit option
     else:
         print('')
         print('You exited. Goodbye.')
         sys.exit()
 
 
+#Defining the administrator menu
 def administrator_menu(self):
     print('')
     print('----------------------------------------------------------')
