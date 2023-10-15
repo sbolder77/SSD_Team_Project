@@ -1,0 +1,8 @@
+[{
+			"log": "TRUE",
+			"ssl": "TRUE",
+			"datetimeformat": "%d/%m/%Y %H:%M:%S",
+			"encrypt": "TRUE",
+			"useregex": "TRUE"
+		}
+	]
