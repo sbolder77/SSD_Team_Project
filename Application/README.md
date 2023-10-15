@@ -79,7 +79,7 @@ To add detail
 
 
 ----------------------------------------------------------------------------------------
-### Explore the online shop and it's functionality by following the prompts given... ###
+### Now, you can explore the online shop and it's functionality by following the prompts given... ###
 ----------------------------------------------------------------------------------------
 
 
