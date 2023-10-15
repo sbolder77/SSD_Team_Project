@@ -71,7 +71,7 @@ To add detail
 ### Finally, Run The Online Shop Application (onlineretailer.py) Program
 1. Run the onlineretailer.py script or in terminal, 'python3 onlineretailer.py'
 2. Follow the prompts given to access either the user or administrator menu
-3. Run the onlineretailer.py script or
+3. Run the onlineretailer.py script again to re-access the shop if exited
 
    Upon login and following the prompts you will reach -->
 
