@@ -1,4 +1,4 @@
-#Importing modules
+#Importing necessary modules
 from admins import Admin
 
 #Defining main program
