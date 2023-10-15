@@ -406,11 +406,9 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
     11. Edit any user's details !!!
     12. Delete any user's account !!!
     
-    13. View your administrator details !!!
-    14. Edit your administrator details !!!
-    15. Delete your administrator account !!!
+    13. Edit administrator key !!!
           
-    16. Exit
+    14. Exit
 ----------------------------------------------------------
     ''')
 #Offering the user menu choices
@@ -491,18 +489,21 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
         print('')
         orderID_query = str(input("Input the order ID of the order you wish to delete (or input 'exit' for menu): "))
         if orderID_query == 'exit':
-            user_menu(self)
+            administrator_menu(self)
         else:
             Order.delete_order(self, orderID_query=orderID_query)
-            user_menu(self)
+            administrator_menu(self)
+#Defining view of user's function & exit option
     elif user_choice == str(10):
         print('')
         print('All user accounts:')
         User.view_user(self)
         administrator_menu(self)
+#Defining edit any user by user ID function & exit option
     elif user_choice == str(11):
         print('')
         userID_query = str(input("Input the user ID you want to change the details for: "))
+#Defining user edit options menu
         for i in User.user_data['users']:
             if userID_query == i['userID']:
                 print('')
@@ -519,27 +520,33 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
 
                     7. Return to menu
                     ''')
+#Defining user edit options menu
                 userEdit_choice = str(input('Input the corresponding number to the option you wish to choose: '))
+#Defining editing of user's password function & exit option
                 if userEdit_choice == str(1):
                     print('')
                     new_userPassword = str(input('Input the new password: '))
                     User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
+                    administrator_menu(self)
+#Defining editing of user's username function & exit option
                 if userEdit_choice == str(2):
                     print('')
                     new_userUsername = str(input('Input the new username: '))
                     User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername=new_userUsername, new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
+                    administrator_menu(self)
+#Defining editing of user's name function & exit option
                 elif userEdit_choice == str(3):
                     print('')
                     new_userName = str(input('Input the new name (first and surname): '))
                     User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName=new_userName, new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
+                    administrator_menu(self)
+#Defining editing of user's email address function & exit option
                 elif userEdit_choice == str(4):
                     print('')
                     new_userEmailAddress = str(input('Input the new email address: '))
                     User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress=new_userEmailAddress, new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
+                    administrator_menu(self)
+#Defining editing of user's personal information function & exit option
                 elif userEdit_choice == str(5):
                     print('')
                     new_userHouseNumber = str(input('Input the new house number: '))
@@ -548,7 +555,8 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
                     new_userCountry = str(input('Input the new country: '))
                     new_userPostcode = str(input('Input the new postcode: '))
                     User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber=new_userHouseNumber, new_userStreet=new_userStreet, new_userTown=new_userTown, new_userCountry=new_userCountry, new_userPostcode=new_userPostcode, new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
+                    administrator_menu(self)
+#Defining editing of user's banking information function & exit option
                 elif userEdit_choice == str(6):
                     print('')
                     new_userBankName = str(input('Input the new bank name: '))
@@ -556,7 +564,8 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
                     new_userBankAccountBSB = str(input('Input the new bank account BSB: '))
                     new_userBankAccountNumber = str(input('Input the new bank account number: '))
                     User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName=new_userBankName, new_userBankAccountName=new_userBankAccountName, new_userBankAccountBSB=new_userBankAccountBSB, new_userBankAccountNumber=new_userBankAccountNumber, new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
+                    administrator_menu(self)
+#Defining editing of user's card information function & exit option
                 elif userEdit_choice == str(7):
                     print('')
                     new_userCardName = str(input('Input the new card name: '))
@@ -564,9 +573,10 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
                     new_userCardExpiry = str(input('Input the new card expiry: '))
                     new_userCardCVC = str(input('Input the new card CVC: '))
                     User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName=new_userCardName, new_userCardNumber=new_userCardNumber, new_userCardExpiry=new_userCardExpiry, new_userCardCVC=new_userCardCVC)
-                    user_menu(self)
+                    administrator_menu(self)
                 else:
-                    user_menu(self)
+                    administrator_menu(self)
+#Defining user deletion by user ID function & exit option
     elif user_choice == str(12):
         print('')
         userID_query = str(input('Input the user ID of the user account you want to delete account: '))
@@ -576,96 +586,18 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
             else:
                 print('')
                 print(f'User with ID: {userID_query} could not be found. Returning to menu...')
-                user_menu(self)
+                administrator_menu(self)
+#Describing administrator key edit method
     elif user_choice == str(13):
         print('')
-        userID_query = str(input('Input the administrator ID to view the administrator account details: '))
-        if userID_query == 'exit':
-            user_menu(self)
-        else:
-            User.search_userID(self, userID_query=userID_query)
-            user_menu(self)
-    elif user_choice == str(14):
-        print('')
-        userID_query = str(input("Input your administrator ID you want to change the details for: "))
-        for i in User.user_data['users']:
-            if userID_query == i['userID']:
-                print('')
-                userEdit_choice = print('''Account edit options:
-                                    
-                    1. Edit password
-                    2. Edit username
-                    3. Edit name
-                    4. Edit email address
-                    5. Edit address
-                
-                    6. Edit bank details
-                    7. Edit card details
-
-                    7. Return to menu
-                    ''')
-                userEdit_choice = str(input('Input the corresponding number to the option you wish to choose: '))
-                if userEdit_choice == str(1):
-                    print('')
-                    new_userPassword = str(input('Input the new password: '))
-                    User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword=new_userPassword, new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
-                if userEdit_choice == str(2):
-                    print('')
-                    new_userUsername = str(input('Input the new username: '))
-                    User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername=new_userUsername, new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
-                elif userEdit_choice == str(3):
-                    print('')
-                    new_userName = str(input('Input the new name (first and surname): '))
-                    User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName=new_userName, new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
-                elif userEdit_choice == str(4):
-                    print('')
-                    new_userEmailAddress = str(input('Input the new email address: '))
-                    User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress=new_userEmailAddress, new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
-                elif userEdit_choice == str(5):
-                    print('')
-                    new_userHouseNumber = str(input('Input the new house number: '))
-                    new_userStreet = str(input('Input the new street: '))
-                    new_userTown = str(input('Input the new town: '))
-                    new_userCountry = str(input('Input the new country: '))
-                    new_userPostcode = str(input('Input the new postcode: '))
-                    User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber=new_userHouseNumber, new_userStreet=new_userStreet, new_userTown=new_userTown, new_userCountry=new_userCountry, new_userPostcode=new_userPostcode, new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
-                elif userEdit_choice == str(6):
-                    print('')
-                    new_userBankName = str(input('Input the new bank name: '))
-                    new_userBankAccountName = str(input('Input the new bank account name: '))
-                    new_userBankAccountBSB = str(input('Input the new bank account BSB: '))
-                    new_userBankAccountNumber = str(input('Input the new bank account number: '))
-                    User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName=new_userBankName, new_userBankAccountName=new_userBankAccountName, new_userBankAccountBSB=new_userBankAccountBSB, new_userBankAccountNumber=new_userBankAccountNumber, new_userCardName="", new_userCardNumber="", new_userCardExpiry="", new_userCardCVC="")
-                    user_menu(self)
-                elif userEdit_choice == str(7):
-                    print('')
-                    new_userCardName = str(input('Input the new card name: '))
-                    new_userCardNumber = str(input('Input the new card number: '))
-                    new_userCardExpiry = str(input('Input the new card expiry: '))
-                    new_userCardCVC = str(input('Input the new card CVC: '))
-                    User.edit_user(self, userID_query=userID_query, userEdit_choice=userEdit_choice, new_userPassword="", new_userUsername="", new_userName="", new_userEmailAddress="", new_userHouseNumber="", new_userStreet="", new_userTown="", new_userCountry="", new_userPostcode="", new_userBankName="", new_userBankAccountName="", new_userBankAccountBSB="", new_userBankAccountNumber="", new_userCardName=new_userCardName, new_userCardNumber=new_userCardNumber, new_userCardExpiry=new_userCardExpiry, new_userCardCVC=new_userCardCVC)
-                    user_menu(self)
-                else:
-                    user_menu(self)
-    elif user_choice == str(15):
-        print('')
-        userID_query = str(input('WARNING: This action can only be restored manually through the back-end. Input your administrator ID to delete your account: '))
-        for i in User.user_data['users']:
-            if userID_query == i['userID']:
-                User.delete_user(self, userID_query=userID_query)
-            else:
-                print('')
-                print(f'User with ID: {userID_query} could not be found. Returning to menu...')
-                user_menu(self)
+        print('Run adminCreator.py script through backend to change administrator key.')
+        administrator_menu(self)
+#Defining an exit option
     else:
         print('')
         print('You exited. Goodbye.')
         sys.exit()
 
+#Run program
 if __name__ == '__main__':
     main(main)
