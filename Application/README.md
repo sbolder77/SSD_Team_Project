@@ -21,7 +21,7 @@ Update the file names if needed in server.py under the if statement for running 
 
 ![Resources/files](Images/SSL_serverpy.jpg)
 
-Fig1. SSL Server.py
+Fig 1. SSl server.py
 
 
 ### Executing the CLI application
@@ -50,7 +50,7 @@ To add
 
 ![Resources/files](Images/API_home.jpg)
 
-Fig1. API home
+Fig 2. API home/menu
 
 ### Token Login
 To add detail
@@ -67,6 +67,7 @@ To add detail
 
 ![Resources/files](Images/setAdmin.jpg)
 
+Fig 3. adminCreator.py
 
 ### Finally, Run The Online Shop Application (onlineretailer.py) Program
 1. Run the onlineretailer.py script or in terminal, 'python3 onlineretailer.py'
@@ -77,6 +78,7 @@ To add detail
 
 ![Resources/files](Images/onlineretailer.jpg)
 
+Fig 4. onlineretailer.py
 
 ----------------------------------------------------------------------------------------
 ### Now, you can explore the online shop and it's functionality by following the prompts it gives... ###
