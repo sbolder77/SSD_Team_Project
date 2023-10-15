@@ -1,5 +1,6 @@
 '''Online Retailer API - written by team red as part of team project for SSD delivery using tutorials and references from FASTAPI'''
 
+#Importing necessary modules
 import os
 import json
 from datetime import datetime
@@ -12,16 +13,15 @@ from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 import items
 
-#region quickrefcreds
+#Quick reference credentials
 '''simonbolder - aJ708/F0M*'''
 '''liamwillson - hd2_rR3~7g'''
 '''fergusnugent - {L9C4\Pz8u'''
 '''cathrynpeoples - 30{Ey2@m`S'''
 '''customer1 - 99KVC.9Nom'''
 '''supplier1 - £mq6|Xd08v'''
-#endregion
 
-#region database
+#API database
 API_USERS_DB = {
     "simonbolder": {
         "username": "bolders", "full_name": "Simon Bolder",
@@ -54,11 +54,10 @@ API_USERS_DB = {
         "disabled": False, "role": "S",
     },
 }
-#endregion
 
 app = FastAPI()
 
-#region constant variables
+#Constant variables
 I_FILE_NAME = 'items.json'
 I_FILE = open(I_FILE_NAME)
 I_DATA = json.load(I_FILE)
@@ -74,28 +73,24 @@ HASH_KEY = 'ff7d7a3c8fcc797f6ce23dc2f8c1db57f0a543f4bb79255f028b3e3d78c7dbe1'
 LOG = 'TRUE'
 AUTHENTICATION = 'TRUE'
 SECURE_API = 'TRUE'
-#endregion
 
-#region classes
+#For creating an instance of a user
 class User(BaseModel):
-    '''For creating an instance of a user'''
     username: str
     full_name: Union[str, None] = None
     disabled: Union[bool, None] = None
     role: Union[str, None] = None
 
+#Uses password to check user in API_USERS_DB
 class UserInDB(User):
-    '''Uses password to check user in API_USERS_DB'''
     hashed_password: str
-#endregion
 
-#region functions
+#Checks the password in the db matches the HASH_KEY and entered password
 def fake_hash_password(password: str):
-    '''checks the password in the db matches the HASH_KEY and entered password'''
     return HASH_KEY + password
 
+#For writing to the API log
 def write_api_log(type, level, date_time, message, response):
-    '''For writing to the API log'''
     if (LOG == 'TRUE'):
         file_object = open('apilog.csv', 'a')
         file_object.write(type + ',' + level + ',' + date_time + ','
@@ -103,19 +98,19 @@ def write_api_log(type, level, date_time, message, response):
         file_object.close()
         #return "log file updated"
 
+#Used for returning the user from teh db
 def get_user(data_base, username: str):
-    '''Used for returning the user from teh db'''
     if username in data_base:
         user_dict = data_base[username]
         return UserInDB(**user_dict)
 
+#Temp solution for generating a token
 def fake_decode_token(token):
-    '''temp solution for generating a token'''
     user = get_user(API_USERS_DB, token)
     return user
 
+#Gets current user
 async def get_current_user(token: Annotated[str, Depends(OAUTH2_SCHEME)]):
-    '''gets current user'''
     user = fake_decode_token(token)
     if not user:
         raise HTTPException(
@@ -124,24 +119,22 @@ async def get_current_user(token: Annotated[str, Depends(OAUTH2_SCHEME)]):
             headers={"WWW-Authenticate": "Bearer"},)
     return user
 
+#Gets current active user
 async def get_current_active_user(
     current_user: Annotated[User, Depends(get_current_user)]):
-    '''gets current active user'''
     if current_user.disabled:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Inactive user")
     return current_user
-#endregion
 
-#region apiendpoints
+#A simple landing page at the root of the API
 @app.get("/")
 async def root():
-    '''A simple landing page at the root of the API'''
     return {"message": "Welcome to the online retailer API"}
 
+#Used for initial login session and generating a token
 @app.post("/token")
 async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
-    '''Used for initial login session and generating a token'''
     date_now = datetime.now()
     date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
     user_dict = API_USERS_DB.get(form_data.username)
@@ -162,9 +155,9 @@ async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
                   + user.username + ' & token_type: bearer', '200')
     return {"access_token": user.username, "token_type": "bearer"}
 
+#Gets the system log csv file for administrators
 @app.get("/get-system-log")
 def get_system_log(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
-    '''Gets the system log csv file for administrators'''
     #date_time = get_date()
     date_now = datetime.now()
     date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
@@ -187,9 +180,9 @@ def get_system_log(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled - " + user.username)
 
+#Gets the api log in csv for administrators
 @app.get("/get-api-log")
 def get_api_log(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
-    '''Gets the api log in csv for administrators'''
     #date_time = get_date()
     date_now = datetime.now()
     date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
@@ -212,9 +205,9 @@ def get_api_log(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled - " + user.username)
 
+#Gets the items json file for suppliers
 @app.get("/get-items")
 def get_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
-    '''Gets the items json file for suppliers'''
     I_FILE_NAME = 'items.json'
     date_now = datetime.now()
     date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
@@ -238,9 +231,9 @@ def get_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled - " + user.username)
 
+#Adds items to the items josn file as a supplier
 @app.put("/add-item")
 def add_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str, itemID: str, itemName: str, itemPrice: str, itemDescription: str, itemStock: str):
-    '''Adds items to the items josn file as a supplier'''
     date_now = datetime.now()
     date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
     user_dict = API_USERS_DB.get(username)
@@ -282,10 +275,10 @@ def add_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str, item
                       + user.username  , '401')
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled - " + user.username)
-        
+
+#Updates the order qty for a specific order as an administrator
 @app.put("/update-order-qty")
 def update_order_qty(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str, orderID: str, orderQuantity: str):
-    '''Updates the order qty for a specific order as an administrator'''
     date_now = datetime.now()
     date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
     user_dict = API_USERS_DB.get(username)
@@ -315,10 +308,10 @@ def update_order_qty(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: st
                       + user.username  , '401')
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled - " + user.username)
-    
+
+#Deletes individual orders from orders json as an administrator
 @app.delete("/delete-order")
 def delete_order(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str, orderID: str):
-    '''Deletes individual orders from orders json as an administrator '''
     date_now = datetime.now()
     date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
     user_dict = API_USERS_DB.get(username)
@@ -347,5 +340,3 @@ def delete_order(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str, o
                       + user.username  , '401')
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled - " + user.username)
-
-#endregion
