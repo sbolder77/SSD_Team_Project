@@ -76,10 +76,5 @@ class Settings():
             else:
                 return "Invalid Order"
                 
-<<<<<<< Updated upstream
     def logging(self):
         return self.log
-=======
-    #def logging(self):
-        #return self.log
->>>>>>> Stashed changes
