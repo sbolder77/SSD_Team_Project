@@ -5,7 +5,7 @@ import system
 import shutil
 
 #region objects
-s = system.settings()
+s = system.Settings()
 #endregion
 
 #region variables
