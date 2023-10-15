@@ -373,6 +373,7 @@ Welcome to the shop. Please explore the following options.
 def administrator_menu(self):
     print('')
     print('----------------------------------------------------------')
+#Defining administrator authentication
     print('Admin authentication...')
     adminAuthenticator = str(input('Input administrator key to continue: '))
     key = Admin.load_adminKey(self)
@@ -383,7 +384,7 @@ def administrator_menu(self):
         print('')
         print('Incorrect entries. You exited...')
         sys.exit()
-
+#Defining the administrator menu display
     print('''
 ----------------------------------------------------------
 This is an ADMINISTRATOR account view. Please exit if not an administrator.
@@ -399,37 +400,42 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
 
     7. View all user's orders !!!
     8. Search all user's orders by order ID !!!
-    9. Edit any user's order !!!
-    10. Delete any user's order !!!
+    9. Delete any user's order !!!
 
-    11. View all user's details !!!
-    12. Edit any user's details !!!
-    13. Delete any user's account !!!
+    10. View all user's details !!!
+    11. Edit any user's details !!!
+    12. Delete any user's account !!!
     
-    14. View your administrator details !!!
-    15. Edit your administrator details !!!
-    16. Delete your administrator account !!!
+    13. View your administrator details !!!
+    14. Edit your administrator details !!!
+    15. Delete your administrator account !!!
           
-    17. Exit
+    16. Exit
 ----------------------------------------------------------
     ''')
+#Offering the user menu choices
     user_choice = str(input('Input the corresponding number to the option you wish to choose: '))
+#Defining item create function
     if user_choice == str(1):
         print('')
         creation_query = str(input("To continue with item creation input '1' or to cancel '2': "))
+#Requesting item information input from administrator
         if creation_query == str(1):
             itemID_query = str(input('Set an item ID for the item: '))
             itemName_query = str(input('Set a name for the item: '))
             itemPrice_query = str(input('Set a price for the item: '))
             itemDescription_query = str(input('Set a description for the item: '))
             itemStock_query = str(input('Set a stock count for the item: '))
+#Calling create item function which commits inputted information to items.json
             Item.create_item(self, itemID_query=itemID_query, itemName_query=itemName_query, itemPrice_query=itemPrice_query, itemDescription_query=itemDescription_query, itemStock_query=itemStock_query)
             administrator_menu(self)
         else:
             administrator_menu(self)
+#Defining item catalogue view function
     elif user_choice == str(2):
         Item.view_item(self)
         administrator_menu(self)
+#Defining catalogue search by item ID function & exit option
     elif user_choice == str(3):
         print('')
         itemID_query = str(input("Input the item ID you want to search for (or input 'exit' for menu): "))
@@ -438,6 +444,7 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
         else: 
             Item.search_itemID(self, itemID_query=itemID_query)
             administrator_menu(self)
+#Defining catalogue search by item name function & exit option
     elif user_choice == str(4):
         print('')
         itemName_query = str(input("Input the item name you want to search for (or input 'exit' for menu): "))
@@ -446,6 +453,7 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
         else: 
             Item.search_itemName(self, itemName_query=itemName_query)
             administrator_menu(self)
+#Defining catalogue search by item price function & exit option
     elif user_choice == str(5):
         print('')
         itemPrice_query = int(input("Input the item price you want to search for (or input 'exit' for menu): "))
@@ -454,6 +462,7 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
         else: 
             Item.search_itemPrice(self, itemPrice_query=itemPrice_query)
             administrator_menu(self)
+#Defining catalogue search by item ID function & exit option
     elif user_choice == str(6):
         print('')
         itemID_query = str(input("Input item ID of item to be deleted (or input 'exit' for menu): "))
@@ -461,12 +470,14 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
             administrator_menu(self)
         else:
             Item.delete_item(self, itemID_query=itemID_query)
-            administrator_menu(self)        
+            administrator_menu(self)  
+#Defining user's orders view function
     elif user_choice == str(7):
         print('')
         print('All users orders:')
         Order.view_order(self)
         administrator_menu(self)
+#Defining search by order ID function & exit option
     elif user_choice == str(8):
         print('')
         orderID_query = str(input("Input the order ID you want to search for (or input 'exit' for menu): "))
@@ -475,7 +486,8 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
         else: 
             Order.search_orderID(self, orderID_query=orderID_query)
             administrator_menu(self)
-    elif user_choice == str(10):
+#Defining search by order ID function & exit option
+    elif user_choice == str(9):
         print('')
         orderID_query = str(input("Input the order ID of the order you wish to delete (or input 'exit' for menu): "))
         if orderID_query == 'exit':
@@ -483,12 +495,12 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
         else:
             Order.delete_order(self, orderID_query=orderID_query)
             user_menu(self)
-    elif user_choice == str(11):
+    elif user_choice == str(10):
         print('')
         print('All user accounts:')
         User.view_user(self)
         administrator_menu(self)
-    elif user_choice == str(12):
+    elif user_choice == str(11):
         print('')
         userID_query = str(input("Input the user ID you want to change the details for: "))
         for i in User.user_data['users']:
@@ -555,7 +567,7 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
                     user_menu(self)
                 else:
                     user_menu(self)
-    elif user_choice == str(13):
+    elif user_choice == str(12):
         print('')
         userID_query = str(input('Input the user ID of the user account you want to delete account: '))
         for i in User.user_data['users']:
@@ -565,7 +577,7 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
                 print('')
                 print(f'User with ID: {userID_query} could not be found. Returning to menu...')
                 user_menu(self)
-    elif user_choice == str(14):
+    elif user_choice == str(13):
         print('')
         userID_query = str(input('Input the administrator ID to view the administrator account details: '))
         if userID_query == 'exit':
@@ -573,7 +585,7 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
         else:
             User.search_userID(self, userID_query=userID_query)
             user_menu(self)
-    elif user_choice == str(15):
+    elif user_choice == str(14):
         print('')
         userID_query = str(input("Input your administrator ID you want to change the details for: "))
         for i in User.user_data['users']:
@@ -640,7 +652,7 @@ This is an ADMINISTRATOR account view. Please exit if not an administrator.
                     user_menu(self)
                 else:
                     user_menu(self)
-    elif user_choice == str(16):
+    elif user_choice == str(15):
         print('')
         userID_query = str(input('WARNING: This action can only be restored manually through the back-end. Input your administrator ID to delete your account: '))
         for i in User.user_data['users']:
