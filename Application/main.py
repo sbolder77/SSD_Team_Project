@@ -231,7 +231,7 @@ def get_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled - " + user.username)
 
-#Adds items to the items josn file as a supplier
+#Adds items to the items json file as a supplier
 @app.put("/add-item")
 def add_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str, itemID: str, itemName: str, itemPrice: str, itemDescription: str, itemStock: str):
     date_now = datetime.now()
@@ -276,7 +276,7 @@ def add_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str, item
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled - " + user.username)
 
-#Updates the order qty for a specific order as an administrator
+#Updates the order quantity for a specific order as an administrator
 @app.put("/update-order-qty")
 def update_order_qty(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str, orderID: str, orderQuantity: str):
     date_now = datetime.now()
