@@ -1,11 +1,6 @@
 """Importing necessary modules"""
 import json
 from cryptography.fernet import Fernet
-#import filelogging
-
-#region objects
-#l = filelogging.LoggingDetails()
-#endregion
 
 class User():
     """Defining User() class and downstream functions"""
