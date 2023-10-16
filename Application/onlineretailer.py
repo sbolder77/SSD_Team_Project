@@ -21,7 +21,13 @@ def main(self):
             print('')
             print('Firstly, set your login information...')
 #Setting a password, depositing it and encrypting it
-            userPassword_query = input('Input a password: ')
+            i = 1
+            while i == 1:
+                userPassword_query = input('Input a password (must be at least 8 characters): ')
+                if len(userPassword_query) < 8:
+                    print('Try again')
+                else:
+                    break
             User.write_passwordDeposit(self, userPassword_query)
             User.write_userKey(self)
             key = User.load_userKey(self)
