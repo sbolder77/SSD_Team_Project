@@ -34,4 +34,3 @@ class Admin():
             encrypted_password = file.read()
         decrypted_password = f.decrypt(encrypted_password).decode()
         return decrypted_password
-    
