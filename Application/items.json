@@ -1,3 +1,11 @@
 {
-    "items": []
+    "items": [
+        {
+            "itemID": "item",
+            "itemName": "item",
+            "itemPrice": "item",
+            "itemDescription": "item",
+            "itemStock": "item"
+        }
+    ]
 }
