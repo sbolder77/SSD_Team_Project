@@ -1,5 +1,4 @@
 """Importing necessary modules"""
-import sys
 import json
 from cryptography.fernet import Fernet
 #import filelogging
@@ -26,7 +25,7 @@ class User():
                     user_card_expiry_query, user_card_cvc_query):
         """Defining user create function and it's variables"""
         user = {
-            "user_username": user_username_query,
+            "userUsername": user_username_query,
             "userID": user_id_query,
             "userName": user_name_query,
             "userEmailAddress": user_email_address_query,
@@ -56,17 +55,18 @@ class User():
     def view_user(self):
         """Defining view user function & printing out objects in users.json"""
         for i in User.user_data['users']:
-            print(f"Username:{i['user_username']} \nID:{i['user_id']} \nName:{i['user_name']}")
-            print(f"\nEmail Address:{i['user_email_address']}")
-            print(f"\nHouse Number:{i['user_house_number']}")
-            print(f"\nStreet:{i['user_street']} \nTown:{i['user_town']}")
-            print(f"\nCountry:{i['user_country']}")
-            print(f"\nPostcode:{i['user_postcode']} \nBank Name:{i['user_bank_name']}")
-            print(f"\nBank Account Name:{i['user_bank_account_name']}")
-            print(f"\nBank Account BSB:{i['user_bank_account_bsb']}")
-            print(f"\nBank Account Number:{i['userBank_cccount_number']}")
-            print(f"\nCard Name:{i['user_card_name']} \nCard Number:{i['user_card_number']}")
-            print(f"\nCard Expiry{i['user_card_expiry']} \nCard CVC:{i['user_card_cvc']}")
+            print(f"Username:{i['userUsername']} \nID:{i['userID']} \nName:{i['userName']}")
+            print(f"Email Address:{i['userEmailAddress']}")
+            print(f"House Number:{i['userHouseNumber']}")
+            print(f"Street:{i['userStreet']} \nTown:{i['userTown']}")
+            print(f"Country:{i['userCountry']}")
+            print(f"Postcode:{i['userPostcode']}") 
+            print(f"\nBank Name:{i['userBankName']}")
+            print(f"Bank Account Name:{i['userBankAccountName']}")
+            print(f"Bank Account BSB:{i['userBankAccountBSB']}")
+            print(f"Bank Account Number:{i['userBankAccountNumber']}")
+            print(f"\nCard Name:{i['userCardName']} \nCard Number:{i['userCardNumber']}")
+            print(f"Card Expiry{i['userCardExpiry']} \nCard CVC:{i['userCardCVC']}")
 
     def search_user_username(self, user_username_query):
         """#Defining user search by username function & printing out relevant object in users.json 
@@ -75,16 +75,17 @@ class User():
         finder = False
         for i in User.user_data['users']:
             if i['userUsername'] == _username:
-                print(f"Username:{i['user_username']} \nID:{i['user_id']} \nName:{i['user_name']}")
-                print(f"\nEmail Address:{i['user_email_address']}")
-                print(f"\nHouse Number:{i['user_house_number']} \nStreet:{i['user_street']}")
-                print(f"\nTown:{i['user_town']} \nCountry:{i['user_country']}")
-                print(f"\nPostcode:{i['user_postcode']} \nBank Name:{i['user_bank_name']}")
-                print(f"\nBank Account Name:{i['user_bank_account_name']}")
-                print(f"\nBank Account BSB:{i['user_bank_account_bsb']}")
-                print(f"\nBank Account Number:{i['userBank_cccount_number']}")
-                print(f"\nCard Name:{i['user_card_name']} \nCard Number:{i['user_card_number']}")
-                print(f"\nCard Expiry{i['user_card_expiry']} \nCard CVC:{i['user_card_cvc']}")
+                print(f"Username:{i['userUsername']} \nID:{i['userID']} \nName:{i['userName']}")
+                print(f"Email Address:{i['userEmailAddress']}")
+                print(f"House Number:{i['userHouseNumber']} \nStreet:{i['userStreet']}")
+                print(f"Town:{i['userTown']} \nCountry:{i['userCountry']}")
+                print(f"Postcode:{i['userPostcode']}")
+                print(f"\nBank Name:{i['userBankName']}")
+                print(f"Bank Account Name:{i['userBankAccountName']}")
+                print(f"Bank Account BSB:{i['userBankAccountBSB']}")
+                print(f"Bank Account Number:{i['userBankAccountNumber']}")
+                print(f"\nCard Name:{i['userCardName']} \nCard Number:{i['userCardNumber']}")
+                print(f"Card Expiry{i['userCardExpiry']} \nCard CVC:{i['userCardCVC']}")
                 finder = True
                 break
         if finder is False:
@@ -96,17 +97,18 @@ class User():
         _ID = user_id_query
         finder = False
         for i in User.user_data['users']:
-            if i['user_id'] == _ID:
-                print(f"Username:{i['user_username']} \nID:{i['user_id']} \nName:{i['user_name']}")
-                print(f"\nEmail Address:{i['user_email_address']}")
-                print(f"\nHouse Number:{i['user_house_number']} \nStreet:{i['user_street']}")
-                print(f"\nTown:{i['user_town']} \nCountry:{i['user_country']}")
-                print(f"\nPostcode:{i['user_postcode']} \nBank Name:{i['user_bank_name']}")
-                print(f"\nBank Account Name:{i['user_bank_account_name']}")
-                print(f"\nBank Account BSB:{i['user_bank_account_bsb']}")
-                print(f"\nBank Account Number:{i['userBank_cccount_number']}")
-                print(f"\nCard Name:{i['user_card_name']} \nCard Number:{i['user_card_number']}")
-                print(f"\nCard Expiry{i['user_card_expiry']} \nCard CVC:{i['user_card_cvc']}")
+            if i['userID'] == _ID:
+                print(f"Username:{i['userUsername']} \nID:{i['userID']} \nName:{i['userName']}")
+                print(f"Email Address:{i['userEmailAddress']}")
+                print(f"House Number:{i['userHouseNumber']} \nStreet:{i['userStreet']}")
+                print(f"Town:{i['userTown']} \nCountry:{i['userCountry']}")
+                print(f"Postcode:{i['userPostcode']}")
+                print(f"\nBank Name:{i['userBankName']}")
+                print(f"Bank Account Name:{i['userBankAccountName']}")
+                print(f"Bank Account BSB:{i['userBankAccountBSB']}")
+                print(f"Bank Account Number:{i['userBankAccountNumber']}")
+                print(f"\nCard Name:{i['userCardName']} \nCard Number:{i['userCardNumber']}")
+                print(f"Card Expiry{i['userCardExpiry']} \nCard CVC:{i['userCardCVC']}")
                 finder = True
                 break
         if finder is False:
@@ -127,34 +129,34 @@ class User():
             User.encrypt(self, 'encrypted_password.csv', key)
         for i in User.user_data['users']:
             if user_edit_choice == str(2):
-                if i['user_id'] == user_id_query:
-                    i['user_username'] = new_user_username
+                if i['userID'] == user_id_query:
+                    i['userUsername'] = new_user_username
             elif user_edit_choice == str(3):
-                if i['user_id'] == user_id_query:
-                    i['user_name'] = new_user_name
+                if i['userID'] == user_id_query:
+                    i['userName'] = new_user_name
             elif user_edit_choice == str(4):
-                if i['user_id'] == user_id_query:
-                    i['user_email_address'] = new_user_email_address
+                if i['userID'] == user_id_query:
+                    i['userEmailAddress'] = new_user_email_address
             elif user_edit_choice == str(5):
                 if i['userID'] == user_id_query:
-                    i['user_house_number'] = new_user_house_number
-                    i['user_street'] = new_user_street
-                    i['user_town'] = new_user_town
-                    i['user_country'] = new_user_country
-                    i['user_postcode'] = new_user_postcode
-                    i['user_house_number'] = new_user_house_number
+                    i['userHouseNumber'] = new_user_house_number
+                    i['userStreet'] = new_user_street
+                    i['userTown'] = new_user_town
+                    i['userCountry'] = new_user_country
+                    i['userPostcode'] = new_user_postcode
+                    i['userHouseNumber'] = new_user_house_number
             elif user_edit_choice == str(6):
-                if i['user_id'] == user_id_query:
-                    i['user_bank_name'] = new_user_bank_name
-                    i['user_bank_account_name'] = new_user_bank_account_name
-                    i['user_bank_account_bsb'] = new_user_bank_account_bsb
-                    i['user_bank_account_number'] = new_user_bank_account_number
+                if i['userID'] == user_id_query:
+                    i['userBankName'] = new_user_bank_name
+                    i['userBankAccountName'] = new_user_bank_account_name
+                    i['userBankAccountBSB'] = new_user_bank_account_bsb
+                    i['userBankAccountNumber'] = new_user_bank_account_number
             else:
-                if i['user_id'] == user_id_query:
-                    i['user_card_name'] = new_user_card_name
-                    i['user_card_number'] = new_user_card_number
-                    i['user_card_expiry'] = new_user_card_expiry
-                    i['user_card_cvc'] = new_user_card_cvc
+                if i['userID'] == user_id_query:
+                    i['userCardName'] = new_user_card_name
+                    i['userCardNumber'] = new_user_card_number
+                    i['userCardExpiry'] = new_user_card_expiry
+                    i['userCardCVC'] = new_user_card_cvc
         with open('users.json', 'w', encoding='utf-8') as f:
             json.dump(User.user_data, f, indent=4, separators=(',', ': '))
             print('')
@@ -164,16 +166,11 @@ class User():
         """#Defining item deletion by item ID function or reporting it unfound"""
         _user_id = user_id_query
         for i in User.user_data['users']:
-            if i['user_id'] == _user_id:
+            if i['userID'] == _user_id:
 #Deleting (popping) relevant object from orders.json
                 User.user_data['users'].pop(User.user_data['users'].index(i))
-                print('')
-                print(f"Your account with ID '{_user_id}' was deleted.")
                 with open('users.json', 'w', encoding='utf-8') as f:
                     json.dump(User.user_data, f, indent=4, separators=(',', ': '))
-                print('')
-                print('You exited.')
-                sys.exit()
             else:
                 pass
 
