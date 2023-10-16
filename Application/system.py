@@ -1,16 +1,16 @@
-#https://www.geeksforgeeks.org/encrypt-and-decrypt-files-using-python/
-#https://regex-generator.olafneumann.org
+"""https://www.geeksforgeeks.org/encrypt-and-decrypt-files-using-python/
+https://regex-generator.olafneumann.org"""
 
 #Importing necessary modules
 import json
-from cryptography.fernet import Fernet
-import filelogging
 from datetime import datetime
 import re
+from cryptography.fernet import Fernet
+import filelogging
 
 #Create json readable object
-filename = 'system.json'
-f = open(filename)
+FILE_NAME = 'system.json'
+f = open(FILE_NAME)
 data = json.load(f)
 
 #Variables
@@ -19,10 +19,10 @@ USER_NON_ALPHA = re.compile('[A-Z]+_[A-Z]')
 ITEM_ALPHA = re.compile('[^A-Z0-9]+')
 ORDER_ALPHA = re.compile('[^A-Z0-9]+')
 
-#Defining Settings() class and downstream functions
 class Settings():
-#Defining __init__
+    """Defining Settings() class and downstream functions"""
     def __init__(self):
+        """Defining __init__"""
         for x in data:
             self.log = x['log']
             self.ssl = x['ssl']
@@ -30,57 +30,55 @@ class Settings():
             self.encrypt = x['encrypt']
             self.useregex = x['useregex']
 
-#Defining file encryption functionality
-    def encryptfile(self, filename, user):
+    def encryptfile(self, file_name, user):
+        """Defining file encryption functionality"""
         l = filelogging.LoggingDetails()
         if self.encrypt == 'TRUE':
-            with open(filename, 'rb') as file:
+            with open(file_name, 'rb') as file:
                 original = file.read()
             encrypted = fernet.encrypt(original)
-            with open(filename, 'wb') as encrypted_file:
+            with open(file_name, 'wb') as encrypted_file:
                 encrypted_file.write(encrypted)
-            l.write_system_log("SYSTEM", "INFO", filename + " has been encrypted", user)
-            return filename + " has been encrypted"
+            l.write_system_log("SYSTEM", "INFO", file_name + " has been encrypted", user)
+            return file_name + " has been encrypted"
 
-#Defining file decryption functionality
-    def decryptfile(self, filename, user):
+    def decryptfile(self, file_name, user):
+        """Defining file decryption functionality"""
         l = filelogging.LoggingDetails()
         if self.encrypt == 'TRUE':
-            with open(filename, 'rb') as enc_file:
+            with open(file_name, 'rb') as enc_file:
                 encrypted = enc_file.read()
             decrypted = fernet.encrypt(encrypted)
-            with open(filename, 'wb') as decrypted_file:
+            with open(file_name, 'wb') as decrypted_file:
                 decrypted_file.write(decrypted)
-            l.write_system_log("SYSTEM", "INFO", filename + " has been decrypted", user)
-            return filename + " has been decrypted"
+            l.write_system_log("SYSTEM", "INFO", file_name + " has been decrypted", user)
+            return file_name + " has been decrypted"
 
-#Defining user regex functionality
     def regex_user(self, user):
+        """Defining user regex functionality"""
         if self.useregex == 'TRUE':
             user = USER_NON_ALPHA.sub('', user.upper())
             if USER_NON_ALPHA.match(user):
                 return "Valid User"
-            else:
-                return "Invalid User"
+            return "Invalid User"
 
-#Defining item regex functionality
     def regex_item(self, item):
+        """Defining item regex functionality"""
         if self.useregex == 'TRUE':
             item = USER_NON_ALPHA.sub('', item.upper())
             if USER_NON_ALPHA.match(item):
                 return "Valid Item"
-            else:
-                return "Invalid Item"
 
-#Defining order regex functionality
+            return "Invalid Item"
+
     def regex_order(self, order):
+        """Defining order regex functionality"""
         if self.useregex == 'TRUE':
             order = USER_NON_ALPHA.sub('', order.upper())
             if USER_NON_ALPHA.match(order):
                 return "Valid Order"
-            else:
-                return "Invalid Order"
+            return "Invalid Order"
 
-#Defining logging functionality
     def logging(self):
+        """Defining logging functionality"""
         return self.log

@@ -1,11 +1,11 @@
-#Importing necessary modules
+"""Importing necessary modules"""
 import uvicorn
 
-#Variables SSL 
+#Variables SSL
 SSL = 'FALSE'
 
 #Run program
-if __name__ == '__main__': 
+if __name__ == '__main__':
 #Variable equals True
     if SSL == 'TRUE':
         uvicorn.run("main:app",

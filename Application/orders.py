@@ -1,25 +1,25 @@
-#Importing necesary module
+"""Importing necesary module"""
 import json
 
-#Defining Order() class and downstream functions
 class Order():
+    """Defining Order() class and downstream functions"""
 #Opening/creating an orders.json file and loading it as 'order_data'
-    with open('orders.json', encoding='utf-8') as f:    
+    with open('orders.json', encoding='utf-8') as f:
         order_data = json.load(f)
 
-#Defining __init__
     def __init__(self):
-        pass
+        """Defining __init__"""
 
-#Defining order create function and it's variables
-    def create_order(self, orderID_query, orderUsername_query, orderName_query, orderItem_query, orderQuantity_query, orderDeliveryType_query):
+    def create_order(self, order_id_query, order_username_query, order_name_query, order_item_query,
+                     order_quantity_query, order_delivery_type_query):
+        """Defining order create function and it's variables"""
         order = {
-            "orderID": orderID_query,
-            "orderUsername": orderUsername_query,
-            "orderName": orderName_query,
-            "orderItem": orderItem_query,
-            "orderQuantity": orderQuantity_query,
-            "orderDeliveryType": orderDeliveryType_query
+            "order_id": order_id_query,
+            "order_username": order_username_query,
+            "order_name": order_name_query,
+            "order_item": order_item_query,
+            "order_quantity": order_quantity_query,
+            "order_delivery_type": order_delivery_type_query
         }
 #Appending retrieved variables to orders.json file and reporting order created
         Order.order_data['orders'].append(order)
@@ -28,58 +28,64 @@ class Order():
             print ('')
             print("Order created.")
 
-#Defining view order function & printing out objects in orders.json
     def view_order(self):
+        """Defining view order function & printing out objects in orders.json"""
         for i in Order.order_data['orders']:
-            print(f"\nID:{i['orderID']} \nUsername:{i['orderUsername']} \nName:{i['orderName']} \nItem:{i['orderItem']} \nQuantity:{i['orderQuantity']} \nDelivery Type:{i['orderDeliveryType']}")
+            print(f"\nID:{i['orderID']} \nUsername:{i['orderUsername']} \nName:{i['orderName']}")
+            print(f"\nItem:{i['orderItem']} \nQuantity:{i['orderQuantity']}")
+            print(f"\nDelivery Type:{i['orderDeliveryType']}")
 
-#Defining order search by order ID function & printing out relevant object in orders.json or reporting it unfound
-    def search_orderID(self, orderID_query):
-        _ID = orderID_query
+    def search_order_id(self, order_id_query):
+        """Defining order search by order ID function & printing out relevant object in 
+        orders.json or reporting it unfound"""
+        _ID = order_id_query
         finder = False
         for i in Order.order_data['orders']:
             if i['orderID'] == _ID:
                 print('')
                 print('The order you searched for:')
-                print(f"\nID:{i['orderID']} \nUsername:{i['orderUsername']} \nItem:{i['orderItem']} \nQuantity:{i['orderQuantity']} \nDelivery Type:{i['orderDeliveryType']}")
+                print(f"\nID:{i['orderID']} \nUsername:{i['orderUsername']}")
+                print(f"\nItem:{i['orderItem']} \nQuantity:{i['orderQuantity']}")
+                print(f"\nDelivery Type:{i['orderDeliveryType']}")
                 finder = True
                 break
-        if finder == False:
+        if finder is False:
             print(f"{_ID} order cannot be found.")
 
-#Defining item edit function
-    def edit_order(self, orderID_query, orderEdit_choice, new_orderName, new_orderItem, new_orderQuantity, new_orderDeliveryType):
-#Defining conditional execution for each user choice & witing edit to file
+    def edit_order(self, order_id_query, order_edit_choice, new_order_name, new_order_item,
+                   new_order_quantity, new_order_delivery_type):
+        """Defining conditional execution for each user choice & witing edit to file
+        Defining item edit function"""
         for i in Order.order_data['orders']:
-            if orderEdit_choice == str(1):
-                if i['orderID'] == orderID_query:
-                    i['orderName'] = new_orderName
-            elif orderEdit_choice == str(2):
-                if i['orderID'] == orderID_query:
-                    i['orderItem'] = new_orderItem
-                    i['orderQuantity'] = new_orderQuantity
+            if order_edit_choice == str(1):
+                if i['order_id'] == order_id_query:
+                    i['order_name'] = new_order_name
+            elif order_edit_choice == str(2):
+                if i['order_id'] == order_id_query:
+                    i['order_item'] = new_order_item
+                    i['order_quantity'] = new_order_quantity
             else:
-                if i['orderID'] == orderID_query:
-                    i['orderDeliveryType'] = new_orderDeliveryType
+                if i['order_id'] == order_id_query:
+                    i['order_delivery_type'] = new_order_delivery_type
         with open('orders.json', 'w', encoding='utf-8') as f:
             json.dump(Order.order_data, f, indent=4, separators=(',', ': '))
             print('')
             print('Update made.')
-            
-#Defining item deletion by item ID function or reporting it unfound
-    def delete_order(self, orderID_query):
-        _orderID = orderID_query
+
+    def delete_order(self, order_id_query):
+        """Defining item deletion by item ID function or reporting it unfound"""
+        _order_id = order_id_query
         finder = False
         for i in Order.order_data['orders']:
-            if i['orderID'] == _orderID:
+            if i['order_id'] == _order_id:
 #Deleting (popping) relevant object from orders.json
                 Order.order_data['orders'].pop(Order.order_data['orders'].index(i))
                 finder = True
                 print('')
-                print(f"Order with ID '{_orderID}' was deleted.")
+                print(f"Order with ID '{_order_id}' was deleted.")
                 break
         with open('orders.json', 'w', encoding='utf-8') as f:
             json.dump(Order.order_data, f, indent=4, separators=(',', ': '))
-        if finder == False:
+        if finder is False:
             print('')
-            print(f"Order with ID '{_orderID}' could not be found.")
+            print(f"Order with ID '{_order_id}' could not be found.")

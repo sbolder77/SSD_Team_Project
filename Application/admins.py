@@ -1,25 +1,24 @@
-#Importing necessary modules
 from cryptography.fernet import Fernet
 
-#Defining Admin() class and it's downstream functions
 class Admin():
-#Defining writing administrator authentication deposit file
-    def write_administratorDeposit(self, adminAuthenticator):
-        with open("adminKey.csv", "w", encoding='utf-8') as file:
-            file.write(adminAuthenticator)
-            
-#Defining generating of administrator key and writing it to a file
-    def write_adminKey(self):
+    """Defining Admin() class and it's downstream functions"""
+    def write_administrator_deposit(self, admin_authenticator):
+        """Defining writing administrator authentication deposit file"""
+        with open("admin_key.csv", "w", encoding='utf-8') as file:
+            file.write(admin_authenticator)
+
+    def write_admin_key(self):
+        """Defining generating of administrator key and writing it to a file"""
         key = Fernet.generate_key()
-        with open ("key.adminKey", "wb") as key_file:
+        with open ("key.admin_key", "wb") as key_file:
             key_file.write(key)
 
-#Defining loading of admin key
-    def load_adminKey(self):
-        return open("key.adminKey", "rb").read()
+    def load_admin_key(self):
+        """Defining loading of admin key"""
+        return open("key.admin_key", "rb").read()
 
-#Defining of encrypting input from user, writing it to a file & returning it
     def encrypt(self, filename, key):
+        """Defining of encrypting input from user, writing it to a file & returning it"""
         f = Fernet(key)
         with open(filename, "rb") as file:
             file_data = file.read()
@@ -28,10 +27,11 @@ class Admin():
             file.write(encrypted_password)
         return encrypted_password
 
-#Defining of decrypting input from user, writing it to a file & returning it
     def decrypt(self, filename, key):
+        """Defining of decrypting input from user, writing it to a file & returning it"""
         f = Fernet(key)
         with open(filename, "rb") as file:
             encrypted_password = file.read()
         decrypted_password = f.decrypt(encrypted_password).decode()
         return decrypted_password
+    

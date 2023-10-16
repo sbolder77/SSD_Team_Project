@@ -1,43 +1,48 @@
-#Importing necessary modules
-from cryptography.fernet import Fernet
+"""Importing necessary modules"""
 import sys
 import json
-import filelogging
+from cryptography.fernet import Fernet
+#import filelogging
 
 #region objects
 #l = filelogging.LoggingDetails()
 #endregion
 
-#Defining User() class and downstream functions
 class User():
+    """Defining User() class and downstream functions"""
 #Opening/creating an users.json file and loading it as 'user_data'
-    with open('users.json', encoding='utf-8') as f:    
+    with open('users.json', encoding='utf-8') as f:
         user_data = json.load(f)
 
 #Defining __init__
     def __init__(self):
         pass
 
-#Defining user create function and it's variables
-    def create_user(self, userUsername_query, userID_query, userName_query, userEmailAddress_query, userHouseNumber_query, userStreet_query, userTown_query, userCountry_query, userPostcode_query, userBankName_query, userBankAccountName_query, userBankAccountBSB_query, userBankAccountNumber_query, userCardName_query, userCardNumber_query, userCardExpiry_query, userCardCVC_query):
+    def create_user(self, user_username_query, user_id_query, user_name_query,
+                    user_email_address_query, user_house_number_query, user_street_query,
+                    user_town_query, user_country_query, user_postcode_query,
+                    user_bank_name_query, user_bank_account_name_query, user_bank_account_bsb_query,
+                    user_bank_account_number_query, user_card_name_query, user_card_number_query,
+                    user_card_expiry_query, user_card_cvc_query):
+        """Defining user create function and it's variables"""
         user = {
-            "userUsername": userUsername_query,
-            "userID": userID_query,
-            "userName": userName_query,
-            "userEmailAddress": userEmailAddress_query,
-            "userHouseNumber": userHouseNumber_query,
-            "userStreet": userStreet_query,
-            "userTown": userTown_query,
-            "userCountry": userCountry_query,
-            "userPostcode": userPostcode_query,
-            "userBankName": userBankName_query,
-            "userBankAccountName": userBankAccountName_query,
-            "userBankAccountBSB": userBankAccountBSB_query,
-            "userBankAccountNumber": userBankAccountNumber_query,
-            "userCardName": userCardName_query,
-            "userCardNumber": userCardNumber_query,
-            "userCardExpiry": userCardExpiry_query,
-            "userCardCVC": userCardCVC_query
+            "user_username": user_username_query,
+            "userID": user_id_query,
+            "userName": user_name_query,
+            "userEmailAddress": user_email_address_query,
+            "userHouseNumber": user_house_number_query,
+            "userStreet": user_street_query,
+            "userTown": user_town_query,
+            "userCountry": user_country_query,
+            "userPostcode": user_postcode_query,
+            "userBankName": user_bank_name_query,
+            "userBankAccountName": user_bank_account_name_query,
+            "userBankAccountBSB": user_bank_account_bsb_query,
+            "userBankAccountNumber": user_bank_account_number_query,
+            "userCardName": user_card_name_query,
+            "userCardNumber": user_card_number_query,
+            "userCardExpiry": user_card_expiry_query,
+            "userCardCVC": user_card_cvc_query
         }
 #Appending retrieved variables to users.json file and reporting item created
         User.user_data['users'].append(user)
@@ -48,87 +53,122 @@ class User():
             print('----------------------------------------------------------')
         #l.write_system_log('USER', 'INFO', userID_query + ' - created', userName_query)
 
-#Defining view user function & printing out objects in users.json
     def view_user(self):
+        """Defining view user function & printing out objects in users.json"""
         for i in User.user_data['users']:
-            print(f"Username:{i['userUsername']} \nID:{i['userID']} \nName:{i['userName']} \nEmail Address:{i['userEmailAddress']} \nHouse Number:{i['userHouseNumber']} \nStreet:{i['userStreet']} \nTown:{i['userTown']} \nCountry:{i['userCountry']} \nPostcode:{i['userPostcode']} \nBank Name:{i['userBankName']} \nBank Account Name:{i['userBankAccountName']} \nBank Account BSB:{i['userBankAccountBSB']} \nBank Account Number:{i['userBankAccountNumber']} \nCard Name:{i['userCardName']} \nCard Number:{i['userCardNumber']} \nCard Expiry{i['userCardExpiry']} \nCard CVC:{i['userCardCVC']}")
+            print(f"Username:{i['user_username']} \nID:{i['user_id']} \nName:{i['user_name']}")
+            print(f"\nEmail Address:{i['user_email_address']}")
+            print(f"\nHouse Number:{i['user_house_number']}")
+            print(f"\nStreet:{i['user_street']} \nTown:{i['user_town']}")
+            print(f"\nCountry:{i['user_country']}")
+            print(f"\nPostcode:{i['user_postcode']} \nBank Name:{i['user_bank_name']}")
+            print(f"\nBank Account Name:{i['user_bank_account_name']}")
+            print(f"\nBank Account BSB:{i['user_bank_account_bsb']}")
+            print(f"\nBank Account Number:{i['userBank_cccount_number']}")
+            print(f"\nCard Name:{i['user_card_name']} \nCard Number:{i['user_card_number']}")
+            print(f"\nCard Expiry{i['user_card_expiry']} \nCard CVC:{i['user_card_cvc']}")
 
-#Defining user search by username function & printing out relevant object in users.json or reporting it unfound
-    def search_userUsername(self, userUsername_query):
-        _username = userUsername_query
+    def search_user_username(self, user_username_query):
+        """#Defining user search by username function & printing out relevant object in users.json 
+        or reporting it unfound"""
+        _username = user_username_query
         finder = False
         for i in User.user_data['users']:
             if i['userUsername'] == _username:
-                print(f"Username:{i['userUsername']} | ID:{i['userID']} | Name:{i['userName']} | Email Address:{i['userEmailAddress']} | House Number:{i['userHouseNumber']} | Street:{i['userstreet']} | Town:{i['userTown']} | Country:{i['userCountry']} | Postcode:{i['userPostcode']} | Bank Name:{i['userBankName']} | Bank Account Name:{i['userBankAccountName']} | Bank Account BSB:{i['userBankAccountBSB']} | Bank Account Number:{i['userBankAccountNumber']} | Card Name:{i['userCardName']} | Card Number:{i['userCardNumber']} | Card Expiry{i['userCardExpiry']} | Card CVC:{i['userCardCVC']}")
+                print(f"Username:{i['user_username']} \nID:{i['user_id']} \nName:{i['user_name']}")
+                print(f"\nEmail Address:{i['user_email_address']}")
+                print(f"\nHouse Number:{i['user_house_number']} \nStreet:{i['user_street']}")
+                print(f"\nTown:{i['user_town']} \nCountry:{i['user_country']}")
+                print(f"\nPostcode:{i['user_postcode']} \nBank Name:{i['user_bank_name']}")
+                print(f"\nBank Account Name:{i['user_bank_account_name']}")
+                print(f"\nBank Account BSB:{i['user_bank_account_bsb']}")
+                print(f"\nBank Account Number:{i['userBank_cccount_number']}")
+                print(f"\nCard Name:{i['user_card_name']} \nCard Number:{i['user_card_number']}")
+                print(f"\nCard Expiry{i['user_card_expiry']} \nCard CVC:{i['user_card_cvc']}")
                 finder = True
                 break
-        if finder == False:
+        if finder is False:
             print(f"{_username} cannot be found.")
 
-#Defining user search by user ID function & printing out relevant object in users.json or reporting it unfound
-    def search_userID(self, userID_query):
-        _ID = userID_query
+    def search_user_id(self, user_id_query):
+        """Defining user search by user ID function & printing out relevant object in users.json or 
+        reporting it unfound"""
+        _ID = user_id_query
         finder = False
         for i in User.user_data['users']:
-            if i['userID'] == _ID:
-                print(f"Username:{i['userUsername']} | ID:{i['userID']} | Name:{i['userName']} | Email Address:{i['userEmailAddress']} | House Number:{i['userHouseNumber']} | Street:{i['userstreet']} | Town:{i['userTown']} | Country:{i['userCountry']} | Postcode:{i['userPostcode']} | Bank Name:{i['userBankName']} | Bank Account Name:{i['userBankAccountName']} | Bank Account BSB:{i['userBankAccountBSB']} | Bank Account Number:{i['userBankAccountNumber']} | Card Name:{i['userCardName']} | Card Number:{i['userCardNumber']} | Card Expiry{i['userCardExpiry']} | Card CVC:{i['userCardCVC']}")
+            if i['user_id'] == _ID:
+                print(f"Username:{i['user_username']} \nID:{i['user_id']} \nName:{i['user_name']}")
+                print(f"\nEmail Address:{i['user_email_address']}")
+                print(f"\nHouse Number:{i['user_house_number']} \nStreet:{i['user_street']}")
+                print(f"\nTown:{i['user_town']} \nCountry:{i['user_country']}")
+                print(f"\nPostcode:{i['user_postcode']} \nBank Name:{i['user_bank_name']}")
+                print(f"\nBank Account Name:{i['user_bank_account_name']}")
+                print(f"\nBank Account BSB:{i['user_bank_account_bsb']}")
+                print(f"\nBank Account Number:{i['userBank_cccount_number']}")
+                print(f"\nCard Name:{i['user_card_name']} \nCard Number:{i['user_card_number']}")
+                print(f"\nCard Expiry{i['user_card_expiry']} \nCard CVC:{i['user_card_cvc']}")
                 finder = True
                 break
-        if finder == False:
+        if finder is False:
             print(f'{_ID} cannot be found.')
 
-#Defining user edit function
-    def edit_user(self, userID_query, userEdit_choice, new_userPassword, new_userUsername, new_userName, new_userEmailAddress, new_userHouseNumber, new_userStreet, new_userTown, new_userCountry, new_userPostcode, new_userBankName, new_userBankAccountName, new_userBankAccountBSB, new_userBankAccountNumber, new_userCardName, new_userCardNumber, new_userCardExpiry, new_userCardCVC):
+    def edit_user(self, user_id_query, user_edit_choice, new_user_password, new_user_username,
+                  new_user_name, new_user_email_address, new_user_house_number, new_user_street,
+                  new_user_town, new_user_country, new_user_postcode,
+                  new_user_bank_name, new_user_bank_account_name, new_user_bank_account_bsb,
+                  new_user_bank_account_number, new_user_card_name, new_user_card_number,
+                  new_user_card_expiry, new_user_card_cvc):
+        """Defining user edit function"""
 #Defining conditional execution for each user choice & witing edit to file
-        if userEdit_choice == str(1):
-            User.write_passwordDeposit(self, new_userPassword)
-            User.write_userKey(self)
-            key = User.load_userKey(self)
-            User.encrypt(self, 'encryptedPassword.csv', key)
+        if user_edit_choice == str(1):
+            User.write_password_deposit(self, new_user_password)
+            User.write_user_key(self)
+            key = User.load_user_key(self)
+            User.encrypt(self, 'encrypted_password.csv', key)
         for i in User.user_data['users']:
-            if userEdit_choice == str(2):
-                if i['userID'] == userID_query:
-                    i['userUsername'] = new_userUsername
-            elif userEdit_choice == str(3):
-                if i['userID'] == userID_query:
-                    i['userName'] = new_userName
-            elif userEdit_choice == str(4):
-                if i['userID'] == userID_query:
-                    i['userEmailAddress'] = new_userEmailAddress
-            elif userEdit_choice == str(5):
-                if i['userID'] == userID_query:
-                    i['userHouseNumber'] = new_userHouseNumber
-                    i['userStreet'] = new_userStreet
-                    i['userTown'] = new_userTown
-                    i['userCountry'] = new_userCountry
-                    i['userPostcode'] = new_userPostcode
-                    i['userHouseNumber'] = new_userHouseNumber
-            elif userEdit_choice == str(6):
-                if i['userID'] == userID_query:
-                    i['userBankName'] = new_userBankName
-                    i['userBankAccountName'] = new_userBankAccountName
-                    i['userBankAccountBSB'] = new_userBankAccountBSB
-                    i['userBankAccountNumber'] = new_userBankAccountNumber
+            if user_edit_choice == str(2):
+                if i['user_id'] == user_id_query:
+                    i['user_username'] = new_user_username
+            elif user_edit_choice == str(3):
+                if i['user_id'] == user_id_query:
+                    i['user_name'] = new_user_name
+            elif user_edit_choice == str(4):
+                if i['user_id'] == user_id_query:
+                    i['user_email_address'] = new_user_email_address
+            elif user_edit_choice == str(5):
+                if i['userID'] == user_id_query:
+                    i['user_house_number'] = new_user_house_number
+                    i['user_street'] = new_user_street
+                    i['user_town'] = new_user_town
+                    i['user_country'] = new_user_country
+                    i['user_postcode'] = new_user_postcode
+                    i['user_house_number'] = new_user_house_number
+            elif user_edit_choice == str(6):
+                if i['user_id'] == user_id_query:
+                    i['user_bank_name'] = new_user_bank_name
+                    i['user_bank_account_name'] = new_user_bank_account_name
+                    i['user_bank_account_bsb'] = new_user_bank_account_bsb
+                    i['user_bank_account_number'] = new_user_bank_account_number
             else:
-                if i['userID'] == userID_query:
-                    i['userCardName'] = new_userCardName
-                    i['userCardNumber'] = new_userCardNumber
-                    i['userCardExpiry'] = new_userCardExpiry
-                    i['userCardCVC'] = new_userCardCVC
+                if i['user_id'] == user_id_query:
+                    i['user_card_name'] = new_user_card_name
+                    i['user_card_number'] = new_user_card_number
+                    i['user_card_expiry'] = new_user_card_expiry
+                    i['user_card_cvc'] = new_user_card_cvc
         with open('users.json', 'w', encoding='utf-8') as f:
             json.dump(User.user_data, f, indent=4, separators=(',', ': '))
             print('')
             print('Update made.')
 
-#Defining item deletion by item ID function or reporting it unfound
-    def delete_user(self, userID_query):
-        _userID = userID_query
+    def delete_user(self, user_id_query):
+        """#Defining item deletion by item ID function or reporting it unfound"""
+        _user_id = user_id_query
         for i in User.user_data['users']:
-            if i['userID'] == _userID:
+            if i['user_id'] == _user_id:
 #Deleting (popping) relevant object from orders.json
                 User.user_data['users'].pop(User.user_data['users'].index(i))
                 print('')
-                print(f"Your account with ID '{_userID}' was deleted.")
+                print(f"Your account with ID '{_user_id}' was deleted.")
                 with open('users.json', 'w', encoding='utf-8') as f:
                     json.dump(User.user_data, f, indent=4, separators=(',', ': '))
                 print('')
@@ -137,23 +177,23 @@ class User():
             else:
                 pass
 
-#Defining writing of user password deposit to a file
-    def write_passwordDeposit(self, userPassword_query):
-        with open("encryptedPassword.csv", "w", encoding='utf-8') as file:
-            file.write(userPassword_query)
+    def write_password_deposit(self, user_password_query):
+        """Defining writing of user password deposit to a file"""
+        with open("encrypted_password.csv", "w", encoding='utf-8') as file:
+            file.write(user_password_query)
 
-#Defining generating of a user key & writing it to a file
-    def write_userKey(self):
+    def write_user_key(self):
+        """Defining generating of a user key & writing it to a file"""
         key = Fernet.generate_key()
-        with open ("key.userKey", "wb") as key_file:
+        with open ("key.user_key", "wb") as key_file:
             key_file.write(key)
 
-#Defining loading of key
-    def load_userKey(self):
-        return open("key.userKey", "rb").read()
+    def load_user_key(self):
+        """Defining loading of key"""
+        return open("key.user_key", "rb").read()
 
-#Defining of encrypting user password & writing it to a file
     def encrypt(self, filename, key):
+        """Defining of encrypting user password & writing it to a file"""
         f = Fernet(key)
         with open(filename, "rb") as file:
             file_data = file.read()
@@ -162,8 +202,8 @@ class User():
             file.write(encrypted_password)
         return encrypted_password
 
-#Defining of decrypting user password, re-encrypting it & writing it to a file
     def decrypt(self, filename, key):
+        """Defining of decrypting user password, re-encrypting it & writing it to a file"""
         f = Fernet(key)
         with open(filename, "rb") as file:
             encrypted_password = file.read()
