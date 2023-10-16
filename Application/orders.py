@@ -14,12 +14,12 @@ class Order():
                      order_quantity_query, order_delivery_type_query):
         """Defining order create function and it's variables"""
         order = {
-            "order_id": order_id_query,
-            "order_username": order_username_query,
-            "order_name": order_name_query,
-            "order_item": order_item_query,
-            "order_quantity": order_quantity_query,
-            "order_delivery_type": order_delivery_type_query
+            "orderId": order_id_query,
+            "orderUsername": order_username_query,
+            "orderName": order_name_query,
+            "orderItem": order_item_query,
+            "orderQuantity": order_quantity_query,
+            "orderDeliveryType": order_delivery_type_query
         }
 #Appending retrieved variables to orders.json file and reporting order created
         Order.order_data['orders'].append(order)
@@ -32,8 +32,8 @@ class Order():
         """Defining view order function & printing out objects in orders.json"""
         for i in Order.order_data['orders']:
             print(f"\nID:{i['orderID']} \nUsername:{i['orderUsername']} \nName:{i['orderName']}")
-            print(f"\nItem:{i['orderItem']} \nQuantity:{i['orderQuantity']}")
-            print(f"\nDelivery Type:{i['orderDeliveryType']}")
+            print(f"Item:{i['orderItem']} \nQuantity:{i['orderQuantity']}")
+            print(f"Delivery Type:{i['orderDeliveryType']}")
 
     def search_order_id(self, order_id_query):
         """Defining order search by order ID function & printing out relevant object in 
@@ -45,11 +45,12 @@ class Order():
                 print('')
                 print('The order you searched for:')
                 print(f"\nID:{i['orderID']} \nUsername:{i['orderUsername']}")
-                print(f"\nItem:{i['orderItem']} \nQuantity:{i['orderQuantity']}")
-                print(f"\nDelivery Type:{i['orderDeliveryType']}")
+                print(f"Item:{i['orderItem']} \nQuantity:{i['orderQuantity']}")
+                print(f"Delivery Type:{i['orderDeliveryType']}")
                 finder = True
                 break
         if finder is False:
+            print('')
             print(f"{_ID} order cannot be found.")
 
     def edit_order(self, order_id_query, order_edit_choice, new_order_name, new_order_item,
@@ -58,15 +59,15 @@ class Order():
         Defining item edit function"""
         for i in Order.order_data['orders']:
             if order_edit_choice == str(1):
-                if i['order_id'] == order_id_query:
-                    i['order_name'] = new_order_name
+                if i['orderID'] == order_id_query:
+                    i['orderName'] = new_order_name
             elif order_edit_choice == str(2):
-                if i['order_id'] == order_id_query:
-                    i['order_item'] = new_order_item
-                    i['order_quantity'] = new_order_quantity
+                if i['orderID'] == order_id_query:
+                    i['orderItem'] = new_order_item
+                    i['orderQuantity'] = new_order_quantity
             else:
-                if i['order_id'] == order_id_query:
-                    i['order_delivery_type'] = new_order_delivery_type
+                if i['orderID'] == order_id_query:
+                    i['orderDeliveryType'] = new_order_delivery_type
         with open('orders.json', 'w', encoding='utf-8') as f:
             json.dump(Order.order_data, f, indent=4, separators=(',', ': '))
             print('')
@@ -77,7 +78,7 @@ class Order():
         _order_id = order_id_query
         finder = False
         for i in Order.order_data['orders']:
-            if i['order_id'] == _order_id:
+            if i['orderID'] == _order_id:
 #Deleting (popping) relevant object from orders.json
                 Order.order_data['orders'].pop(Order.order_data['orders'].index(i))
                 finder = True
