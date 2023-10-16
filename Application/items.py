@@ -1,4 +1,4 @@
-"""Importing necesary module"""
+"""Importing necessary module"""
 import json
 
 class Item():
@@ -33,7 +33,7 @@ class Item():
             print('')
             print('Item catalogue...')
             print(f"\nID:{i['itemID']} \nName:{i['itemName']} \nPrice:{i['itemPrice']}")
-            print(f"\nDescription:{i['itemDescription']} \nStock:{i['itemStock']}")
+            print(f"Description:{i['itemDescription']} \nStock:{i['itemStock']}")
 
     def search_item_id(self, item_id_query):
         """Defining item search by item ID function & printing out
@@ -45,7 +45,7 @@ class Item():
                 print('')
                 print('The item you searched for...')
                 print(f"\nID:{i['itemID']} \nName:{i['itemName']} \nPrice:{i['itemPrice']}")
-                print(f"\nDescription:{i['itemDescription']} \nStock:{i['itemStock']}")
+                print(f"Description:{i['itemDescription']} \nStock:{i['itemStock']}")
                 finder = True
                 break
         if finder is False:
@@ -61,7 +61,7 @@ class Item():
                 print('')
                 print('The item you searched for...')
                 print(f"\nID:{i['itemID']} \nName:{i['itemName']} \nPrice:{i['itemPrice']}")
-                print(f"\nDescription:{i['itemDescription']} \nStock:{i['itemStock']}")
+                print(f"Description:{i['itemDescription']} \nStock:{i['itemStock']}")
                 finder = True
                 break
         if finder is False:
@@ -72,11 +72,11 @@ class Item():
         in items.json or reporting it unfound"""
         _price = item_price_query
         for i in Item.item_data['items']:
-            if int(i['itemPrice']) == _price:
+            if (i['itemPrice']) == _price:
                 print('')
                 print('The item you searched for...')
                 print(f"\nID:{i['itemID']} \nName:{i['itemName']} \nPrice:{i['itemPrice']}")
-                print(f"\nDescription:{i['itemDescription']} \nStock:{i['itemStock']}")
+                print(f"Description:{i['itemDescription']} \nStock:{i['itemStock']}")
 
     def delete_item(self, item_id_query):
         """Defining item deletion by item ID function or reporting it unfound"""
