@@ -131,3 +131,75 @@ LOGIN,INFO,14/10/2023 16:33:19,Authentication susccessful: bolders & token_type:
 LOGIN,INFO,14/10/2023 16:35:18,Authentication susccessful: bolders & token_type: bearer,200
 UPDATEITEMS,ERROR,14/10/2023 16:35:30,User not authorised to update items - customer1,401
 UPDATEITEMS,INFO,14/10/2023 16:35:37,Order ID x qty updated from - 14 to 30 - bolders,202
+LOGIN,INFO,17/10/2023 17:49:42,Authentication susccessful: bolders & token_type: bearer,200
+GETSYSTEMLOG,ERROR,17/10/2023 17:49:53,Not authorised to access system log - customer1,401
+GETSYSTEMLOG,ERROR,17/10/2023 17:50:03,Not authorised to access system log - supplier1,401
+GETSYSTEMLOG,ERROR,17/10/2023 17:50:10,Account is disabled - willsonl,401
+GETSYSTEMLOG,INFO,17/10/2023 17:50:17,Retrieved system log - bolders,200
+LOGIN,INFO,18/10/2023 11:47:37,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 11:49:14,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 11:51:14,Authentication susccessful: bolders & token_type: bearer,200
+GETSYSTEMLOG,INFO,18/10/2023 11:54:30,Retrieved system log - bolders,200
+GETSYSTEMLOG,ERROR,18/10/2023 11:55:42,Account is disabled - willsonl,401
+GETAPILOG,INFO,18/10/2023 11:58:58,Retrieved API log - bolders,200
+GETSYSTEMLOG,ERROR,18/10/2023 12:02:25,Account is disabled - willsonl,401
+GETSYSTEMLOG,INFO,18/10/2023 12:06:05,Retrieved system log - bolders,200
+GETSYSTEMLOG,INFO,18/10/2023 12:06:24,Retrieved system log - bolders,200
+GETSYSTEMLOG,INFO,18/10/2023 12:07:14,Retrieved system log - bolders,200
+LOGIN,INFO,18/10/2023 16:15:29,Authentication susccessful: bolders & token_type: bearer,200
+GETAPILOG,INFO,18/10/2023 16:15:45,Retrieved API log - bolders,200
+GETAPILOG,ERROR,18/10/2023 16:16:14,Account is disabled - willsonl,401
+GETAPILOG,INFO,18/10/2023 16:16:24,Retrieved API log - nugentf,200
+GETAPILOG,ERROR,18/10/2023 16:16:45,Not authorised to access API log - customer1,401
+GETITEMS,ERROR,18/10/2023 16:17:13,Customers not authorised to access items - customer1,401
+GETITEMS,INFO,18/10/2023 16:17:28,Retrieved items - supplier1,200
+GETITEMS,ERROR,18/10/2023 16:17:36,Customers not authorised to access items - bolders,401
+ADDITEMS,ERROR,18/10/2023 16:17:55,User not authorised to add items - bolders,401
+ADDITEMS,INFO,18/10/2023 16:18:05,Item written to db - supplier1,201
+UPDATEITEMS,ERROR,18/10/2023 16:18:47,User not authorised to update items - customer1,401
+LOGIN,INFO,18/10/2023 16:48:33,Authentication susccessful: bolders & token_type: bearer,200
+GETAPILOG,INFO,18/10/2023 16:48:46,Retrieved API log - bolders,200
+GETAPILOG,ERROR,18/10/2023 16:48:58,Account is disabled - willsonl,401
+GETAPILOG,INFO,18/10/2023 16:49:08,Retrieved API log - nugentf,200
+GETAPILOG,ERROR,18/10/2023 16:49:14,Not authorised to access API log - customer1,401
+GETAPILOG,ERROR,18/10/2023 16:49:23,Not authorised to access API log - supplier1,401
+GETITEMS,ERROR,18/10/2023 16:49:34,Customers not authorised to access items - bolders,401
+GETITEMS,INFO,18/10/2023 16:49:51,Retrieved items - supplier1,200
+GETITEMS,INFO,18/10/2023 16:49:53,Retrieved items - supplier1,200
+LOGIN,INFO,18/10/2023 16:51:33,Authentication susccessful: bolders & token_type: bearer,200
+GETITEMS,INFO,18/10/2023 16:51:56,Retrieved items - supplier1,200
+GETITEMS,ERROR,18/10/2023 16:52:09,Customers not authorised to access items - bolders,401
+ADDITEMS,ERROR,18/10/2023 16:53:05,Item already exists in db - supplier1,409
+ADDITEMS,INFO,18/10/2023 16:53:11,Item written to db - supplier1,201
+LOGIN,INFO,18/10/2023 16:57:44,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 16:59:46,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 17:01:02,Authentication susccessful: bolders & token_type: bearer,200
+UPDATEITEMS,INFO,18/10/2023 17:01:13,Order ID x qty updated from - 20 to 10 - bolders,202
+LOGIN,INFO,18/10/2023 17:02:52,Authentication susccessful: bolders & token_type: bearer,200
+UPDATEITEMS,INFO,18/10/2023 17:03:08,Order ID x qty updated from - 10 to 20 - bolders,202
+LOGIN,INFO,18/10/2023 17:42:44,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 17:55:08,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 18:01:57,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 18:07:07,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 18:12:36,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 18:14:43,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 18:16:20,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 18:20:55,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 18:24:22,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 18:30:41,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 18:33:31,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 18:43:55,Authentication susccessful: bolders & token_type: bearer,200
+LOGIN,INFO,18/10/2023 18:52:53,Authentication susccessful: bolders & token_type: bearer,200
+DELETEITEMS,ERROR,18/10/2023 18:53:33,Account is disabled - willsonl,401
+LOGIN,INFO,18/10/2023 18:55:16,Authentication susccessful: bolders & token_type: bearer,200
+UPLOADFILE,INFO,18/10/2023 18:55:32,File uploaded successfully - new 21.csv - customer1,200
+UPLOADFILE,ERROR,18/10/2023 18:55:39,File already exists - new 21.csv - customer1,400
+UPLOADFILE,ERROR,18/10/2023 18:56:05,File is too large - BPD SampleManager LIMS_System Configuration_Design Specification.docx - customer1,400
+LOGIN,INFO,18/10/2023 18:59:53,Authentication susccessful: bolders & token_type: bearer,200
+UPLOADFILE,INFO,18/10/2023 19:00:53,File uploaded successfully - new 21.csv - customer1,200
+UPLOADFILE,ERROR,18/10/2023 19:01:04,File already exists - new 21.csv - customer1,400
+UPLOADFILE,ERROR,18/10/2023 19:01:21,File is too large - BPD SampleManager LIMS_System Configuration_Design Specification.docx - 14537024 - customer1,400
+DELETEITEMS,ERROR,18/10/2023 19:01:42,Account is disabled - willsonl,401
+LOGIN,INFO,18/10/2023 19:04:48,Authentication susccessful: bolders & token_type: bearer,200
+UPLOADFILE,ERROR,18/10/2023 19:05:05,File is too large - BPD SampleManager LIMS_System Configuration_Design Specification.docx - Size (KB) = 14537024 - customer1,400
+LOGIN,INFO,18/10/2023 19:41:42,Authentication susccessful: bolders & token_type: bearer,200

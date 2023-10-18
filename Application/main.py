@@ -12,15 +12,7 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-import items
-
-# Quick reference credentials
-'''simonbolder - aJ708/F0M*'''
-'''liamwillson - hd2_rR3~7g'''
-'''fergusnugent - {L9C4\Pz8u'''
-'''cathrynpeoples - 30{Ey2@m`S'''
-'''customer1 - 99KVC.9Nom'''
-'''supplier1 - £mq6|Xd08v'''
+from fastapi import File, UploadFile
 
 # API database
 API_USERS_DB = {
@@ -33,31 +25,31 @@ API_USERS_DB = {
     "liamwillson": {
         "username": "willsonl", "full_name": "Liam Willson",
         "hashed_password":\
-            "ff7d7a3c8fcc797f6ce23dc2f8c1db57f0a543f4bb79255f028b3e3d78c7dbe1password",
+            "ff7d7a3c8fcc797f6ce23dc2f8c1db57f0a543f4bb79255f028b3e3d78c7dbe1hd2_rR3~7g",
         "disabled": True, "role": "A",
     },
     "fergusnugent": {
         "username": "nugentf", "full_name": "Fergus Nugent",
         "hashed_password":\
-            "ff7d7a3c8fcc797f6ce23dc2f8c1db57f0a543f4bb79255f028b3e3d78c7dbe1password",
+            "ff7d7a3c8fcc797f6ce23dc2f8c1db57f0a543f4bb79255f028b3e3d78c7dbe1{L9C4\Pz8u",
         "disabled": False, "role": "A",
     },
     "cathrynpeoples": {
         "username": "peoplesc", "full_name": "Cathryn Peoples",
         "hashed_password":\
-            "ff7d7a3c8fcc797f6ce23dc2f8c1db57f0a543f4bb79255f028b3e3d78c7dbe1password",
+            "ff7d7a3c8fcc797f6ce23dc2f8c1db57f0a543f4bb79255f028b3e3d78c7dbe130{Ey2@m`S",
         "disabled": False, "role": "A",
     },
     "customer1": {
         "username": "customer1", "full_name": "A Customer",
         "hashed_password":\
-            "ff7d7a3c8fcc797f6ce23dc2f8c1db57f0a543f4bb79255f028b3e3d78c7dbe1password",
+            "ff7d7a3c8fcc797f6ce23dc2f8c1db57f0a543f4bb79255f028b3e3d78c7dbe199KVC.9Nom",
         "disabled": False, "role": "C",
     },
     "supplier1": {
         "username": "supplier1", "full_name": "A Supplier",
         "hashed_password":\
-            "ff7d7a3c8fcc797f6ce23dc2f8c1db57f0a543f4bb79255f028b3e3d78c7dbe1password",
+            "ff7d7a3c8fcc797f6ce23dc2f8c1db57f0a543f4bb79255f028b3e3d78c7dbe1£mq6|Xd08v",
         "disabled": False, "role": "S",
     },
 }
@@ -81,6 +73,7 @@ LOG = 'TRUE'
 AUTHENTICATION = 'TRUE'
 SECURE_API = 'TRUE'
 
+# Classes
 class User(BaseModel):
     """For creating an instance of a user"""
     username: str
@@ -134,10 +127,11 @@ async def get_current_active_user(
                             detail="Inactive user")
     return current_user
 
+# API endpoints
 @app.get("/")
 async def root():
     """A simple landing page at the root of the API"""
-    return {"message": "Welcome to the online retailer API"}
+    return {"message": "Welcome to the secure online retailer API"}
 
 @app.post("/token")
 async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
@@ -161,31 +155,6 @@ async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
                   'Authentication susccessful: '
                   + user.username + ' & token_type: bearer', '200')
     return {"access_token": user.username, "token_type": "bearer"}
-
-@app.get("/get-system-log")
-def get_system_log(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
-    """Gets the system log csv file for administrators"""
-    # date_time = get_date()
-    date_now = datetime.now()
-    date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
-    user_dict = API_USERS_DB.get(username)
-    user = UserInDB(**user_dict)
-    if user.disabled is False:
-        if user.role == 'A':
-            write_api_log('GETSYSTEMLOG', 'INFO', date_str,
-                          'Retrieved system log - ' + user.username  , '200')
-            file_path = os.getcwd() + "/" + SYS_LOG
-            return FileResponse(file_path)
-        else:
-            write_api_log('GETSYSTEMLOG', 'ERROR', date_str,
-                          'Not authorised to access system log - ' + user.username  , '401')
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
-                                detail="Not authorised to access system log - " + user.username)
-    if user.disabled is True:
-        write_api_log('GETSYSTEMLOG', 'ERROR', date_str,
-                      'Account is disabled - ' + user.username  , '401')
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
-                            detail="Account is disabled - " + user.username)
 
 @app.get("/get-api-log")
 def get_api_log(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
@@ -215,7 +184,7 @@ def get_api_log(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
 @app.get("/get-items")
 def get_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
     """Gets the items json file for suppliers"""
-    I_FILE_NAME = 'items.json'
+    #I_FILE_NAME = 'items.json'
     date_now = datetime.now()
     date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
     user_dict = API_USERS_DB.get(username)
@@ -224,14 +193,14 @@ def get_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
         if user.role == 'S':
             write_api_log('GETITEMS', 'INFO', date_str, 'Retrieved items - '
                           + user.username , '200')
-            filepath = os.getcwd() + I_FILE_NAME
+            filepath = os.getcwd() + '/' + I_FILE_NAME
             return FileResponse(filepath)
         else:
             write_api_log('GETITEMS', 'ERROR', date_str,
-                          'Customers not authorised to access items - '
+                          'Not authorised to access items - '
                           + user.username  , '401')
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
-                                detail="Customers not authorised to access items - " +\
+                                detail="Not authorised to access items - " +\
                                     user.username)
     if user.disabled is True:
         write_api_log('GETITEMS', 'ERROR', date_str, 'Account is disabled - '
@@ -240,8 +209,9 @@ def get_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str):
                             detail="Account is disabled - " + user.username)
 
 @app.put("/add-item")
-def add_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str, item_id: str, 
-              item_name: str, item_price: str, item_description: str, item_stock: str):
+def add_items(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str,
+              item_id: str, item_name: str, item_price: str,
+              item_description: str, item_stock: str):
     """Adds items to the items json file as a supplier"""
     date_now = datetime.now()
     date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
@@ -296,17 +266,17 @@ def update_order_qty(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: st
     if user.disabled is False:
         if user.role == 'A':
             for orders in O_DATA['orders']:
-                if orders['orderID'] == str(order_id):
+                if orders['orderId'] == str(order_id):
                     current_qty = orders['orderQuantity']
                     orders['orderQuantity'] = str(order_quantity)
                     with open (O_FILE_NAME, 'w') as json_file:
                         json.dump(O_DATA, json_file, indent=4, separators=(',',': '))
                     write_api_log('UPDATEITEMS', 'INFO', date_str,
-                                  'Order ID ' + orders['orderID'] + ' qty updated from - '\
+                                  'Order ID ' + orders['orderId'] + ' qty updated from - '
                                     + current_qty + ' to '
                                   + order_quantity + ' - ' + user.username, '202')
                     raise HTTPException(status_code=status.HTTP_202_ACCEPTED,
-                                        detail="Order ID " + orders['orderID']\
+                                        detail="Order ID " + orders['orderId']
                                             + " qty updated from - " + current_qty + " to "
                                         + order_quantity + " - " + user.username)
         else:
@@ -331,25 +301,75 @@ def delete_order(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str, o
     if user.disabled is False:
         if user.role == 'A':
             for orders in O_DATA['orders']:
-                if orders['orderID'] == str(order_id):
+                if orders['orderId'] == str(order_id):
                     O_DATA['orders'].pop(O_DATA['orders'].index(orders))
                     with open (O_FILE_NAME, 'w') as json_file:
                         json.dump(O_DATA, json_file, indent=4, separators=(',',': '))
                     write_api_log('DELETEITEMS', 'INFO', date_str,
-                                  'Order ID ' + orders['orderID'] + ' deleted by - '
+                                  'Order ID ' + orders['orderId'] + ' deleted by - '
                                   + user.username, '202')
                     raise HTTPException(status_code=status.HTTP_202_ACCEPTED,
-                                        detail="Order ID " + orders['orderID'] + " deleted by - "
+                                        detail="Order ID " + orders['orderId'] + " deleted by - "
                                   + user.username)
         else:
             write_api_log('DELETEITEMS', 'ERROR', date_str,
                           'User not authorised to delete order - ' + order_id + ' - '
                           + user.username  , '401')
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
-                                detail="User not authorised to delete order - " + order_id\
+                                detail="User not authorised to delete order - " + order_id
                                     + ' - ' + user.username)
     if user.disabled is True:
         write_api_log('DELETEITEMS', 'ERROR', date_str, 'Account is disabled - '
                       + user.username  , '401')
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Account is disabled - " + user.username)
+
+@app.post("/upload-file")
+async def upload(token: Annotated[str, Depends(OAUTH2_SCHEME)], username: str,
+                 file: UploadFile = File(...)):
+    """For customers to upload a file"""
+    content_type = file.content_type
+    cur_dir = os.getcwd() + '/uploads'
+    date_now = datetime.now()
+    date_str = date_now.strftime("%d/%m/%Y %H:%M:%S")
+    user_dict = API_USERS_DB.get(username)
+    user = UserInDB(**user_dict)
+    if user.disabled is False:
+        if user.role == 'C':
+            if len(await file.read()) >= 1000:
+                write_api_log('UPLOADFILE', 'ERROR', date_str,
+                              'File is too large - ' + file.filename + ' - Size (KB) = '
+                              + str(file.size) + ' - '
+                              + user.username  , '400')
+                raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                                    detail="File is too large - " + file.filename + " - Size (KB) = "
+                                    + str(file.size) + " - " + user.username)
+            else:
+                if content_type == 'text/csv':
+                    file_exists = os.path.exists(cur_dir + '/' + file.filename)
+                    if file_exists:
+                        write_api_log('UPLOADFILE', 'ERROR', date_str,
+                                      'File already exists - ' + file.filename + ' - '
+                                      + user.username  , '400')
+                        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                                        detail="File already exists - " + file.filename + " - "
+                                        + user.username)
+                    else:
+                        contents = file.file.read()
+                        with open(os.path.join(cur_dir, file.filename), 'wb') as f:
+                            f.write(contents)
+                        write_api_log('UPLOADFILE', 'INFO', date_str,
+                                      'File uploaded successfully - ' + file.filename + ' - '
+                                      + user.username  , '200')
+                        raise HTTPException(status_code=status.HTTP_202_ACCEPTED,
+                                            detail="File uploaded successfully - " + file.filename + " - "
+                                            + user.username)
+        else:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail="Not authorised to upload file - " + user.username)
+    if user.disabled is True:
+        write_api_log('DELETEITEMS', 'ERROR', date_str, 'Account is disabled - '
+                      + user.username  , '401')
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail="Account is disabled - " + user.username)
+    file.file.close()
