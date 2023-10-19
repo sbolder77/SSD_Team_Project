@@ -3,6 +3,7 @@ import sys
 import os
 import random
 import string
+from inputimeout import inputimeout
 from users import User
 from admins import Admin
 from items import Item
@@ -102,8 +103,18 @@ def main(self):
             print('')
             print('Login to your account...')
             print('')
-            user_username_query = str(input('Input your username: '))
-            user_password_query = str(input('Input your password: '))
+            try:
+                user_username_query = str(inputtimeout(prompt='Input your username: ', timeout=10))
+            except Exception:
+                time_over = 'You took too long...'
+                print(time_over)
+                sys.exit()
+            try:
+                user_password_query = str(inputtimeout(prompt='Input your password: ', timeout=10))
+            except Exception:
+                time_over = 'You took too long...'
+                print(time_over) 
+                sys.exit()
 #Checking inputted user credentials to validate them and authenticate the user
 # to access their information and the user menu
             for i in User.user_data['users']:
