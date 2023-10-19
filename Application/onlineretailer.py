@@ -106,14 +106,14 @@ def main(self):
             try:
                 user_username_query = str(inputimeout(prompt='Input your username: ', timeout=10))
             except Exception:
-                time_over = 'You took too long...'
-                print(time_over)
+                print('')
+                print('You took too long...')
                 sys.exit()
             try:
                 user_password_query = str(inputimeout(prompt='Input your password: ', timeout=10))
             except Exception:
-                time_over = 'You took too long...'
-                print(time_over) 
+                print('')
+                print('You took too long...')
                 sys.exit()
 #Checking inputted user credentials to validate them and authenticate the user
 # to access their information and the user menu
