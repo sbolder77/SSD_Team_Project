@@ -8,6 +8,7 @@
     pip install fastapi uvicorn
     pip install pydantic
     pip install python-multipart
+    pip install inputimeout
 
 #### Additional option for SSL
 if you wan to use SSL (HTTPS) for the API you will need to generate self certified certificates for local use.
