@@ -5,9 +5,9 @@
 1. Download the repository from Github
 2. Code must be run in VS code on Windows
 3. Pre-requisites to install are as follows:
-    pip install fastapi uvicorn
-    pip install pydantic
-    pip install python-multipart
+    pip install fastapi uvicorn,
+    pip install pydantic,
+    pip install python-multipart,
     pip install inputimeout
 
 #### Additional option for SSL
