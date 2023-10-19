@@ -52,16 +52,26 @@ def main(self):
             user_postcode_query = input('Input your postcode: ')
 #Setting payment information for user account
             print('')
-            print('Finally, set your payment information...')
-            user_bank_name_query = input('Input your bank name: ')
-            user_bank_account_name_query = input('Input your bank account name: ')
-            user_bank_account_bsb_query = input('Input your bank account BSB: ')
-            user_bank_account_number_query = input('Input your bank account number: ')
-            print('')
-            user_card_name_query = input('Input your card name: ')
-            user_card_number_query = input('Input your card number: ')
-            user_card_expiry_query = input('Input your card expiry: ')
-            user_card_cvc_query = input('Input your card cvc: ')
+            i = 1
+            while i == 1:
+                print('Finally, set your payment information...')
+                user_bank_name_query = input('Input your bank name: ')
+                user_bank_account_name_query = input('Input your bank account name: ')
+                user_bank_account_bsb_query = input('Input your bank account BSB: ')
+                user_bank_account_number_query = input('Input your bank account number: ')
+                print('')
+                user_card_name_query = input('Input your card name: ')
+                user_card_number_query = input('Input your card number: ')
+                user_card_expiry_query = input('Input your card expiry: ')
+                user_card_cvc_query = input('Input your card cvc: ')
+                if (user_bank_account_bsb_query.isdigit() is False or user_bank_account_number_query.isdigit() is False or 
+                        user_card_number_query.isdigit() is False or user_card_expiry_query.isdigit() is False or 
+                        user_card_cvc_query.isdigit() is False):
+                    print('')
+                    print('You entered characters in an input field that required digits only. Try again.')
+                    print('')
+                else:
+                    break
 #Calling create user function which commits inputted information to users.json
             User.create_user(self, user_username_query=user_username_query,
                              user_id_query=user_id_query, user_name_query=user_name_query,
