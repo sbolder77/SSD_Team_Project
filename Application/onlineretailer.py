@@ -104,13 +104,13 @@ def main(self):
             print('Login to your account...')
             print('')
             try:
-                user_username_query = str(inputtimeout(prompt='Input your username: ', timeout=10))
+                user_username_query = str(inputimeout(prompt='Input your username: ', timeout=10))
             except Exception:
                 time_over = 'You took too long...'
                 print(time_over)
                 sys.exit()
             try:
-                user_password_query = str(inputtimeout(prompt='Input your password: ', timeout=10))
+                user_password_query = str(inputimeout(prompt='Input your password: ', timeout=10))
             except Exception:
                 time_over = 'You took too long...'
                 print(time_over) 
