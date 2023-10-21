@@ -152,7 +152,8 @@ Fig 4. onlineretailer.py
 ----------------------------------------------------------------------------------------
 
 
-Bibliography
+#### Bibliography
+
 CrypTool-Online. (2023) OpenSSL. Available from: https://www.cryptool.org/en/cto/openssl [Accessed 21 Oct 2023].
 
 JSONLint. (2023) JSONLint Validator and Formatter. Available from: https://jsonlint.com/ [Accessed 21 Oct 2023].
