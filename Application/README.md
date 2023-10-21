@@ -2,7 +2,8 @@
 ## Online Retailer
 
 ### Application Tools & Libraries
-The source code for our online retail application is organised and documented according to Python’s PEP-8 style guide. The interface is via command line, the application is not network deployed.                                                                
+The source code for our online retail application is organised and documented according to Python’s PEP-8 style guide. The interface is via command line, the application is not network deployed.                                                       
+
 The following languages were used in this project,
 - Python v3.12.0
 - Javascript Object Notation (JSON) v2.10.1
@@ -48,8 +49,25 @@ Update the file names if needed in server.py against the SSL_KEY_FILE and SSL_CE
 
 Fig 1. server.py
 
-### Executing the CLI application
-To add
+### Executing the CLI application -->
+### Set An Administrator Key (Password)
+1. Run the adminCreator.py script 'python3 adminCreator.py'
+2. When prompted enter an administrator key to set the administrator key (password)
+
+![Resources/files](Images/setAdmin.jpg)
+
+Fig 3. adminCreator.py
+
+### then, Run The Online Shop Application (onlineretailer.py) Program
+1. Run the onlineretailer.py script or in terminal, 'python3 onlineretailer.py'
+2. Follow the prompts given to access either the user or administrator menu
+3. Run the onlineretailer.py script again to re-access the shop if exited
+
+   Upon login and following the prompts you will reach -->
+
+![Resources/files](Images/onlineretailer.jpg)
+
+Fig 4. onlineretailer.py
 
 ### Executing the API
 1. Set SECURE to TRUE in server.py. This will run main.py which is the script that incorporates all the authentication and security features.
@@ -151,25 +169,6 @@ By setting the SECURE variable to FALSE in server.py this will run mainunsecure.
 ![Resources/files](Images/apiunsecure_home.jpg)
 
 Fig 12. Unsecure API
-
-### Set An Administrator Key (Password)
-1. Run the adminCreator.py script 'python3 adminCreator.py'
-2. When prompted enter an administrator key to set the administrator key (password)
-
-![Resources/files](Images/setAdmin.jpg)
-
-Fig 3. adminCreator.py
-
-### Finally, Run The Online Shop Application (onlineretailer.py) Program
-1. Run the onlineretailer.py script or in terminal, 'python3 onlineretailer.py'
-2. Follow the prompts given to access either the user or administrator menu
-3. Run the onlineretailer.py script again to re-access the shop if exited
-
-   Upon login and following the prompts you will reach -->
-
-![Resources/files](Images/onlineretailer.jpg)
-
-Fig 4. onlineretailer.py
 
 ----------------------------------------------------------------------------------------
 ### Now, you can explore the online shop and it's functionality by following the prompts it gives... ###
