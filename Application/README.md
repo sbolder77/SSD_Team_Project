@@ -26,7 +26,6 @@ The following languages were used in this project,
 - shutil 
 - inputimeout
 
-
 ### Initial setup
 1. Download the repository from Github
 2. Code must be run in VS code on Windows
@@ -50,8 +49,7 @@ Update the file names if needed in server.py against the SSL_KEY_FILE and SSL_CE
 
 Fig 1. server.py
 
-
-### Executing the CLI application -->
+###             Executing the CLI application -->
 ### Set An Administrator Key (Password)
 1. Run the adminCreator.py script 'python3 adminCreator.py'
 2. When prompted enter an administrator key to set the administrator key (password)
