@@ -49,6 +49,7 @@ Update the file names if needed in server.py against the SSL_KEY_FILE and SSL_CE
 
 Fig 1. server.py
 
+
 ### Executing the CLI application -->
 ### Set An Administrator Key (Password)
 1. Run the adminCreator.py script 'python3 adminCreator.py'
@@ -68,6 +69,7 @@ Fig 3. adminCreator.py
 ![Resources/files](Images/onlineretailer.jpg)
 
 Fig 4. onlineretailer.py
+
 
 ### Executing the API
 1. Set SECURE to TRUE in server.py. This will run main.py which is the script that incorporates all the authentication and security features.
