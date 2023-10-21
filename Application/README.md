@@ -152,9 +152,11 @@ Fig 4. onlineretailer.py
 ----------------------------------------------------------------------------------------
 
 
-References:
-https://www.cryptool.org/en/cto/openssl
-https://dev.to/rajshirolkar/fastapi-over-https-for-development-on-windows-2p7d
-https://www.cryptool.org/en/cto/openssl
-https://fastapi.tiangolo.com/
-https://jsonlint.com/
+Bibliography
+CrypTool-Online. (2023) OpenSSL. Available from: https://www.cryptool.org/en/cto/openssl [Accessed 21 Oct 2023].
+
+JSONLint. (2023) JSONLint Validator and Formatter. Available from: https://jsonlint.com/ [Accessed 21 Oct 2023].
+
+Rajshirolkar. (2021) FastAPI over HTTPS for development on Windows. Available from: https://dev.to/rajshirolkar/fastapi-over-https-for-development-on-windows-2p7d [Accessed 21 Oct 2023].
+
+Tiangolo. (2023) FastAPI. Available from: https://fastapi.tiangolo.com/ [Accessed 18 Oct 2023].
