@@ -1,6 +1,30 @@
 # Secure Software Development - Team RED Project
 ## Online Retailer
 
+### Application Tools & Libraries
+The source code for our online retail application is organised and documented according to Python’s PEP-8 style guide. The interface is via command line, the application is not network deployed.                                                                
+The following languages were used in this project,
+- Python v3.12.0
+-Javascript Object Notation (JSON) v2.10.1
+
+&, the following tools,
+- FastAPI v0.103.2
+- Uvicorn v0.23.2
+- Mkcert v3.1.0
+- Chocolatey v2.0.0
+- Cryptography fernet v41.0.4
+
+&, the following python modules,
+- multipart
+- OS
+- typing, typing-extensions
+- datetime
+- sys
+- random
+- string
+- shutil 
+- inputimeout
+
 ### Initial setup
 1. Download the repository from Github
 2. Code must be run in VS code on Windows
