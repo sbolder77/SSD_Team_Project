@@ -5,7 +5,7 @@
 The source code for our online retail application is organised and documented according to Python’s PEP-8 style guide. The interface is via command line, the application is not network deployed.                                                                
 The following languages were used in this project,
 - Python v3.12.0
--Javascript Object Notation (JSON) v2.10.1
+- Javascript Object Notation (JSON) v2.10.1
 
 &, the following tools,
 - FastAPI v0.103.2
