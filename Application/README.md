@@ -33,7 +33,7 @@ To add
 3. Set SSL to FALSE in server.py. This will run the server with HTTP. SSL set to true will use HTTPS but only with the self signed .pem certificates in the solution.
 4. Run 'python server.py' in the terminal
 5. Click the link in the terminal window for the URL to the Uvicorn BASE url.
-6. Browse to http://localhost:8432/docs or https://localhost:8432/docs if using SSL.
+6. Browse to http://localhost:8432/docs or https://localhost:8432/docs if using SSL. (/docs must be added manually to the url in your browser when API runs.)
 
 ![Resources/files](Images/server_terminal.jpg)
 
@@ -96,7 +96,7 @@ Fig 8. Get Items
 ### Add Item
 This will require you to input a username, item id, item name, item price, item description and item stock as parameters. It is the same username as authorisation. Based on the role or disabled state in the API_USERS_DB in main.py will determine if you can execute the API function. The function will check to see if there is already an item. Use items.json file to test as it should have been populated with data by the onlineretailer.py script.
 
-![Resources/files](Images/additems.jpg)
+![Resources/files](Images/additem.jpg)
 
 Fig 9. Add Items
 
