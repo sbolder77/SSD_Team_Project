@@ -154,10 +154,22 @@ Fig 4. onlineretailer.py
 
 #### Bibliography
 
+Chocolatey. (2023) Chocolatey Software. Available from: https://chocolatey.org/ [Accessed 18 Oct 2023].
+
 CrypTool-Online. (2023) OpenSSL. Available from: https://www.cryptool.org/en/cto/openssl [Accessed 21 Oct 2023].
 
 JSONLint. (2023) JSONLint Validator and Formatter. Available from: https://jsonlint.com/ [Accessed 21 Oct 2023].
 
+Python Code Quality Authority (PyCQA). (2023) Fernet (symmetric encryption). Available from: https://github.com/pyca/cryptography/blob/main/docs/fernet.rst#fernet-symmetric-encryption [Accessed 18 Oct 2023].
+
+Python Code Quality Authority (PyCQA). (2022) Flake8. Available from: https://github.com/pycqa/flake8/blob/main/docs/source/index.rst [Accessed 18 Oct 2023].
+
+FiloSottile. (2022) mkcert. Available from: https://github.com/FiloSottile/mkcert [Accessed 18 Oct 2023].
+
+Pylint. (2023) pylint 3.0.1. Available from: https://pypi.org/project/pylint/ [Accessed 18 Oct 2023].
+
 Rajshirolkar. (2021) FastAPI over HTTPS for development on Windows. Available from: https://dev.to/rajshirolkar/fastapi-over-https-for-development-on-windows-2p7d [Accessed 21 Oct 2023].
 
 Tiangolo. (2023) FastAPI. Available from: https://fastapi.tiangolo.com/ [Accessed 18 Oct 2023].
+
+Uvicorn. (n.d.) Available from: https://www.uvicorn.org/ [Accessed 18 Oct 2023].
