@@ -28,7 +28,7 @@ The following languages were used in this project,
 
 ### Initial setup
 1. Download the repository from Github
-2. Application folder must be opened in Visual Studio Code
+2. The 'Application' folder must be opened in Visual Studio Code
 3. Code must be run in Visual Studio Code on Windows
 4. Pre-requisites to install are as follows:
     pip install fastapi uvicorn,
