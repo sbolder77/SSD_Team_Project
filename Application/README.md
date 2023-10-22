@@ -28,8 +28,9 @@ The following languages were used in this project,
 
 ### Initial setup
 1. Download the repository from Github
-2. Code must be run in VS code on Windows
-3. Pre-requisites to install are as follows:
+2. Application folder must be opened in Visual Studio Code
+3. Code must be run in Visual Studio Code on Windows
+4. Pre-requisites to install are as follows:
     pip install fastapi uvicorn,
     pip install pydantic,
     pip install python-multipart,
