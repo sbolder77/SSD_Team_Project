@@ -1,3 +1,39 @@
 {
-    "items": []
+    "items": [
+        {
+            "itemID": "#1",
+            "itemName": "milk",
+            "itemPrice": "5.00",
+            "itemDescription": "you drink it",
+            "itemStock": "76"
+        },
+        {
+            "itemID": "#2",
+            "itemName": "eggs",
+            "itemPrice": "8.00",
+            "itemDescription": "from a chicken",
+            "itemStock": "67"
+        },
+        {
+            "itemID": "#3",
+            "itemName": "avocado",
+            "itemPrice": "12.00",
+            "itemDescription": "a green thing",
+            "itemStock": "34"
+        },
+        {
+            "itemID": "#4",
+            "itemName": "banana",
+            "itemPrice": "4.00",
+            "itemDescription": "a yellow thing",
+            "itemStock": "90"
+        },
+        {
+            "itemID": "#5",
+            "itemName": "lollipop",
+            "itemPrice": "16.00",
+            "itemDescription": "a candy",
+            "itemStock": "95"
+        }
+    ]
 }
